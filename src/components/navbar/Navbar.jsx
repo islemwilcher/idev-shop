@@ -32,7 +32,6 @@ const navbar = () => {
             <Burg>
                 <Burger />
             </Burg>
-            
             <Logo>
                 <img src={LOGO} alt="logo" width="60px" height="60px" />
             </Logo>

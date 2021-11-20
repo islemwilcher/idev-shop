@@ -26,7 +26,7 @@ const Button = styled.button`
     color: black;
     &:hover {
     border-radius: 5px;
-    box-shadow: 1px 1px 3px black;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
     font-weight: 700;
 }
 `
