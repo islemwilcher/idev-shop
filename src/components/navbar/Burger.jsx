@@ -6,8 +6,8 @@ import LeftNav from './LeftNav'
 const BurgerStyle = styled.div`
     width: 2rem;
     height: 2rem;
-    top: 20px;
-    left: 40px;    
+    top: 35px;
+    left: 30px;    
     z-index: 21;
     display: none;
     position: ${({ open }) => open ? 'fixed' : ''};
@@ -23,15 +23,15 @@ const BurgerStyle = styled.div`
         border-radius: 10px;
         transform-origin: 1px;
         transition: all 0.6s linear;
-         &:nth-child(1) {
-             transform: ${({ open }) => open ? 'rotate(45deg)' : 'rotate(0)'}
-         }
-         &:nth-child(2) {
-             opacity: ${({ open }) => open ? '0' : '1'}
-         }
-         &:nth-child(3) {
-             transform: ${({ open }) => open ? 'rotate(-45deg)' : 'rotate(0)'}
-         }
+        &:nth-child(1) {
+            transform: ${({ open }) => open ? 'rotate(45deg)' : 'rotate(0)'}
+        }
+        &:nth-child(2) {
+            opacity: ${({ open }) => open ? '0' : '1'}
+        }
+        &:nth-child(3) {
+            transform: ${({ open }) => open ? 'rotate(-45deg)' : 'rotate(0)'}
+        }
     }
 `;
 

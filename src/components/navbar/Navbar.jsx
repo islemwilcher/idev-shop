@@ -10,7 +10,7 @@ const Nav = styled.nav`
     margin: 0px auto;
     border-bottom: 1px solid gray;
     box-shadow: 2px 2px 10px black;
-    padding: 0 20px;
+    padding: 0px 0px 0px 30px;
     align-items: center;
     text-align:center;
     display: flex;

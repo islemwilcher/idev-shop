@@ -1,4 +1,5 @@
 
+import { useEffect } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
@@ -50,7 +51,6 @@ const LeftNav = ({ open, setOpen }) => {
     }
 
     let wWidth = window.innerWidth
-    console.log(wWidth)
     
     return (
         <Ul open = {open}>
