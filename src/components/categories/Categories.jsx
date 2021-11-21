@@ -1,13 +1,11 @@
 
+import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 import { BsArrowRight } from 'react-icons/bs'
 
 import SHIRTS from '../../assets/shirts.jpg'
 import SHOES from '../../assets/shoes.jpg'
 import HATS from '../../assets/hats.jpg'
-import './styles.css'
-
-import styled from 'styled-components'
-import { Link } from 'react-router-dom'
 
 const Container = styled.div`
     width: 90%;
@@ -18,6 +16,7 @@ const Container = styled.div`
     align-items: center;
     justify-content: space-between;
 `
+
 const Card = styled.div`
     margin: 30px auto;
     display: flex;
@@ -49,6 +48,7 @@ const Darken = styled.div`
         border-radius: 18px;
     }
 `
+
 const Overlay = styled.div`
     position: absolute;
     top: 20px;
@@ -56,6 +56,7 @@ const Overlay = styled.div`
     color: white;
     z-index: 10;
 `
+
 const OverlayTwo = styled.div`
     position: absolute;
     top: 60%;
@@ -64,11 +65,13 @@ const OverlayTwo = styled.div`
     color: white;
     z-index: 10;
 `
+
 const TypographyCatego = styled.h3`
     color: white;
     font-weight: 500;
     font-size: 18px;
 `
+
 const Typography = styled.h6`
     color: white;
     font-weight: 300;
@@ -79,12 +82,14 @@ const Typography = styled.h6`
     align-items: center;
     justify-content: center;
 `
+
 const Hr = styled.hr`
     height: 1px;
     width: 80px;
     background-color: white;
     border: 1px solid white;
 `
+
 const Img = styled.img`
     z-index:0;
     height: 280px;
@@ -126,7 +131,7 @@ const Categories = () => {
                 </OverlayTwo>
             </Card>
             <Card>
-                <img src={HATS} alt="hats" width="320px" height="280px" />
+                <Img src={HATS} alt="hats" width="320px" height="280px" />
                 <Darken />
                 <Overlay>
                     <TypographyCatego>Hats</TypographyCatego>

@@ -1,8 +1,10 @@
 
 import styled from 'styled-components'
 
+//components
 import Categories from '../components/categories/Categories'
 
+//styles
 import './Home.css'
 
 const Container = styled.div``
@@ -41,10 +43,9 @@ const Button = styled.button`
     font-size: 22px;
     cursor: pointer;
     &:hover{
-        color: black;
-        font-weight: 700;
-        box-shadow: 3px 3px 13px black;
-        background-color: rgba(0, 208, 0, 0.8)
+        font-weight: 500;
+        box-shadow: 1px 1px 6px black;
+        background-color: rgba(0, 208, 0, 0.8, 0.5)
     }
     @media (max-width: 768px) {
         font-size: 18px;
