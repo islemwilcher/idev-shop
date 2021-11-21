@@ -1,5 +1,6 @@
 
 import styled from 'styled-components'
+import Bestselling from '../components/bestselling/Bestselling'
 
 //components
 import Categories from '../components/categories/Categories'
@@ -39,7 +40,7 @@ const Button = styled.button`
     color: white;
     padding: 10px 14px;
     border: none;
-    border-radius: 10px;
+    border-radius: 5px;
     font-size: 22px;
     cursor: pointer;
     &:hover{
@@ -68,6 +69,9 @@ const Home = () => {
                 </Details>
             </ImageContainer>
             <Categories />
+            <Bestselling title='Bestselling' />
+            <Categories />
+            <Bestselling title='New Products' />
         </Container>
     )
 }

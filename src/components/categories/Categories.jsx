@@ -8,13 +8,17 @@ import SHOES from '../../assets/shoes.jpg'
 import HATS from '../../assets/hats.jpg'
 
 const Container = styled.div`
-    width: 90%;
+    width: 80%;
     min-height: 280px;
-    margin: 30px auto;
+    margin: 60px auto 30px auto;
     flex-wrap: wrap;
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    @media (max-width: 768px) {
+        width: 90%;
+    }
 `
 
 const Card = styled.div`
