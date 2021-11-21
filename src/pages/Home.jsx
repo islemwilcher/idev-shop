@@ -4,6 +4,7 @@ import Bestselling from '../components/bestselling/Bestselling'
 
 //components
 import Categories from '../components/categories/Categories'
+import News from '../components/newsletter/News'
 
 //styles
 import './Home.css'
@@ -72,6 +73,7 @@ const Home = () => {
             <Bestselling title='Bestselling' />
             <Categories />
             <Bestselling title='New Products' />
+            <News />
         </Container>
     )
 }
