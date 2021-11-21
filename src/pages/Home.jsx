@@ -1,13 +1,13 @@
 
 import styled from 'styled-components'
 
-import HOME from '../assets/home.png'
+import Categories from '../components/categories/Categories'
+
 import './Home.css'
 
 const Container = styled.div``
 
 const ImageContainer = styled.div``
-
 
 const Details = styled.div`
     width: 500px;
@@ -66,6 +66,7 @@ const Home = () => {
                     <Button>Shop Now</Button>
                 </Details>
             </ImageContainer>
+            <Categories />
         </Container>
     )
 }

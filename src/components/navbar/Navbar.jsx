@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Burger from './Burger'
 
 import RightNav from './RightNav'
+import { Link } from 'react-router-dom';
 
 const Nav = styled.nav`
     max-width: 100%;
@@ -32,9 +33,13 @@ const navbar = () => {
             <Burg>
                 <Burger />
             </Burg>
+            
             <Logo>
+                <Link to='/'>
                 <img src={LOGO} alt="logo" width="60px" height="60px" />
+                </Link>
             </Logo>
+            
             <RightNav />
         </Nav>
     )

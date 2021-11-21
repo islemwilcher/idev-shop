@@ -18,6 +18,7 @@ const Right = styled.div`
 
 const Button = styled.button`
     padding: 10px;
+    margin-left: 10px;
     font-size: 14px;
     font-weight: 500;
     background-color: ${props=>props.bg};
