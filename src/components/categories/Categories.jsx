@@ -34,11 +34,27 @@ const Card = styled.div`
 
 `
 
+const Darken = styled.div`
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 320px;
+    height: 280px;
+    background-color: rgba(0, 0, 0, 0.5);
+    background-blend-mode: darken;
+    z-index: 5;
+    border-radius: 15px;
+    &:hover{
+        background-color: rgba(0, 0, 0, 0.4);
+        border-radius: 18px;
+    }
+`
 const Overlay = styled.div`
     position: absolute;
     top: 20px;
     left: 20px;
     color: white;
+    z-index: 10;
 `
 const OverlayTwo = styled.div`
     position: absolute;
@@ -46,6 +62,7 @@ const OverlayTwo = styled.div`
     botom: 20%;
     left: 20px;
     color: white;
+    z-index: 10;
 `
 const TypographyCatego = styled.h3`
     color: white;
@@ -68,6 +85,11 @@ const Hr = styled.hr`
     background-color: white;
     border: 1px solid white;
 `
+const Img = styled.img`
+    z-index:0;
+    height: 280px;
+    border-radius: 15px;
+`
 
 const Categories = () => {
 
@@ -78,7 +100,8 @@ const Categories = () => {
     return (
         <Container>
             <Card>
-                <img className='image' src={SHIRTS} alt="shirts" width="320px" height="280px" />
+                <Img  src={SHIRTS} alt="shirts" width="320px" height="280px" />
+                <Darken />
                 <Overlay>
                     <TypographyCatego>Shirts</TypographyCatego>
                 </Overlay>
@@ -90,7 +113,8 @@ const Categories = () => {
                 </OverlayTwo>
             </Card>
             <Card>
-                <img className='image' src={SHOES} alt="shoes" width="320px" height="280px" />
+                <Img src={SHOES} alt="shoes" width="320px" height="280px" />
+                <Darken />
                 <Overlay>
                     <TypographyCatego>Shoes</TypographyCatego>
                 </Overlay>
@@ -102,7 +126,8 @@ const Categories = () => {
                 </OverlayTwo>
             </Card>
             <Card>
-                <img className='image' src={HATS} alt="hats" width="320px" height="280px" />
+                <img src={HATS} alt="hats" width="320px" height="280px" />
+                <Darken />
                 <Overlay>
                     <TypographyCatego>Hats</TypographyCatego>
                 </Overlay>
