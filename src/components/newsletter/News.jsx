@@ -9,6 +9,9 @@ const Container = styled.div`
     align-items: center;
     justify-content: center;
     height: 40vh;
+    @media (max-width: 768px) {
+        flex-direction: column;
+    }
 `
 
 const Left = styled.div`
@@ -17,6 +20,10 @@ const Left = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    @media (max-width: 768px) {
+        margin: 30px auto auto 40px;
+        justify-content:center;
+    }
 `
 const Title = styled.h1`
     color: white;
@@ -36,6 +43,11 @@ const Right = styled.div`
     height: 90px;
     display: flex;
     align-items: flex-end;
+    @media (max-width: 768px) {
+        margin: auto;
+        align-items: center;
+        justify-content:center;
+    }
 `
 const Input = styled.input`
     border: none;
@@ -46,13 +58,18 @@ const Input = styled.input`
     border-radius: 5px;
 `
 const SearchContainer = styled.div`
+flex: 8;
     border-radius: 10px;
     width: 90%;
     display: flex;
     justify-content: flex-end;
     padding: 0px;
+    @media (max-width: 768px) {
+        width:80%;
+    }
 `
 const Button = styled.button`
+    flex: 2;
     background-color: green;
     color: white;
     padding: 10px 14px;
@@ -60,6 +77,7 @@ const Button = styled.button`
     border-radius: 5px;
     font-size: 22px;
     cursor: pointer;
+    margin: 5px;
     &:hover{
         font-weight: 500;
         box-shadow: 1px 1px 6px black;
