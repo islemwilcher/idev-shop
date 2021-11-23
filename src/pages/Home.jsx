@@ -11,6 +11,11 @@ import './Home.css'
 
 const Container = styled.div``
 
+const Wrapper = styled.div`
+    width: 90%;
+    margin: auto;
+`
+
 const ImageContainer = styled.div``
 
 const Details = styled.div`
@@ -53,6 +58,24 @@ const Button = styled.button`
         font-size: 18px;
     }
 `
+const Layout = styled.div`
+    margin: 30px auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+`
+
+const Title2 = styled.h1`
+    color: black;
+    font-size: 28px;
+    font-weight: 500;
+
+    @media (max-width: 768px) {
+        font-size: 28px;
+    }
+`
+
+
 
 const Home = () => {
     return (
@@ -70,9 +93,21 @@ const Home = () => {
                 </Details>
             </ImageContainer>
             <Categories />
-            <Bestselling title='Bestselling' />
+            <Wrapper>
+            <Layout>
+                <Title2>Bestselling</Title2>
+                <Button>View all</Button>
+            </Layout>
+            </Wrapper>
+            <Bestselling />
             <Categories />
-            <Bestselling title='New Products' />
+            <Wrapper>
+                <Layout>
+                    <Title2>New Products</Title2>
+                    <Button>View all</Button>
+                </Layout>
+            </Wrapper>
+            <Bestselling />
             <News />
         </Container>
     )

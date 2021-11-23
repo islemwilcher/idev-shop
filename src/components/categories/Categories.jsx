@@ -31,10 +31,13 @@ const Card = styled.div`
     position: relative;
     box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.9);
     cursor: pointer;
-    &:hover {
-        border-radius: 18px;
-    }
+    overflow: hidden !important;
 
+    &:hover {
+        Img {
+                transform: scale(1.2);
+        }
+    }
 `
 
 const Darken = styled.div`
@@ -49,7 +52,6 @@ const Darken = styled.div`
     border-radius: 15px;
     &:hover{
         background-color: rgba(0, 0, 0, 0.4);
-        border-radius: 18px;
     }
 `
 
@@ -97,7 +99,12 @@ const Hr = styled.hr`
 const Img = styled.img`
     z-index:0;
     height: 280px;
+    width: 320px;
     border-radius: 15px;
+    margin: auto;
+    transform: scale(1);
+    transition: 0.3s ease-in-out;
+    
 `
 
 const Categories = () => {
@@ -109,7 +116,7 @@ const Categories = () => {
     return (
         <Container>
             <Card>
-                <Img  src={SHIRTS} alt="shirts" width="320px" height="280px" />
+                <Img  src={SHIRTS} alt="shirts"  />
                 <Darken />
                 <Overlay>
                     <TypographyCatego>Shirts</TypographyCatego>

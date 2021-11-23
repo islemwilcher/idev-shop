@@ -9,43 +9,8 @@ import HEADPHONE from '../../assets/headphone.png'
 import styled from 'styled-components'
 
 const Container = styled.div`
-    width: 80%;
+    width: 90%;
     margin: auto;
-`
-
-const Layout = styled.div`
-    margin: 30px auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-`
-
-const Title = styled.h1`
-    color: black;
-    font-size: 28px;
-    font-weight: 500;
-
-    @media (max-width: 768px) {
-        font-size: 28px;
-    }
-`
-
-const Button = styled.button`
-    background-color: green;
-    color: white;
-    padding: 10px 14px;
-    border: none;
-    border-radius: 5px;
-    font-size: 22px;
-    cursor: pointer;
-    &:hover{
-        font-weight: 500;
-        box-shadow: 1px 1px 6px black;
-        background-color: rgba(0, 208, 0, 0.8, 0.5)
-    }
-    @media (max-width: 768px) {
-        font-size: 20px;
-    }
 `
 
 const Wrapper = styled.div`
@@ -55,7 +20,7 @@ const Wrapper = styled.div`
     flex-wrap: wrap;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
 
     @media (max-width: 768px) {
         width: 90%;
@@ -74,13 +39,19 @@ const Card = styled.div`
     justify-content: center;
     align-items: center;
     border-radius: 15px;
-    height: 380px;
-    width: 240px;
+    height: 280px;
+    width: 280px;
     position: relative;
     box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.6);
     cursor: pointer;
+    overflow: hidden !important;
+
     &:hover {
-        border-radius: 18px;
+        box-shadow: 2px 2px 12px #94928e;
+
+        Img {
+                transform: scale(1.1);
+        }
     }
 
 `
@@ -89,15 +60,14 @@ const Darken = styled.div`
     position: absolute;
     top: 0px;
     left: 0px;
-    height: 380px;
-    width: 240px;
+    height: 280px;
+    width: 280px;
     background-color: rgba(0, 0, 0, 0.2);
     background-blend-mode: darken;
     z-index: 5;
     border-radius: 15px;
     &:hover{
-        background-color: rgba(0, 0, 0, 0.3);
-        border-radius: 18px;
+        background-color: rgba(0, 0, 0, 0.1);
     }
 `
 
@@ -121,8 +91,11 @@ const Price = styled.h6`
 const Img = styled.img`
     background-size: contain;
     z-index:0;
-    height: 280px;
+    height: 200px;
+    width: 200px;
     border-radius: 15px;
+    transform: scale(1);
+    transition: 0.3s ease-in-out;
 `
 
 const Bestselling = ({ title }) => {
@@ -131,15 +104,11 @@ const Bestselling = ({ title }) => {
     }
     return (
         <Container>
-            <Layout>
-                <Title>{title}</Title>
-                <Button>View all</Button>
-            </Layout>
             <Wrapper>
                 <Content>
                     <Link style={navStyle} to='#'>
                     <Card>
-                        <Img  src={LIGHTSHIRT} alt="shirts" width="200px" height="380px" />
+                        <Img  src={LIGHTSHIRT} alt="shirts" />
                         <Darken />
                         
                     </Card>
@@ -150,7 +119,7 @@ const Bestselling = ({ title }) => {
                 <Content>
                     <Link style={navStyle} to='#'>
                     <Card>
-                        <Img  src={RYBAN} alt="shirts" width="200px" height="380px" />
+                        <Img  src={RYBAN} alt="shirts" />
                         <Darken />
                         
                     </Card>
@@ -161,7 +130,7 @@ const Bestselling = ({ title }) => {
                 <Content>
                     <Link style={navStyle} to='#'>
                     <Card>
-                        <Img  src={NIKESHOE} alt="shirts" width="200px" height="380px" />
+                        <Img  src={NIKESHOE} alt="shirts" />
                         <Darken />
                         
                     </Card>
@@ -172,7 +141,7 @@ const Bestselling = ({ title }) => {
                 <Content>
                     <Link style={navStyle} to='#'>
                     <Card>
-                        <Img  src={HEADPHONE} alt="shirts" width="200px" height="380px" />
+                        <Img  src={HEADPHONE} alt="shirts" />
                         <Darken />
                         
                     </Card>
