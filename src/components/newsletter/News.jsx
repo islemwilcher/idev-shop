@@ -2,9 +2,10 @@
 import styled from 'styled-components'
 
 const Container = styled.div`
-    background-color: #992ad1;
+    background: linear-gradient(#46056e, #320b4a, #64069e);
     width: 100%;
     padding: 0px;
+    margin-top: 30px !important;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -29,12 +30,12 @@ const Title = styled.h1`
     color: white;
     margin: 0px auto 0px 0px;
     font-size: 30px;
-    font-weight: 700;
+    font-weight: 500;
 `
-const Desc = styled.h6`
+const Desc = styled.p`
     color: white;
     margin: 10px auto 0px 0px;
-    font-size: 22px;
+    font-size: 18px;
     font-weight: 300;
 `
 const Right = styled.div`
@@ -42,23 +43,46 @@ const Right = styled.div`
     margin-right: 40px;
     height: 90px;
     display: flex;
-    align-items: flex-end;
+    align-items: center;
+    justify-content: center;
     @media (max-width: 768px) {
         margin: auto;
         align-items: center;
         justify-content:center;
     }
 `
+
+const Wrapper = styled.div`
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @media (max-width: 768px) {
+        margin: auto;
+        width: 100%;
+`
+
+const WrapperL = styled.div`
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    @media (max-width: 768px) {
+        margin: auto;
+        width: 100%;
+`
+
 const Input = styled.input`
     border: none;
     width: 80%;
+    margin: auto;
     font-size: 22px;
     padding: 10px 20px;
-    margin-right: 5px;
     border-radius: 5px;
 `
 const SearchContainer = styled.div`
-flex: 8;
+    flex: 8;
     border-radius: 10px;
     width: 90%;
     display: flex;
@@ -92,17 +116,21 @@ const News = () => {
     return (
         <Container>
             <Left>
+                <WrapperL>
                 <Title>Join our Email list</Title>
                 <Desc>
                     Be the first to know about new product releases,
                     exclusive deals, and more with our email newsletter.
                 </Desc>
+                </WrapperL>
             </Left>
             <Right>
+                <Wrapper>
                 <SearchContainer>
                     <Input placeholder='Enter your Email' />
                 </SearchContainer>
                 <Button>Subscribe</Button>
+                </Wrapper>
             </Right>
         </Container>
     )
