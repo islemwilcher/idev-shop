@@ -120,7 +120,6 @@ const Categorie = () => {
                     </FilterContainer>
                 </Layout>
             </Wrapper>
-            
             <Products cat={cat} filters={filters} />
             <News />
         </Container>
