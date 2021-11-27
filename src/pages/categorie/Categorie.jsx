@@ -1,6 +1,9 @@
 
+
+import { useState } from 'react'
+import { useLocation } from 'react-router-dom'
 import styled from 'styled-components'
-import Bestselling from '../../components/bestselling/Bestselling'
+import Products from '../../components/Profucts'
 import News from '../../components/newsletter/News'
 
 const Container = styled.div`
@@ -27,44 +30,70 @@ const Layout = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    @media (max-width: 768px) {
+    }
 `
 const FilterContainer = styled.div`
-    width: 50%;
+    width: 30%;
     margin: 30px 0px;
     display: flex;
     justify-content: space-between;
-  @media (max-width: 768px) {
-      width: 100%;
-  }
+    @media (max-width: 768px) {
+        flex: 1;
+        flex-direction: column;
+    }
 `
 
 const Filter = styled.div`
   display: flex;
   align-items: center;
+  @media (max-width: 768px) {
+    flex: 1;
+    }
 `
 
 const FilterTitle = styled.span`
-  font-size: 30px;
-  font-weight: 300;
-`
-
-const FilterColor = styled.div`
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background-color: ${(props) => props.color};
-  margin: 0px 5px;
-  cursor: pointer;
+    font-size: 30px;
+    font-weight: 300;
+    @media (max-width: 768px) {
+    margin-left: auto;
+    }
 `
 
 const FilterSize = styled.select`
-  margin-left: 15px;
-  padding: 10px;
+    margin-left: 15px;
+    padding: 10px;
+    @media (max-width: 768px) {
+        margin: 10px 0px 0px 10px;
+    }
+`
+const FilterColor = styled.select`
+    margin-left: 15px;
+    padding: 10px;
+    @media (max-width: 768px) {
+        margin: 2px 0px 0px 10px;
+    }
 `
 
 const FilterSizeOption = styled.option``;
 
 const Categorie = () => {
+
+    const location = useLocation()
+
+    const cat = location.pathname.split("/")[2]
+
+    const [filters, setFilters] = useState({})
+
+    const handleFilters = (e) => {
+        const value = e.target.value
+
+        setFilters({
+            ...filters,
+            [e.target.name]: value
+        })
+    }
+
     return (
         <Container>
             <Wrapper>
@@ -73,17 +102,18 @@ const Categorie = () => {
                     <FilterContainer>
                         <Filter>
                             <FilterTitle>Color</FilterTitle>
-                            <FilterColor color="black" />
-                            <FilterColor color="darkblue" />
-                            <FilterColor color="gray" />
+                            <FilterColor name='color' onChange={handleFilters} >
+                                <FilterSizeOption>black</FilterSizeOption>
+                                <FilterSizeOption>gray</FilterSizeOption>
+                                <FilterSizeOption>lightgray</FilterSizeOption>
+                                <FilterSizeOption>darkblue</FilterSizeOption>
+                            </FilterColor>
                         </Filter>
                         <Filter>
                             <FilterTitle>Size</FilterTitle>
-                            <FilterSize>
-                                <FilterSizeOption>XS</FilterSizeOption>
+                            <FilterSize name='size' onChange={handleFilters} >
                                 <FilterSizeOption>S</FilterSizeOption>
                                 <FilterSizeOption>M</FilterSizeOption>
-                                <FilterSizeOption>L</FilterSizeOption>
                                 <FilterSizeOption>XL</FilterSizeOption>
                             </FilterSize>
                         </Filter>
@@ -91,7 +121,7 @@ const Categorie = () => {
                 </Layout>
             </Wrapper>
             
-            <Bestselling />
+            <Products cat={cat} filters={filters} />
             <News />
         </Container>
     )
