@@ -1,6 +1,7 @@
 
 import styled from 'styled-components'
 import Bestselling from '../components/bestselling/Bestselling'
+import NewProducts from '../components/newproducts/NewProducts'
 
 //components
 import Categories from '../components/categories/Categories'
@@ -26,13 +27,13 @@ const Details = styled.div`
 const Title = styled.h1`
     color: white;
     font-size: 55px;
-    font-weight: 700;
+    font-weight: 500;
     @media (max-width: 768px) {
         font-size: 30px;
     }
 `
 
-const SubTitle = styled.h6`
+const SubTitle = styled.p`
     color: white;
     font-size: 22px;
     font-weight: 500;
@@ -45,6 +46,7 @@ const Button = styled.button`
     background-color: green;
     color: white;
     padding: 10px 14px;
+    margin-top: 20px;
     border: none;
     border-radius: 5px;
     font-size: 22px;
@@ -107,7 +109,7 @@ const Home = () => {
                     <Button>View all</Button>
                 </Layout>
             </Wrapper>
-            <Bestselling />
+            <NewProducts />
             <News />
         </Container>
     )

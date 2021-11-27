@@ -98,7 +98,7 @@ const Img = styled.img`
     transition: 0.3s ease-in-out;
 `
 
-const Bestselling = () => {
+const NewProducts = () => {
     const navStyle = {
         textDecoration: 'none'
     }
@@ -150,4 +150,4 @@ const Bestselling = () => {
     )
 }
 
-export default Bestselling
+export default NewProducts
