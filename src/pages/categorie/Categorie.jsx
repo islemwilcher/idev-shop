@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import styled from 'styled-components'
-import Products from '../../components/Profucts'
+import Products from '../../components/Products'
 import News from '../../components/newsletter/News'
 
 const Container = styled.div`
