@@ -3,24 +3,6 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { BsArrowRight } from 'react-icons/bs'
 
-import SHIRTS from '../../assets/shirts.jpg'
-import SHOES from '../../assets/shoes.jpg'
-import HATS from '../../assets/hats.jpg'
-
-const Container = styled.div`
-    width: 80%;
-    min-height: 280px;
-    margin: 60px auto 30px auto;
-    flex-wrap: wrap;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    @media (max-width: 768px) {
-        width: 90%;
-    }
-`
-
 const Card = styled.div`
     margin: 30px auto;
     display: flex;
@@ -107,55 +89,27 @@ const Img = styled.img`
     
 `
 
-const Categories = () => {
+const Category = ({ item, key }) => {
 
     const navStyle = {
         textDecoration: 'none'
     }
 
     return (
-        <Container>
             <Card>
-                <Img  src={SHIRTS} alt="shirts"  />
+                <Img src={item.img} alt={item.name}  />
                 <Darken />
                 <Overlay>
-                    <TypographyCatego>Shirts</TypographyCatego>
+                    <TypographyCatego>{item.name}</TypographyCatego>
                 </Overlay>
                 <OverlayTwo>
-                    <Link style={navStyle} to='#'>
+                    <Link style={navStyle} to={`/categorie/${item.name}`} >
                     <Typography>View all <BsArrowRight /></Typography>
                     <Hr />
                     </Link>
                 </OverlayTwo>
             </Card>
-            <Card>
-                <Img src={SHOES} alt="shoes" width="320px" height="280px" />
-                <Darken />
-                <Overlay>
-                    <TypographyCatego>Shoes</TypographyCatego>
-                </Overlay>
-                <OverlayTwo>
-                    <Link style={navStyle} to='#'>
-                    <Typography>View all <BsArrowRight /></Typography>
-                    <Hr />
-                    </Link>
-                </OverlayTwo>
-            </Card>
-            <Card>
-                <Img src={HATS} alt="hats" width="320px" height="280px" />
-                <Darken />
-                <Overlay>
-                    <TypographyCatego>Hats</TypographyCatego>
-                </Overlay>
-                <OverlayTwo>
-                    <Link style={navStyle} to='#'>
-                    <Typography>View all <BsArrowRight /></Typography>
-                    <Hr />
-                    </Link>
-                </OverlayTwo>
-            </Card>
-        </Container>
     )
 }
 
-export default Categories
+export default Category

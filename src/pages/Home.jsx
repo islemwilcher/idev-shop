@@ -1,12 +1,15 @@
 
+import axios from 'axios'
+import { useEffect, useState } from 'react'
+
 import styled from 'styled-components'
-import Bestselling from '../components/bestselling/Bestselling'
-import NewProducts from '../components/newproducts/NewProducts'
+
 
 //components
-import Categories from '../components/categories/Categories'
+import Categories from '../components/Categories'
 import News from '../components/newsletter/News'
-
+import Bestselling from '../components/bestselling/Bestselling'
+import NewProducts from '../components/newproducts/NewProducts'
 //styles
 import './Home.css'
 
@@ -77,9 +80,8 @@ const Title2 = styled.h1`
     }
 `
 
-
-
 const Home = () => {
+
     return (
         <Container>
             <ImageContainer className="imageContainer">
@@ -102,7 +104,7 @@ const Home = () => {
             </Layout>
             </Wrapper>
             <Bestselling />
-            <Categories />
+
             <Wrapper>
                 <Layout>
                     <Title2>New Products</Title2>

@@ -37,8 +37,7 @@ const Bestselling = () => {
         //get best selling products from api
         const getProducts = async () => {
             try {
-                const res = await axios.get("http://localhost:8001/api/products/top"
-                )
+                const res = await axios.get("http://localhost:8001/api/products/top")
                 setProducts(res.data)
             } catch (error) {
                 

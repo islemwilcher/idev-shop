@@ -85,7 +85,7 @@ const Product = ({ item, key }) => {
             <Content>
                 <Link style={navStyle} to={`/product/${item._id}`}>
                 <Card>
-                    <Img  src={item.image} alt="shirts" />
+                    <Img src={item.img} alt={item.name} />
                     <Darken />
                 </Card>
                 <CardTitle>{item.name}</CardTitle>
