@@ -83,15 +83,15 @@ const Product = ({ item, key }) => {
 
     return (
             <Content>
-                    <Link style={navStyle} to='#'>
-                    <Card>
-                        <Img  src={item.image} alt="shirts" />
-                        <Darken />
-                    </Card>
-                    <CardTitle>{item.name}</CardTitle>
-                    <Price>{item.price}</Price>
-                    </Link>
-                </Content>
+                <Link style={navStyle} to={`/product/${item._id}`}>
+                <Card>
+                    <Img  src={item.image} alt="shirts" />
+                    <Darken />
+                </Card>
+                <CardTitle>{item.name}</CardTitle>
+                <Price>{item.price}</Price>
+                </Link>
+            </Content>
     )
 }
 

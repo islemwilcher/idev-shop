@@ -3,8 +3,8 @@
 import { useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import styled from 'styled-components'
-import Products from '../../components/Products'
-import News from '../../components/newsletter/News'
+import Products from '../components/Products'
+import News from '../components/newsletter/News'
 
 const Container = styled.div`
     width: 100%;
@@ -98,7 +98,7 @@ const Categorie = () => {
         <Container>
             <Wrapper>
                 <Layout>
-                    <Title>Shirts</Title>
+                    <Title>{cat}</Title>
                     <FilterContainer>
                         <Filter>
                             <FilterTitle>Color</FilterTitle>
