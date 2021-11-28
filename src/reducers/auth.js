@@ -1,16 +1,16 @@
-import * as actionType from '../constants/actiontype'
+import * as actionType from '../constants/actiontype';
 
-const authReducer = (state = {authData: null}, action) => {
+const authReducer = (state = { authData: null }, action) => {
     switch (action.type) {
         case actionType.AUTH:
-            localStorage.setItem('idev-profile', JSON.stringify({...action?.data}))
-            return { ...state, authData: null, loading: false, error: null }
+            localStorage.setItem('idevProfile', JSON.stringify({ ...action?.data }));
+            return { ...state, authData: action.data, loading: false, errors: null };
         case actionType.LOGOUT:
-            localStorage.clear()
-            return { ...state, authData: null, loading: false, error: null }
+            localStorage.clear();
+            return { ...state, authData: null, loading: false, errors: null };
         default:
-            return state        
+            return state;
     }
-}
+};
 
-export default authReducer
+export default authReducer;

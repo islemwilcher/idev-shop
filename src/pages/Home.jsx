@@ -1,9 +1,5 @@
 
-import axios from 'axios'
-import { useEffect, useState } from 'react'
-
 import styled from 'styled-components'
-
 
 //components
 import Categories from '../components/Categories'

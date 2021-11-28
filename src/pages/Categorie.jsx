@@ -1,8 +1,13 @@
 
+import { useDispatch } from 'react-redux'
+import { getProducts } from '../actions/products'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
+
 import styled from 'styled-components'
+
+//components
 import Products from '../components/Products'
 import News from '../components/newsletter/News'
 
@@ -45,9 +50,9 @@ const FilterContainer = styled.div`
 `
 
 const Filter = styled.div`
-  display: flex;
-  align-items: center;
-  @media (max-width: 768px) {
+    display: flex;
+    align-items: center;
+    @media (max-width: 768px) {
     flex: 1;
     }
 `
@@ -93,6 +98,12 @@ const Categorie = () => {
             [e.target.name]: value
         })
     }
+
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(getProducts())
+    },[dispatch])
 
     return (
         <Container>
