@@ -1,9 +1,10 @@
 
-import axios from 'axios'
-import { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
 import styled from 'styled-components'
+
 import Category from './Category'
-import Product from './Product'
+import Loading from './Loading'
+import { categoriesData } from './categoriesData'
 
 const Container = styled.div`
     width: 80%;
@@ -19,30 +20,26 @@ const Container = styled.div`
     }
 `
 
-const Products = ({ cat, filters }) => {
+const Categories = ({ cat, filters }) => {
 
-    const [catego, setCatego] = useState([])
-
-    useEffect(() => {
-        //get categories products from api
-        const getCatego = async () => {
-            try {
-                const res = await axios.get("http://localhost:8001/api/categories")
-                setCatego(res.data)
-            } catch (error) {
-                
-            }
-        }
-        getCatego()
-    }, [catego])
+    
+    const type = 'bars'
+    const color = 'black'
 
     return (
+        !categoriesData?.length 
+        ? (
+            <div>
+            <Loading type={type} color={color} />
+            </div>
+        )
+        : (
         <Container>
-            {catego.map((item) => (
+            {categoriesData.map((item) => (
                 <Category item={item} key={item.id} />
             ))}
-        </Container>
+        </Container>)
     )
 }
 
-export default Products
+export default Categories

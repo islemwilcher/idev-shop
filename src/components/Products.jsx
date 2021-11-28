@@ -1,8 +1,9 @@
 
-import axios from 'axios'
 import { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
 import styled from 'styled-components'
 import Product from './Product'
+import Loading from './Loading'
 
 const Container = styled.div`
     width: 90%;
@@ -30,24 +31,12 @@ const Wrapper = styled.div`
 
 const Products = ({ cat, filters }) => {
 
-    const [products, setProducts] = useState([])
+    const { products } = useSelector((state) => state.products)
     const [filtredProducts, setFiltredProducts] = useState([])
 
     useEffect(() => {
-        //get products from api
-        const getProducts = async () => {
-            try {
-                const res = await axios.get(cat 
-                    ? `http://localhost:8001/api/products?category=${cat}`
-                    : "http://localhost:8001/api/products"
-                )
-                setProducts(res.data)
-            } catch (error) {
-                
-            }
-        }
-        getProducts()
-    }, [cat])
+        
+    },[cat])
 
     useEffect(() => {
         cat && setFiltredProducts(
@@ -59,14 +48,24 @@ const Products = ({ cat, filters }) => {
         )
     }, [cat, filters, products])
 
+    const type = 'bars'
+    const color = 'black'
+
     return (
+        !products?.length 
+        ? (
+            <div>
+            <Loading type={type} color={color} />
+            </div>
+        )
+        : (
         <Container>
             <Wrapper>
             {filtredProducts.map((item) => (
-                <Product item={item} key={item.id} />
+                <Product item={item} key={item._id} />
             ))}
             </Wrapper>
-        </Container>
+        </Container>)
     )
 }
 

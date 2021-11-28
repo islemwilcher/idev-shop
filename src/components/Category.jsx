@@ -97,13 +97,13 @@ const Category = ({ item, key }) => {
 
     return (
             <Card>
-                <Img src={item.img} alt={item.name}  />
+                <Img src={item.image} alt={item.title}  />
                 <Darken />
                 <Overlay>
-                    <TypographyCatego>{item.name}</TypographyCatego>
+                    <TypographyCatego>{item.title}</TypographyCatego>
                 </Overlay>
                 <OverlayTwo>
-                    <Link style={navStyle} to={`/categorie/${item.name}`} >
+                    <Link style={navStyle} to={`/categorie/${item.title}`} >
                     <Typography>View all <BsArrowRight /></Typography>
                     <Hr />
                     </Link>

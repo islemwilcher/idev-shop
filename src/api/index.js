@@ -22,10 +22,5 @@ export const createProduct = (newProduct) => API.post('/products', newProduct)
 export const updateProduct = (id, updatedProduct) => API.patch(`/products/${id}`, updatedProduct)
 export const deleteProduct = (id) => API.delete(`/products/${id}`)
 
-//categories
-export const fetchCategories = () => API.get('/categories')
-export const fetchCategory = (id) => API.get(`/categories/find/${id}`)
-export const createCategory = (newCategory) => API.post('/categories', newCategory)
-export const updateCategory = (id, updatedCategory) => API.patch(`/categories/${id}`, updatedCategory)
-export const deleteCategory = (id) => API.delete(`/categories/${id}`)
+
 
