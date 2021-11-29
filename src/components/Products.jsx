@@ -42,9 +42,14 @@ const Products = ({ cat, filters }) => {
     },[cat])
 
     useEffect(() => {
-        cat && 
-        setFiltredProducts(categoryProducts.filter((item) => Object.entries(filters).every(([key, value]) => item[key].includes(value)))
+        cat && setFiltredProducts(
+            categoryProducts.filter(item =>
+                Object.entries(filters).every(([key, value]) =>
+                item[key].includes(value)
+                )
+            )
         )
+        
     }, [filters, cat, categoryProducts])
 
     const type = 'bars'

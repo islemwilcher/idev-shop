@@ -39,7 +39,6 @@ const Layout = styled.div`
     }
 `
 const FilterContainer = styled.div`
-    width: 30%;
     margin: 30px 0px;
     display: flex;
     justify-content: space-between;
@@ -65,13 +64,6 @@ const FilterTitle = styled.span`
     }
 `
 
-const FilterPrice = styled.select`
-    margin-left: 15px;
-    padding: 10px;
-    @media (max-width: 768px) {
-        margin: 10px 0px 0px 10px;
-    }
-`
 const FilterColor = styled.select`
     margin-left: 15px;
     padding: 10px;
@@ -80,7 +72,6 @@ const FilterColor = styled.select`
     }
 `
 
-const FilterPriceOption = styled.option``;
 const FilteColorOption = styled.option``;
 
 const Categorie = () => {
@@ -120,15 +111,6 @@ const Categorie = () => {
                                 <FilteColorOption>yellow</FilteColorOption>
                                 <FilteColorOption>red</FilteColorOption>
                             </FilterColor>
-                        </Filter>
-                        <Filter>
-                            <FilterTitle>Price</FilterTitle>
-                            <FilterPrice name="price" onChange={handleFilters} >
-                            <FilterPriceOption>price</FilterPriceOption>
-                            <FilterPriceOption>2000.99</FilterPriceOption>
-                            <FilterPriceOption>2800.99</FilterPriceOption>
-                            <FilterPriceOption>2200.00</FilterPriceOption>
-                            </FilterPrice>
                         </Filter>
                     </FilterContainer>
                 </Layout>
