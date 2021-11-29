@@ -33,25 +33,19 @@ const Products = ({ cat, filters }) => {
 
     const {products} = useSelector((state) =>  state.products)
 
-    // const [filtredProducts, setFiltredProducts] = useState([])
+    const [categoryProducts, setCategoryProducts] = useState([])
+    const [filtredProducts, setFiltredProducts] = useState([])
 
-    // useEffect(() => {
-    //     products.filter((item) => 
-    //     Object.entries(cat).every(([key, value]) =>
-    //         item[key].includes(value)
-    //     )
-    //     )
-    // },[cat])
+    useEffect(() => {
+        setCategoryProducts(
+            products.filter((item) => item.categories.includes(cat)))
+    },[cat])
 
-    // useEffect(() => {
-    //     cat && setFiltredProducts(
-    //         products.filter((item) => 
-    //         Object.entries(filters).every(([key, value]) => 
-    //             item[key].includes(value)
-    //         )
-    //         )
-    //     )
-    // }, [cat, filters, products])
+    useEffect(() => {
+        cat && 
+        setFiltredProducts(categoryProducts.filter((item) => Object.entries(filters).every(([key, value]) => item[key].includes(value)))
+        )
+    }, [filters, cat, categoryProducts])
 
     const type = 'bars'
     const color = 'black'
@@ -66,7 +60,7 @@ const Products = ({ cat, filters }) => {
         : (
         <Container>
             <Wrapper>
-            {products.map((item) => (
+            {filtredProducts.map((item) => (
                 <Product item={item} key={item._id} />
             ))}
             </Wrapper>

@@ -7,12 +7,12 @@ export const categoriesData = [
     {
         id: 1,
         image: HATS,
-        title: 'HATS'
+        title: 'phone'
     },
     {
         id: 2,
         image: SHIRTS,
-        title: 'SHIRTS'
+        title: 'laptop'
     },
     {
         id: 3,

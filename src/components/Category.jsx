@@ -89,7 +89,7 @@ const Img = styled.img`
     
 `
 
-const Category = ({ item, key }) => {
+const Category = ({ item }) => {
 
     const navStyle = {
         textDecoration: 'none'

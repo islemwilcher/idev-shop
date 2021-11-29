@@ -65,7 +65,7 @@ const FilterTitle = styled.span`
     }
 `
 
-const FilterSize = styled.select`
+const FilterPrice = styled.select`
     margin-left: 15px;
     padding: 10px;
     @media (max-width: 768px) {
@@ -80,7 +80,8 @@ const FilterColor = styled.select`
     }
 `
 
-const FilterSizeOption = styled.option``;
+const FilterPriceOption = styled.option``;
+const FilteColorOption = styled.option``;
 
 const Categorie = () => {
 
@@ -93,12 +94,10 @@ const Categorie = () => {
     const handleFilters = (e) => {
         const value = e.target.value
 
-        setFilters({
-            ...filters,
-            [e.target.name]: value
-        })
+        setFilters({ ...filters, [e.target.name]: value })
+        
     }
-
+    console.log(filters)
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -113,20 +112,23 @@ const Categorie = () => {
                     <FilterContainer>
                         <Filter>
                             <FilterTitle>Color</FilterTitle>
-                            <FilterColor name='color' onChange={handleFilters} >
-                                <FilterSizeOption>black</FilterSizeOption>
-                                <FilterSizeOption>gray</FilterSizeOption>
-                                <FilterSizeOption>lightgray</FilterSizeOption>
-                                <FilterSizeOption>darkblue</FilterSizeOption>
+                            <FilterColor name="color" onChange={handleFilters} >
+                                <FilteColorOption>color</FilteColorOption>
+                                <FilteColorOption>black</FilteColorOption>
+                                <FilteColorOption>gray</FilteColorOption>
+                                <FilteColorOption>lightgray</FilteColorOption>
+                                <FilteColorOption>yellow</FilteColorOption>
+                                <FilteColorOption>red</FilteColorOption>
                             </FilterColor>
                         </Filter>
                         <Filter>
-                            <FilterTitle>Size</FilterTitle>
-                            <FilterSize name='size' onChange={handleFilters} >
-                                <FilterSizeOption>S</FilterSizeOption>
-                                <FilterSizeOption>M</FilterSizeOption>
-                                <FilterSizeOption>XL</FilterSizeOption>
-                            </FilterSize>
+                            <FilterTitle>Price</FilterTitle>
+                            <FilterPrice name="price" onChange={handleFilters} >
+                            <FilterPriceOption>price</FilterPriceOption>
+                            <FilterPriceOption>2000.99</FilterPriceOption>
+                            <FilterPriceOption>2800.99</FilterPriceOption>
+                            <FilterPriceOption>2200.00</FilterPriceOption>
+                            </FilterPrice>
                         </Filter>
                     </FilterContainer>
                 </Layout>
