@@ -1,5 +1,5 @@
 
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 import styled from 'styled-components'
 
@@ -74,22 +74,24 @@ const Img = styled.img`
     transition: 0.3s ease-in-out;
 `
 
-const Product = ({ item, key }) => {
+const Product = ({ item }) => {
 
-    const navStyle = {
-        textDecoration: 'none'
+    const navigate = useNavigate()
+
+    const openProduct = () => {
+        navigate(`/products/find/${item._id}`)
     }
 
     return (
             <Content>
-                <Link style={navStyle} to={`/product/${item._id}`}>
+            <div onClick={openProduct}>
                 <Card>
                     <Img src={item.img} alt={item.name} />
                     <Darken />
                 </Card>
                 <CardTitle>{item.name}</CardTitle>
                 <Price>{item.price}</Price>
-                </Link>
+            </div>
             </Content>
     )
 }
