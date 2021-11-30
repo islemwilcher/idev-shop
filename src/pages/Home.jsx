@@ -1,4 +1,11 @@
 
+import { useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+
+
+import { allNewProducts, newProducts } from '../actions/products'
+
 import styled from 'styled-components'
 
 //components
@@ -78,6 +85,17 @@ const Title2 = styled.h1`
 
 const Home = () => {
 
+    const navStyle = {
+        textDecoration: 'none'
+    }
+
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(allNewProducts())
+        dispatch(newProducts())
+    },[dispatch])
+
     return (
         <Container>
             <ImageContainer className="imageContainer">
@@ -104,7 +122,9 @@ const Home = () => {
             <Wrapper>
                 <Layout>
                     <Title2>New Products</Title2>
-                    <Button>View all</Button>
+                    <Link style={navStyle} to='/products/new/all' >
+                        <Button>View all</Button>
+                    </Link>
                 </Layout>
             </Wrapper>
             <NewProducts />

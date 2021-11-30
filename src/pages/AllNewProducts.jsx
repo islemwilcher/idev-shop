@@ -1,9 +1,11 @@
 
-import axios from 'axios'
-import { useEffect, useState } from 'react'
-import Product from '../Product'
+import { useEffect, useState } from "react"
+import { useSelector } from "react-redux"
+import { allNewProducts } from "../actions/products"
 
 import styled from 'styled-components'
+
+import Product from '../components/Product'
 
 const Container = styled.div`
     width: 90%;
@@ -29,18 +31,23 @@ const Wrapper = styled.div`
     }
 `
 
-const NewProducts = () => {
-    
+const AllNewProducts = () => {
+    const [newProducts, setNewProducts] = useState([])
+
+    useEffect(() => {
+        
+        setNewProducts(allNewProducts())
+    }, [newProducts])
 
     return (
         <Container>
             <Wrapper>
-            {products.map((item) => (
-                <Product item={item} key={item.id} />
+            {newProducts.map(item => (
+                <Product item={item} key={item._id} />
             ))}
             </Wrapper>
         </Container>
     )
 }
 
-export default NewProducts
+export default AllNewProducts

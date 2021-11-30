@@ -1,6 +1,6 @@
 
 import { useDispatch } from 'react-redux'
-import { getProducts } from '../actions/products'
+import { getProducts, allNewProducts, newProducts } from '../actions/products'
 
 import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
@@ -88,11 +88,13 @@ const Categorie = () => {
         setFilters({ ...filters, [e.target.name]: value })
         
     }
-    console.log(filters)
+
     const dispatch = useDispatch()
 
     useEffect(() => {
         dispatch(getProducts())
+        dispatch(allNewProducts())
+        dispatch(newProducts())
     },[dispatch])
 
     return (

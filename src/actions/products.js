@@ -62,3 +62,25 @@ export const deleteProduct = (id) => async (dispatch) => {
         console.log(error)
     }
 }
+
+//all new products
+export const allNewProducts = () => async (dispatch) => {
+    try {
+        const { data } = await api.allNewProducts()
+
+        dispatch({ type: FETCH_ALL, payload: data })
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+//new products
+export const newProducts = () => async (dispatch) => {
+    try {
+        const { data } = await api.newProducts()
+
+        dispatch({ type: FETCH_ALL, payload: data })
+    } catch (error) {
+        console.log(error)
+    }
+}

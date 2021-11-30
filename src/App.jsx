@@ -7,6 +7,7 @@ import Categorie from './pages/Categorie'
 
 //components
 import Navbar from './components/navbar/Navbar'
+import AllNewProducts from "./pages/AllNewProducts";
 
 
 
@@ -19,6 +20,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home/>} />
           <Route path='/categorie/:categorie' element={<Categorie/>} />
+          <Route path='/products/new/all' element={<AllNewProducts/>} />
           </Routes>
       </Router>
     </>
