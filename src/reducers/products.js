@@ -1,4 +1,4 @@
-import { FETCH_ALL, FETCH_ALL_NEW, FETCH_NEW, FETCH_PRODUCT, CREATE, UPDATE, DELETE, START_LOADING, END_LOADING } from '../constants/actiontype';
+import { FETCH_ALL, FETCH_ALL_NEW, FETCH_NEW,FETCH_ALL_BEST, FETCH_BEST, FETCH_PRODUCT, CREATE, UPDATE, DELETE, START_LOADING, END_LOADING } from '../constants/actiontype';
 
 const productsReducer = (state = { isLoading: true, products: [], newProducts: [], allNewProducts: [] } , action) => {
   switch (action.type) {
@@ -12,6 +12,10 @@ const productsReducer = (state = { isLoading: true, products: [], newProducts: [
       return {...state, allNewProducts: action.payload };
     case FETCH_NEW:
       return {...state, newProducts: action.payload };
+    case FETCH_ALL_BEST:
+      return {...state, allBestProducts: action.payload };
+    case FETCH_BEST:
+      return {...state, bestProducts: action.payload };
     case FETCH_PRODUCT:
       return { ...state, product: action.payload.product };
     case CREATE:
