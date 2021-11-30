@@ -2,10 +2,15 @@
 export const CREATE = 'CREATE';
 export const UPDATE = 'UPDATE';
 export const DELETE = 'DELETE';
+
 export const FETCH_ALL = 'FETCH_ALL';
+export const FETCH_PRODUCT = 'FETCH_PRODUCT';
+
 export const FETCH_NEW = 'FETCH_NEW';
 export const FETCH_ALL_NEW = 'FETCH_ALL_NEW';
-export const FETCH_PRODUCT = 'FETCH_PRODUCT';
+
+export const FETCH_BEST = 'FETCH_BEST';
+export const FETCH_ALL_BEST = 'FETCH_ALL_BEST';
 
 export const END_LOADING = 'END_LOADING';
 export const START_LOADING = 'START_LOADING';
