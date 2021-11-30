@@ -1,13 +1,13 @@
 
-import { useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { useEffect } from "react"
+import { useSelector, useDispatch } from "react-redux"
 
 import styled from 'styled-components'
 
-import { besTProducts } from '../../actions/products'
+import { allNEWProducts } from "../../actions/products"
 
 //components
-import Product from '../products/Product'
+import Product from './Product'
 
 const Container = styled.div`
     width: 90%;
@@ -25,6 +25,7 @@ const Wrapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
+
     @media (max-width: 768px) {
         width: 100%;
         margin: 10px auto;
@@ -32,23 +33,20 @@ const Wrapper = styled.div`
     }
 `
 
-const BestProducts = () => {
-
-    //new products limit 4
-    const {bestProducts} = useSelector((state) => state.products)
-
+const AllNew = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(besTProducts())
+        dispatch(allNEWProducts())
     },[dispatch])
 
-    
+    //all new products
+    const {allNewProducts} = useSelector((state) =>  state.products)
 
     return (
         <Container>
             <Wrapper>
-            {bestProducts.map(item => (
+            {allNewProducts.map(item => (
                 <Product item={item} key={item._id} />
             ))}
             </Wrapper>
@@ -56,4 +54,4 @@ const BestProducts = () => {
     )
 }
 
-export default BestProducts
+export default AllNew

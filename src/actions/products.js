@@ -88,7 +88,7 @@ export const neWProducts = () => async (dispatch) => {
 //all best products
 export const allBESTProducts = () => async (dispatch) => {
     try {
-        const { data } = await api.allNEWProducts()
+        const { data } = await api.allBESTProducts()
 
         dispatch({ type: FETCH_ALL_BEST, payload: data })
     } catch (error) {
@@ -99,7 +99,7 @@ export const allBESTProducts = () => async (dispatch) => {
 //best products
 export const besTProducts = () => async (dispatch) => {
     try {
-        const { data } = await api.neWProducts()
+        const { data } = await api.besTProducts()
 
         dispatch({ type: FETCH_BEST, payload: data })
     } catch (error) {

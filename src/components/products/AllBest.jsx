@@ -4,10 +4,10 @@ import { useSelector, useDispatch } from "react-redux"
 
 import styled from 'styled-components'
 
-import { allNEWProducts } from "../actions/products"
+import { allBESTProducts } from "../../actions/products"
 
 //components
-import Product from '../components/Product'
+import Product from './Product'
 
 const Container = styled.div`
     width: 90%;
@@ -37,16 +37,16 @@ const AllNew = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(allNEWProducts())
+        dispatch(allBESTProducts())
     },[dispatch])
 
     //all new products
-    const {allNewProducts} = useSelector((state) =>  state.products)
+    const {allBestProducts} = useSelector((state) =>  state.products)
 
     return (
         <Container>
             <Wrapper>
-            {allNewProducts.map(item => (
+            {allBestProducts.map(item => (
                 <Product item={item} key={item._id} />
             ))}
             </Wrapper>

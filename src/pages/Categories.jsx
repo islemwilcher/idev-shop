@@ -8,7 +8,7 @@ import { getProducts } from '../actions/products'
 import styled from 'styled-components'
 
 //components
-import Products from '../components/Products'
+import Products from '../components/products/Products'
 import News from '../components/newsletter/News'
 
 const Container = styled.div`

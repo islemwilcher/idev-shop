@@ -7,7 +7,7 @@ import styled from 'styled-components'
 import { neWProducts } from '../../actions/products'
 
 //components
-import Product from '../Product'
+import Product from '../products/Product'
 
 const Container = styled.div`
     width: 90%;

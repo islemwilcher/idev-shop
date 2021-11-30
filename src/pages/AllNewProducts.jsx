@@ -1,6 +1,6 @@
 
 //components
-import AllNew from "../components/AllNew"
+import AllNew from "../components/products/AllNew"
 
 const AllNewProducts = () => {
     return (

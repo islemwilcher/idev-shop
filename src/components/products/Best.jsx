@@ -2,7 +2,8 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
-import NewProducts from '../components/newproducts/NewProducts'
+//components
+import Bestselling from '../bestselling/Bestselling'
 
 const Wrapper = styled.div`
     width: 90%;
@@ -44,7 +45,7 @@ const Title2 = styled.h1`
     }
 `
 
-const New = () => {
+const Best = () => {
 
     const navStyle = {
         textDecoration: 'none'
@@ -54,15 +55,16 @@ const New = () => {
         <>
             <Wrapper>
                 <Layout>
-                    <Title2>New Products</Title2>
-                    <Link style={navStyle} to='/products/new/all' >
+                    <Title2>Bestselling</Title2>
+                    <Link style={navStyle} to='/products/best/all' >
                         <Button>View all</Button>
                     </Link>
                 </Layout>
             </Wrapper>
-            <NewProducts />
+            <Bestselling />
         </>
+            
     )
 }
 
-export default New
+export default Best
