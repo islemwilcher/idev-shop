@@ -1,11 +1,7 @@
 
 import styled from 'styled-components'
 
-import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
-
-import { newProducts } from '../actions/products'
 
 import NewProducts from '../components/newproducts/NewProducts'
 
@@ -54,12 +50,6 @@ const New = () => {
     const navStyle = {
         textDecoration: 'none'
     }
-
-    const dispatch = useDispatch()
-
-    useEffect(() => {
-        dispatch(newProducts())
-    },[dispatch])
 
     return (
         <>

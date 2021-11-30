@@ -1,9 +1,12 @@
 
-import { useSelector } from 'react-redux'
-import { useEffect, useState } from 'react'
-import Product from '../Product'
-
+import { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import styled from 'styled-components'
+
+import { neWProducts } from '../../actions/products'
+
+//components
+import Product from '../Product'
 
 const Container = styled.div`
     width: 90%;
@@ -21,7 +24,6 @@ const Wrapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     @media (max-width: 768px) {
         width: 100%;
         margin: 10px auto;
@@ -30,13 +32,22 @@ const Wrapper = styled.div`
 `
 
 const NewProducts = () => {
+
+    //new products limit 4
+    const {newProducts} = useSelector((state) => state.products)
+
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(neWProducts())
+    },[dispatch])
+
     
-    const {products} = useSelector((state) => state.products)
 
     return (
         <Container>
             <Wrapper>
-            {products.map((item) => (
+            {newProducts.map(item => (
                 <Product item={item} key={item._id} />
             ))}
             </Wrapper>

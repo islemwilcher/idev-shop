@@ -17,8 +17,8 @@ export const signUp = (formData) => API.post('/auth/signup', formData)
 
 //products
 export const fetchProducts = () => API.get('/products')
-export const newProducts = () => API.get('/products/new')
-export const allNewProducts = () => API.get('/products/new/all')
+export const neWProducts = () => API.get('/products/new')
+export const allNEWProducts = () => API.get('/products/new/all')
 export const fetchProduct = (id) => API.get(`/products/find/${id}`)
 export const createProduct = (newProduct) => API.post('/products', newProduct)
 export const updateProduct = (id, updatedProduct) => API.patch(`/products/${id}`, updatedProduct)

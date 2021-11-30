@@ -1,5 +1,5 @@
 
-import { START_LOADING, END_LOADING, FETCH_ALL, FETCH_PRODUCT, CREATE, UPDATE, DELETE } from '../constants/actiontype'
+import { START_LOADING, END_LOADING, FETCH_ALL, FETCH_ALL_NEW, FETCH_NEW, FETCH_PRODUCT, CREATE, UPDATE, DELETE } from '../constants/actiontype'
 import * as api from '../api/index.js'
 
 //all products
@@ -64,22 +64,22 @@ export const deleteProduct = (id) => async (dispatch) => {
 }
 
 //all new products
-export const allNewProducts = () => async (dispatch) => {
+export const allNEWProducts = () => async (dispatch) => {
     try {
-        const { data } = await api.allNewProducts()
+        const { data } = await api.allNEWProducts()
 
-        dispatch({ type: FETCH_ALL, payload: data })
+        dispatch({ type: FETCH_ALL_NEW, payload: data })
     } catch (error) {
         console.log(error)
     }
 }
 
 //new products
-export const newProducts = () => async (dispatch) => {
+export const neWProducts = () => async (dispatch) => {
     try {
-        const { data } = await api.newProducts()
+        const { data } = await api.neWProducts()
 
-        dispatch({ type: FETCH_ALL, payload: data })
+        dispatch({ type: FETCH_NEW, payload: data })
     } catch (error) {
         console.log(error)
     }
