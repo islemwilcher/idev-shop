@@ -1,6 +1,8 @@
 
-import ReactLoading from 'react-loading';
 import styled from 'styled-components'
+
+import ReactLoading from 'react-loading'
+
 const Container = styled.div`
     width: 320px;
     display: flex;
@@ -10,7 +12,7 @@ const Container = styled.div`
 `
 const Loading = ({ type, color }) => (
     <Container>
-	<ReactLoading type={type} color={color} height={300} width={300} />
+	    <ReactLoading type={type} color={color} height={300} width={300} />
     </Container>
 );
 

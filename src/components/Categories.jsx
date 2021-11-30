@@ -1,10 +1,12 @@
 
-import { useSelector } from 'react-redux'
 import styled from 'styled-components'
 
+//data 
+import { categoriesData } from './categoriesData'
+
+//components
 import Category from './Category'
 import Loading from './Loading'
-import { categoriesData } from './categoriesData'
 
 const Container = styled.div`
     width: 80%;
@@ -22,7 +24,6 @@ const Container = styled.div`
 
 const Categories = () => {
 
-    
     const type = 'bars'
     const color = 'black'
 

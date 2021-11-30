@@ -96,7 +96,6 @@ const Categorie = () => {
         dispatch(getProducts())
     },[dispatch])
 
-
     return (
         <Container>
             <Wrapper>

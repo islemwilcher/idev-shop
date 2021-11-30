@@ -1,7 +1,9 @@
 
-import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+
 import { BsArrowRight } from 'react-icons/bs'
+
+import styled from 'styled-components'
 
 const Card = styled.div`
     margin: 30px auto;
