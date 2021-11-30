@@ -1,6 +1,6 @@
 
-import { useEffect, useState } from "react"
-import { useSelector } from "react-redux"
+import { useEffect } from "react"
+import { useSelector, useDispatch } from "react-redux"
 import { allNewProducts } from "../actions/products"
 
 import styled from 'styled-components'
@@ -32,17 +32,21 @@ const Wrapper = styled.div`
 `
 
 const AllNewProducts = () => {
-    const [newProducts, setNewProducts] = useState([])
+
+    const {products} = useSelector((state) =>  state.products)
+
+    const dispatch = useDispatch()
 
     useEffect(() => {
-        
-        setNewProducts(allNewProducts())
-    }, [newProducts])
+        dispatch(allNewProducts())
+    },[dispatch])
+
+
 
     return (
         <Container>
             <Wrapper>
-            {newProducts.map(item => (
+            {products.map(item => (
                 <Product item={item} key={item._id} />
             ))}
             </Wrapper>

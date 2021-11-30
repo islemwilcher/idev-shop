@@ -1,5 +1,5 @@
 
-import axios from 'axios'
+import { useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
 import Product from '../Product'
 
@@ -31,12 +31,13 @@ const Wrapper = styled.div`
 
 const NewProducts = () => {
     
+    const {products} = useSelector((state) => state.products)
 
     return (
         <Container>
             <Wrapper>
             {products.map((item) => (
-                <Product item={item} key={item.id} />
+                <Product item={item} key={item._id} />
             ))}
             </Wrapper>
         </Container>

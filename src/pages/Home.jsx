@@ -1,10 +1,4 @@
 
-import { useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
-
-
-import { allNewProducts, newProducts } from '../actions/products'
 
 import styled from 'styled-components'
 
@@ -12,7 +6,8 @@ import styled from 'styled-components'
 import Categories from '../components/Categories'
 import News from '../components/newsletter/News'
 import Bestselling from '../components/bestselling/Bestselling'
-import NewProducts from '../components/newproducts/NewProducts'
+import New from '../components/New'
+
 //styles
 import './Home.css'
 
@@ -85,17 +80,6 @@ const Title2 = styled.h1`
 
 const Home = () => {
 
-    const navStyle = {
-        textDecoration: 'none'
-    }
-
-    const dispatch = useDispatch()
-
-    useEffect(() => {
-        dispatch(allNewProducts())
-        dispatch(newProducts())
-    },[dispatch])
-
     return (
         <Container>
             <ImageContainer className="imageContainer">
@@ -111,6 +95,7 @@ const Home = () => {
                 </Details>
             </ImageContainer>
             <Categories />
+
             <Wrapper>
             <Layout>
                 <Title2>Bestselling</Title2>
@@ -119,15 +104,7 @@ const Home = () => {
             </Wrapper>
             <Bestselling />
 
-            <Wrapper>
-                <Layout>
-                    <Title2>New Products</Title2>
-                    <Link style={navStyle} to='/products/new/all' >
-                        <Button>View all</Button>
-                    </Link>
-                </Layout>
-            </Wrapper>
-            <NewProducts />
+            <New />
             <News />
         </Container>
     )
