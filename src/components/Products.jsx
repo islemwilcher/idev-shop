@@ -1,7 +1,12 @@
 
-import { useEffect, useState } from 'react'
+
 import { useSelector } from 'react-redux'
+
+import { useEffect, useState } from 'react'
+
 import styled from 'styled-components'
+
+//components
 import Product from './Product'
 import Loading from './Loading'
 
@@ -38,7 +43,7 @@ const Products = ({ cat, filters }) => {
 
     useEffect(() => {
         setCategoryProducts(
-            products.filter((item) => item.categories.includes(cat)))
+            products.filter(item => item.categories.includes(cat)))
     },[cat])
 
     useEffect(() => {

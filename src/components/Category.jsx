@@ -103,7 +103,7 @@ const Category = ({ item }) => {
                     <TypographyCatego>{item.title}</TypographyCatego>
                 </Overlay>
                 <OverlayTwo>
-                    <Link style={navStyle} to={`/categorie/${item.title}`} >
+                    <Link style={navStyle} to={`/categories/${item.title}`} >
                     <Typography>View all <BsArrowRight /></Typography>
                     <Hr />
                     </Link>

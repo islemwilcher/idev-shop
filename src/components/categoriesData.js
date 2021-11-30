@@ -17,6 +17,6 @@ export const categoriesData = [
     {
         id: 3,
         image: ACCESSORIES,
-        title: 'accessory'
+        title: 'macbook'
     }
 ]

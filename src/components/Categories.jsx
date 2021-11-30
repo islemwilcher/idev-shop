@@ -20,7 +20,7 @@ const Container = styled.div`
     }
 `
 
-const Categories = ({ cat, filters }) => {
+const Categories = () => {
 
     
     const type = 'bars'

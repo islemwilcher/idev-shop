@@ -1,9 +1,9 @@
 
-import { useDispatch } from 'react-redux'
-import { getProducts, allNewProducts, newProducts } from '../actions/products'
-
 import { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
 import { useLocation } from 'react-router-dom'
+
+import { getProducts } from '../actions/products'
 
 import styled from 'styled-components'
 
@@ -79,6 +79,7 @@ const Categorie = () => {
     const location = useLocation()
 
     const cat = location.pathname.split("/")[2]
+    console.log(cat)
 
     const [filters, setFilters] = useState({})
 
@@ -93,9 +94,8 @@ const Categorie = () => {
 
     useEffect(() => {
         dispatch(getProducts())
-        dispatch(allNewProducts())
-        dispatch(newProducts())
     },[dispatch])
+
 
     return (
         <Container>

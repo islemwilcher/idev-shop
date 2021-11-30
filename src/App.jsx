@@ -19,7 +19,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route path='/' element={<Home/>} />
-          <Route path='/categorie/:categorie' element={<Categorie/>} />
+          <Route path='/categories/:category' element={<Categorie/>} />
           <Route path='/products/new/all' element={<AllNewProducts/>} />
           </Routes>
       </Router>

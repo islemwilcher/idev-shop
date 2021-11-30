@@ -5,7 +5,7 @@ import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 
-import { allNewProducts } from '../actions/products'
+import { newProducts } from '../actions/products'
 
 import NewProducts from '../components/newproducts/NewProducts'
 
@@ -58,7 +58,7 @@ const New = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(allNewProducts())
+        dispatch(newProducts())
     },[dispatch])
 
     return (

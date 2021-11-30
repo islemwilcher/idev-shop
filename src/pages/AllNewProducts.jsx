@@ -41,8 +41,6 @@ const AllNewProducts = () => {
         dispatch(allNewProducts())
     },[dispatch])
 
-
-
     return (
         <Container>
             <Wrapper>
