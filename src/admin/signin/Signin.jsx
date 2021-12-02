@@ -1,12 +1,17 @@
 
+import { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+
 import styled from "styled-components"
+
+import { signin } from '../../actions/auth'
 
 const Container = styled.div`
     width: 100%;
     height: 87vh;
     display: flex;
     align-items: center;
-
 `
 
 const Wrapper = styled.div`
@@ -64,14 +69,28 @@ const Note = styled.h3`
 `
 
 const Signin = () => {
+
+    const [form, setForm] = useState({ userName: '', password: ''})
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        dispatch(signin(form, navigate))
+    }
+
+    const handleChange = (e) => {
+        setForm({ ...form, [e.target.name]: e.target.value })
+    }
+
     return (
         <Container>
             <Wrapper>
                 <Title>Sign in</Title>
-                <Form>
+                <Form onSubmit={handleSubmit} >
                     <FormWrapper>
-                        <Input name="user name" label='User Name' type="text" placeholder="UserName" />
-                        <Input name="password" label='Password' type="password" placeholder="Password" />
+                        <Input name="userName" label='User Name' type="text" placeholder="UserName" onChange={handleChange} />
+                        <Input name="password" label='Password' type="password" placeholder="Password" onChange={handleChange} />
                         <Button>SIGN IN</Button>
                     </FormWrapper>
                     <Note>
