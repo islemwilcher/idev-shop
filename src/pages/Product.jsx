@@ -14,21 +14,28 @@ const Container = styled.div``
 
 const Wrapper = styled.h1`
     width: 90%;
-    margin: auto;
+    height: 80vh;
+    margin: 30px auto;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
 
     @media (max-width: 768px) {
         flex-direction: column;
     }
 `
-
+const ImgContainer = styled.div`
+    flex:1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80%;
+    width: 80% ;
+`
 const Img = styled.img`
-    flex: 1;
     background-size: contain;
-    height: 500px;
-    width: 400px;
+    height: 100%;
+    width: 100%;
     border-radius: 15px;
     transform: scale(1);
     transition: 0.3s ease-in-out;
@@ -67,9 +74,13 @@ const Desc = styled.p`
 `
 
 const Button = styled.button`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 8vh;
     background-color: green;
     color: white;
-    padding: 10px 14px;
+    padding: 0px 14px;
     margin-top: 20px;
     border: none;
     border-radius: 5px;
@@ -85,8 +96,14 @@ const Button = styled.button`
     }
 `
 
-const Content = styled.div`
+const ContentWrapper = styled.div`
     flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`
+const Content = styled.div`
+    width: 90%;
 `
 
 const Product = () => {
@@ -104,18 +121,24 @@ const Product = () => {
 
     const {product, products} = useSelector((state) => state.products)
 
-    
+    const cartstyle = {
+        marginLeft: '10px'
+    }
 
     return (
         <Container>
                 <Wrapper>
+                    <ImgContainer>
                     <Img src={product.img} alt={product.name} />
+                    </ImgContainer>
+                    <ContentWrapper>
                     <Content>
                         <Title>{product.name}</Title>
-                        <Price>${product.Price}</Price>
+                        <Price>${product.price}</Price>
                         <Desc>{product.description}</Desc>
-                        <Button>Add to Cart <IoMdCart size='25px' /></Button>
+                        <Button><p>Add to Cart </p><IoMdCart size='25px' style={cartstyle} /></Button>
                     </Content>
+                    </ContentWrapper>
                 </Wrapper>
         </Container>
     )

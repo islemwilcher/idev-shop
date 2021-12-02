@@ -10,6 +10,7 @@ import Navbar from './components/navbar/Navbar'
 import AllNewProducts from "./pages/AllNewProducts"
 import AllBestProducts from "./pages/AllBestProducts"
 import Product from "./pages/Product"
+import Signin from "./admin/signin/Signin"
 
 
 
@@ -25,6 +26,7 @@ function App() {
           <Route exact path='/products/new/all' element={<AllNewProducts/>} />
           <Route exact path='/products/best/all' element={<AllBestProducts  />} />
           <Route exact path='/products/find/:id' element={<Product />} />
+          <Route exact path='/signin' element={<Signin />} />
           </Routes>
       </Router>
     </>
