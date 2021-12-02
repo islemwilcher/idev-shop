@@ -1,5 +1,5 @@
 
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import { BrowserRouter as Router, Routes, Route, Redirect } from "react-router-dom"
 
 //pages
 import Home from './pages/Home'
@@ -7,13 +7,17 @@ import Categories from './pages/Categories'
 
 //components
 import Navbar from './components/navbar/Navbar'
+import Protectedroute from './components/protectedroute/Protectedroute'
+
+//pages
 import AllNewProducts from "./pages/AllNewProducts"
 import AllBestProducts from "./pages/AllBestProducts"
 import Product from "./pages/Product"
+
+//protected pages
 import Signin from "./admin/signin/Signin"
-
-
-
+import Dashboard from "./admin/dashboard/pages/Dashboard"
+import AddProduct from './admin/dashboard/pages/AddProduct'
 
 function App() {
   return (
@@ -21,6 +25,11 @@ function App() {
       <Router>
         <Navbar />
         <Routes>
+
+          <Route exact path='/dashboard' element={<Protectedroute />} >
+            <Route exact path='/dashboard' element={<Dashboard />} />
+          </Route>
+
           <Route path='/' element={<Home/>} />
           <Route exact path='/categories/:category' element={<Categories/>} />
           <Route exact path='/products/new/all' element={<AllNewProducts/>} />

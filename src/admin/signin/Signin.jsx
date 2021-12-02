@@ -24,6 +24,9 @@ const Wrapper = styled.div`
     margin: auto;
     width: 40%;
     text-align: center;
+    @media (max-width: 768px) {
+        width: 90%;
+    }
 `
 
 const Form = styled.form`
