@@ -15,7 +15,6 @@ const Ul = styled.ul`
         padding: 0 20px;
         font-size: 20px;
         font-weight: 400;
-        color : black;
     }
     li:hover{
         color: rgb(136, 165, 219);
@@ -48,13 +47,19 @@ const LeftNav = ({ open, setOpen }) => {
         color: 'black',
         textDecoration: 'none'
     }
+    const adminStyle = {
+        color: 'white',
+        backgroundColor: 'blue',
+        borderRadius: '5px',
+        textDecoration: 'none'
+    }
 
     let wWidth = window.innerWidth
     
     return (
         <Ul open = {open}>
             { wWidth <= '768' ? <Search /> : null }
-            
+            <Link style={adminStyle} to="/signin" onClick = {() => setOpen(!open)}><li>Signin</li></Link>
             <Link style={navStyle} to="/" onClick = {() => setOpen(!open)}><li>Home</li></Link>
             <Link style={navStyle} to="/shirts" onClick = {() => setOpen(!open)}><li>Shirts</li></Link>
             <Link style={navStyle} to="/hats" onClick = {() => setOpen(!open)}><li>Hats</li></Link>
