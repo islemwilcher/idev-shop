@@ -9,6 +9,7 @@ import styled from 'styled-components'
 
 const Container = styled.div`
     width: 100%;
+    margin-top: 60px;
     height: 87vh;
     display: flex;
     align-items: center;
@@ -22,7 +23,7 @@ const Wrapper = styled.div`
     align-items: center;
     padding: 10px;
     margin: auto;
-    width: 40%;
+    width: 100%;
     text-align: center;
     @media (max-width: 768px) {
         width: 90%;
@@ -84,16 +85,15 @@ const FormP = () => {
     return (
         <Container>
         <Wrapper>
-            <Title>Sign in</Title>
+            <Title>Add Product</Title>
             <Form >
                 <FormWrapper>
                     <Input name="name" label='Name' type="text" placeholder="Name"  />
                     <Input name="description" label='description' type="text" placeholder="description"  />
                     <Input name="categories" label='categories' type="text" placeholder="categories"  />
-                    <Input name="color" label='color' type="text" placeholder="color"  />
-                    <Input name="size" label='size' type="text" placeholder="size"  />
+                    <Input name="color" label='color' type="text" placeholder="colors"  />
+                    <Input name="size" label='size' type="text" placeholder="sizes"  />
                     <Input name="price" label='price' type="text" placeholder="price"  />
-                    <Input name="color" label='color' type="text" placeholder="color"  />
                     <File><FileBase type="file" multiple={false} /></File>
                     <Button>Add</Button>
                 </FormWrapper>

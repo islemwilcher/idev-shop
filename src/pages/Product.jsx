@@ -106,6 +106,7 @@ const Content = styled.div`
     width: 90%;
 `
 
+
 const Product = () => {
 
     const location = useLocation()

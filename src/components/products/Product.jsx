@@ -1,5 +1,5 @@
 
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 
 import styled from 'styled-components'
 
@@ -73,6 +73,25 @@ const Img = styled.img`
     transform: scale(1);
     transition: 0.3s ease-in-out;
 `
+const Actions = styled.div`
+    display: flex;
+    flex-direction: column;
+`
+const Button = styled.button`
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    margin: 2px auto;
+    font-size: 18px;
+    padding: 10px;
+    color: white;
+    cursor: pointer;
+    background-color: ${(props) => props.bg};
+    &:hover{
+        background-color: rgb(43, 43, 250);
+        box-shadow: 2px 2px 12px black;
+    }
+`
 
 const Product = ({ item }) => {
 
@@ -82,16 +101,29 @@ const Product = ({ item }) => {
         navigate(`/products/find/${item._id}`)
     }
 
+    const user = JSON.parse(localStorage.getItem('idevProfile'))
+    const location = useLocation()
+
+
     return (
             <Content>
-            <div onClick={openProduct}>
-                <Card>
-                    <Img src={item.img} alt={item.name} />
-                    <Darken />
-                </Card>
-                <CardTitle>{item.name}</CardTitle>
-                <Price>{item.price}</Price>
-            </div>
+                { user 
+                ? (
+                    <Actions>
+                        <Button bg='green'>EDIT</Button>
+                        <Button bg='red'>DELETE</Button>
+                    </Actions>
+                )
+                : null
+                }
+                <div onClick={openProduct}>
+                    <Card>
+                        <Img src={item.img} alt={item.name} />
+                        <Darken />
+                    </Card>
+                    <CardTitle>{item.name}</CardTitle>
+                    <Price>{item.price}</Price>
+                </div>
             </Content>
     )
 }
