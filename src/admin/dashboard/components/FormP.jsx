@@ -9,7 +9,7 @@ import styled from 'styled-components'
 
 const Container = styled.div`
     width: 100%;
-    margin-top: 60px;
+    margin-top: 20px;
     height: 87vh;
     display: flex;
     align-items: center;

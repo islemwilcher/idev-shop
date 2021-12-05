@@ -1,5 +1,5 @@
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
 import { getProducts } from '../../../actions/products'
@@ -31,11 +31,12 @@ const Right = styled.div`
 `
 
 const AddProduct = () => {
+    const [visible, setVisibale] = useState(true)
 
     return (
         <Container>
                 <Left>
-                    <Products />
+                    <Products visible={visible} />
                 </Left>
                 <Right>
                     <FormP />

@@ -88,12 +88,12 @@ const Button = styled.button`
     cursor: pointer;
     background-color: ${(props) => props.bg};
     &:hover{
-        background-color: rgb(43, 43, 250);
+        background-color: ${(props) => props.bgh};
         box-shadow: 2px 2px 12px black;
     }
 `
 
-const Product = ({ item }) => {
+const Product = ({ item, visible }) => {
 
     const navigate = useNavigate()
 
@@ -102,18 +102,26 @@ const Product = ({ item }) => {
     }
 
     const user = JSON.parse(localStorage.getItem('idevProfile'))
-    const location = useLocation()
 
+    const location = useLocation()
+    console.log(location.pathname.split('/')[1])
+
+    if(location.pathname.split('/')[1] === 'manageProducts') {
+        visible = true
+    }
 
     return (
             <Content>
-                { user 
-                ? (
-                    <Actions>
-                        <Button bg='green'>EDIT</Button>
-                        <Button bg='red'>DELETE</Button>
-                    </Actions>
-                )
+                {user ? 
+                <> 
+                {visible ? 
+                        (<Actions>
+                            <Button bg='green' bgh='#22b31d'>EDIT</Button>
+                            <Button bg='red' bgh='#eb281a'>DELETE</Button>
+                        </Actions>)
+                    : null
+                }
+                </>
                 : null
                 }
                 <div onClick={openProduct}>

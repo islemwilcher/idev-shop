@@ -29,8 +29,8 @@ function App() {
           <Route exact path='/dashboard' element={<Protectedroute />} >
             <Route exact path='/dashboard' element={<Dashboard />} />
           </Route>
-          <Route exact path='/addproduct' element={<Protectedroute />} >
-            <Route exact path='/addproduct' element={<AddProduct />} />
+          <Route exact path='/manageProducts' element={<Protectedroute />} >
+            <Route exact path='/manageProducts' element={<AddProduct />} />
           </Route>
           {/* app route */}
           <Route path='/' element={<Home/>} />

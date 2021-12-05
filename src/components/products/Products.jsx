@@ -32,7 +32,7 @@ const Wrapper = styled.div`
     }
 `
 
-const Products = ({ cat, filters }) => {
+const Products = ({ cat, filters, visible }) => {
 
     const {products} = useSelector((state) =>  state.products)
 
@@ -69,7 +69,7 @@ const Products = ({ cat, filters }) => {
         <Container>
             <Wrapper>
             {filtredProducts.map((item) => (
-                <Product item={item} key={item._id} />
+                <Product item={item} key={item._id} visible={visible} />
             ))}
             </Wrapper>
         </Container>)
