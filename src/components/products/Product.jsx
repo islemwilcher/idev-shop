@@ -1,5 +1,8 @@
 
 import { useNavigate, useLocation } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+
+import { deleteProduct } from '../../actions/products'
 
 import styled from 'styled-components'
 
@@ -94,6 +97,7 @@ const Button = styled.button`
 `
 
 const Product = ({ item, visible }) => {
+    const dispatch = useDispatch()
 
     const navigate = useNavigate()
 
@@ -104,7 +108,6 @@ const Product = ({ item, visible }) => {
     const user = JSON.parse(localStorage.getItem('idevProfile'))
 
     const location = useLocation()
-    console.log(location.pathname.split('/')[1])
 
     if(location.pathname.split('/')[1] === 'manageProducts') {
         visible = true
@@ -117,7 +120,7 @@ const Product = ({ item, visible }) => {
                 {visible ? 
                         (<Actions>
                             <Button bg='green' bgh='#22b31d'>EDIT</Button>
-                            <Button bg='red' bgh='#eb281a'>DELETE</Button>
+                            <Button bg='red' bgh='#eb281a' onClick={() => dispatch(deleteProduct(item._id))}>DELETE</Button>
                         </Actions>)
                     : null
                 }

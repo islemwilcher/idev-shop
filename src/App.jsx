@@ -17,7 +17,7 @@ import Product from "./pages/Product"
 //protected pages
 import Signin from "./admin/signin/Signin"
 import Dashboard from "./admin/dashboard/pages/Dashboard"
-import AddProduct from './admin/dashboard/pages/AddProduct'
+import AddProduct from './admin/dashboard/pages/ManageProducts'
 
 function App() {
   return (

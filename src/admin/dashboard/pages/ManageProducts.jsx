@@ -30,7 +30,7 @@ const Right = styled.div`
     }
 `
 
-const AddProduct = () => {
+const ManageProducts = () => {
     const [visible, setVisibale] = useState(true)
 
     return (
@@ -45,4 +45,4 @@ const AddProduct = () => {
     )
 }
 
-export default AddProduct
+export default ManageProducts
