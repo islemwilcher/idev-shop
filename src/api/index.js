@@ -5,11 +5,10 @@ const API = axios.create({ baseURL: 'http://localhost:8001/api' })
 
 API.interceptors.request.use((req) => {
     if (localStorage.getItem('idevProfile')) {
-      req.headers.Authorization = `Bearer ${JSON.parse(localStorage.getItem('idevProfile')).token}`;
+        req.headers.Authorization = `Bearer ${JSON.parse(localStorage.getItem('idevProfile')).token}`;
     }
-  
     return req;
-  })
+})
 
 //auth
 export const signIn = (formData) => API.post('/auth/signin', formData)
