@@ -48,8 +48,8 @@ const LeftNav = ({ open, setOpen }) => {
         textDecoration: 'none'
     }
     const adminStyle = {
-        color: 'white',
-        backgroundColor: 'blue',
+        color: 'gray',
+        backgroundColor: 'whitesmoke',
         borderRadius: '5px',
         textDecoration: 'none'
     }
@@ -61,9 +61,10 @@ const LeftNav = ({ open, setOpen }) => {
             { wWidth <= '768' ? <Search /> : null }
             <Link style={adminStyle} to="/signin" onClick = {() => setOpen(!open)}><li>Signin</li></Link>
             <Link style={navStyle} to="/" onClick = {() => setOpen(!open)}><li>Home</li></Link>
-            <Link style={navStyle} to="/shirts" onClick = {() => setOpen(!open)}><li>Shirts</li></Link>
-            <Link style={navStyle} to="/hats" onClick = {() => setOpen(!open)}><li>Hats</li></Link>
+            <Link style={navStyle} to="/accessories" onClick = {() => setOpen(!open)}><li>Accessories</li></Link>
             <Link style={navStyle} to="/glasses" onClick = {() => setOpen(!open)}><li>Glasses</li></Link>
+            <Link style={navStyle} to="/hats" onClick = {() => setOpen(!open)}><li>Hats</li></Link>
+            
         </Ul>
     )
 }

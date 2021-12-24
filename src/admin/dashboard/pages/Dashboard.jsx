@@ -10,10 +10,13 @@ const Container = styled.div`
     }
 `
 
-const Title = styled.h1``
+const Title = styled.h1`
+    margin-left: 30px;
+`
 
 const Wrapper = styled.div`
     display: flex;
+    flex-wrap: wrap;
     justify-content:space-around;
     align-items: center;
     @media (max-width: 768px) {
