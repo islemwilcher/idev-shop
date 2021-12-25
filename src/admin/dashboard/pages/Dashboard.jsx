@@ -56,6 +56,11 @@ const Dashboard = () => {
     return (
         <Container>
             <Title>DASHBOSRD</Title>
+
+            {/* <Chart>
+                //here goes the chart
+            </Chart> */}
+            
             <Wrapper>
                 <Paper>
                     Products
