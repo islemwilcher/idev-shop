@@ -2,7 +2,7 @@
 import styled from 'styled-components'
 
 import CategoryForm from '../form/CategoryForm'
-import Products from '../../../../../components/products/Products'
+import Categories from '../../../../../components/categories/Categories'
 
 const Container = styled.div`
     display: flex;
@@ -19,7 +19,7 @@ const Right = styled.div`
     }
 `
 const Left = styled.div`
-    width: 79%;
+    width: 78%;
     margin: auto;
     @media (max-width: 768px) {
         width: 100%;
@@ -30,7 +30,7 @@ const ManageCategories = () => {
     return (
         <Container>
             <Left>
-                <Products />
+                <Categories />
             </Left>
             <Right>
                 <CategoryForm />

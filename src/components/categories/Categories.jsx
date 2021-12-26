@@ -2,11 +2,11 @@
 import styled from 'styled-components'
 
 //data 
-import { categoriesData } from './categoriesData'
+import { categoriesData } from '../categoriesData'
 
 //components
 import Category from './Category'
-import Loading from './Loading'
+import Loading from '../Loading'
 
 const Container = styled.div`
     width: 80%;

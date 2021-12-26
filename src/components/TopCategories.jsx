@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux'
 import { getProducts } from '../actions/products'
 
 //components
-import Categories from './Categories'
+import Categories from './categories/Categories'
 
 const TopCategories = () => {
 
