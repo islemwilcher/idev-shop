@@ -10,10 +10,46 @@ import { useNavigate } from 'react-router-dom'
 
 const Wrapper = styled.div``
 
-const Form = styled.form``
+const Form = styled.form`
+    border-radius: 10px;
+    box-shadow: 2px 2px 12px black;
+    text-align: center;
+    padding: 10px 0px;
+    width: 90%;
+    margin: auto;
+`
 
-const Title = styled.h2``
-const Input = styled.input``
+const Title = styled.h2`
+    margin: 5px;
+`
+
+const File = styled.h2`
+    margin: 8px;
+`
+
+const Input = styled.input`
+    padding: 5px;
+    border-radius: 10px;
+    border: 1px solid gray;
+    width: 90%;
+    margin-top: 5px;
+`
+
+const Actions = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`
+
+const Button = styled.button`
+    border: none;
+    border-radius: 10px;
+    color: white;
+    width: 90%;
+    padding: 5px;
+    margin-bottom: 10px;
+    background-color: ${(props) => props.bg};
+`
 
 const CategoryForm = ({ currentId, setCurrentId }) => {
 
@@ -43,12 +79,14 @@ const CategoryForm = ({ currentId, setCurrentId }) => {
         <Wrapper>
             <Form autocomplete='off' onSubmit={handleSubmit}>
                 <Title>Create Category</Title>
-                <Input name='name' label='name' value={catData.name} onChange={(e) => setCatData({ ...catData, name: e.target.value })} />
-                <div>
+                <Input name='name' label='name' placeholder='Enter Category name...' value={catData.name} onChange={(e) => setCatData({ ...catData, name: e.target.value })} />
+                <File>
                     <FileBase type="file" multiple={false} onDone={({ base64 }) => setCatData({ ...catData, selectedFile: base64 })} />
-                </div>
-                <Button type='submit'>Submit</Button>
-                <Button color='secondary' onClick={clear}>Clear</Button>
+                </File>
+                <Actions>
+                <Button type='submit' bg="green">Submit</Button>
+                <Button bg='red' onClick={clear}>Clear</Button>
+                </Actions>
             </Form>
         </Wrapper>
     )

@@ -17,7 +17,8 @@ import Product from "./pages/Product"
 //protected pages
 import Signin from "./admin/signin/Signin"
 import Dashboard from "./admin/dashboard/pages/Dashboard"
-import AddProduct from './admin/dashboard/pages/ManageProducts'
+import ManageCategories from "./admin/dashboard/pages/categories/manage/ManageCategories"
+import ManageProducts from "./admin/dashboard/pages/products/manage/ManageProducts"
 
 function App() {
   return (
@@ -29,8 +30,11 @@ function App() {
           <Route exact path='/dashboard' element={<Protectedroute />} >
             <Route exact path='/dashboard' element={<Dashboard />} />
           </Route>
-          <Route exact path='/manageProducts' element={<Protectedroute />} >
-            <Route exact path='/manageProducts' element={<AddProduct />} />
+          <Route exact path='/manageproducts' element={<Protectedroute />} >
+            <Route exact path='/manageproducts' element={<ManageProducts />} />
+          </Route>
+          <Route exact path='/managecategories' element={<Protectedroute />} >
+            <Route exact path='/managecategories' element={<ManageCategories />} />
           </Route>
           {/* app route */}
           <Route path='/' element={<Home/>} />

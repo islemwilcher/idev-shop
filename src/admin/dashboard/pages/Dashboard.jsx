@@ -64,15 +64,15 @@ const Dashboard = () => {
             <Wrapper>
                 <Paper>
                     Products
-                    <Button><Link style={Style} to='manageproducts'>Manage</Link></Button>
+                    <Button><Link style={Style} to='/manageproducts'>Manage</Link></Button>
                 </Paper>
                 <Paper>
                     Categories
-                    <Button><Link style={Style} to='managecategories'>Manage</Link></Button>
+                    <Button><Link style={Style} to='/managecategories'>Manage</Link></Button>
                 </Paper>
                 <Paper>
                     Orders
-                    <Button><Link style={Style} to='manageorders'>Manage</Link></Button>
+                    <Button><Link style={Style} to='/manageorders'>Manage</Link></Button>
                 </Paper>
             </Wrapper>
         </Container>

@@ -2,7 +2,7 @@
 const ManageProducts = () => {
     return (
         <div>
-            
+            Products manage page
         </div>
     )
 }

@@ -6,6 +6,9 @@ export const DELETE = 'DELETE';
 export const FETCH_ALL = 'FETCH_ALL';
 export const FETCH_PRODUCT = 'FETCH_PRODUCT';
 
+//CATEGORY
+export const FETCH_CATEGORY = 'FETCH_CATEGORY';
+
 export const FETCH_NEW = 'FETCH_NEW';
 export const FETCH_ALL_NEW = 'FETCH_ALL_NEW';
 
