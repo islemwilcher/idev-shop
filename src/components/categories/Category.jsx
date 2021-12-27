@@ -1,10 +1,24 @@
 
 import { Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+
+import { deletedCategory } from '../../actions/categories';
 
 import { BsArrowRight } from 'react-icons/bs'
 
+import DeleteIcon from '@material-ui/icons/Delete';
+import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
+
 import styled from 'styled-components'
 
+const Container = styled.div`
+    display: flex;
+    flex-direction: column;
+`
+const Actions = styled.div`
+    display: flex;
+    justify-content: space-around;
+`
 const Card = styled.div`
     margin: 30px auto;
     display: flex;
@@ -87,22 +101,45 @@ const Img = styled.img`
     border-radius: 15px;
     margin: auto;
     transform: scale(1);
-    transition: 0.3s ease-in-out;
-    
+    transition: 0.3s ease-in-out;   
+`
+const Button = styled.button`
+    border: none;
+    color: black;
 `
 
-const Category = ({ item }) => {
+const Category = ({ item, visible, setCurrentId }) => {
+    const dispatch = useDispatch()
+
+    const user = JSON.parse(localStorage.getItem('idevProfile'))
 
     const navStyle = {
         textDecoration: 'none'
     }
 
     return (
+        <Container>
+            {user 
+            ? <>{visible ?
+                <Actions>
+                    <Button size="small" onClick={() => setCurrentId(item._id)}>
+                        <MoreHorizIcon fontSize="default" />
+                    </Button>
+                    <Button size="small" color="secondary" onClick={() => dispatch(deletedCategory(item._id))}>
+                        <DeleteIcon fontSize="small" />
+                    </Button>
+                </Actions>
+                : null
+            }
+            </>
+            : null
+            }
             <Card>
+                
                 <Img src={item.image} alt={item.title}  />
                 <Darken />
                 <Overlay>
-                    <TypographyCatego>{item.title}</TypographyCatego>
+                    <TypographyCatego>{item.name}</TypographyCatego>
                 </Overlay>
                 <OverlayTwo>
                     <Link style={navStyle} to={`/categories/${item.title}`} >
@@ -111,6 +148,7 @@ const Category = ({ item }) => {
                     </Link>
                 </OverlayTwo>
             </Card>
+            </Container>
     )
 }
 

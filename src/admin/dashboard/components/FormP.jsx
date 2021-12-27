@@ -1,9 +1,7 @@
 
-import { useEffect, useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
+import { useState } from "react"
 import FileBase from 'react-file-base64'
 
-import { addProduct, updateProduct } from '../../../actions/products'
 
 import styled from 'styled-components'
 

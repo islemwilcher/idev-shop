@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import FileBase from 'react-file-base64'
 import styled from 'styled-components'
 
-//import { } from '../../../../../actions/categories'
+import { addCategory, updatedCategory } from '../../../../../actions/categories'
 
 import { useNavigate } from 'react-router-dom'
 
@@ -52,19 +52,21 @@ const Button = styled.button`
 `
 
 const CategoryForm = ({ currentId, setCurrentId }) => {
-
     const [catData, setCatData] = useState({
         name: '',
         selectedFile: ''
     })
 
+    const navegate = useNavigate()
+
+    const category = useSelector((state) => (currentId ? state.categories.categories.find((category) => category._id === currentId) : null))
+    const dispatch = useDispatch()
+
+    const user = JSON.parse(localStorage.getItem('idevProfile'))
+
     useEffect(() => {
-
-    }, [])
-
-    const handleSubmit = async (e) => {
-        e.preventDefault()
-    }
+        if(category) setCatData(category)
+    }, [category])
 
     const clear = () => {
         setCurrentId(0)
@@ -73,6 +75,18 @@ const CategoryForm = ({ currentId, setCurrentId }) => {
             name: '',
             selectedFile: ''
         })
+    }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+
+        if(currentId === 0 ) {
+            dispatch(addCategory(catData))
+            clear()
+        } else {
+            dispatch(updatedCategory(currentId, catData));
+            clear()
+        }
     }
 
     return (

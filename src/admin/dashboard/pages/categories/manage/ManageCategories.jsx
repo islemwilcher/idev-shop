@@ -1,4 +1,5 @@
 
+import { useState } from 'react'
 import styled from 'styled-components'
 
 import CategoryForm from '../form/CategoryForm'
@@ -6,9 +7,10 @@ import Categories from '../../../../../components/categories/Categories'
 
 const Container = styled.div`
     display: flex;
+    flex-direction: column-reverse;
     margin-top: 20px;
     @media (max-width: 768px) {
-        flex-direction: column-reverse;
+        
     }
 `
 const Right = styled.div`
@@ -19,7 +21,7 @@ const Right = styled.div`
     }
 `
 const Left = styled.div`
-    width: 78%;
+    width: 100%;
     margin: auto;
     @media (max-width: 768px) {
         width: 100%;
@@ -27,13 +29,15 @@ const Left = styled.div`
 `
 
 const ManageCategories = () => {
+    const [currentId, setCurrentId] = useState()
+    const [visible, setVisibale] = useState(true)
     return (
         <Container>
             <Left>
-                <Categories />
+                <Categories setCurrentId={setCurrentId} visible={visible} />
             </Left>
             <Right>
-                <CategoryForm />
+                <CategoryForm currentId={currentId} setCurrentId={setCurrentId} />
             </Right>
         </Container>
     )

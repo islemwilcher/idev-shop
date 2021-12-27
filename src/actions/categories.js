@@ -28,14 +28,11 @@ export const getCategory = (id) => async (dispatch) => {
 }
 
 //create 
-export const addCategory = (category, history) => async (dispatch) => {
+export const addCategory = (category) => async (dispatch) => {
     try {
-        dispatch({ type: START_LOADING })
-
         const { data } = await api.createCategory(category)
 
         dispatch({ type: CREATE, payload: data })
-        history.push('/managecategories')
     } catch (error) {
         console.log(error)
     }
@@ -53,7 +50,7 @@ export const updatedCategory = (id, category) => async (dispatch) => {
 }
 
 //delete 
-export const deleteCategory = (id) => async (dispatch) => {
+export const deletedCategory = (id) => async (dispatch) => {
     try {
         await api.deleteCategory(id);
     

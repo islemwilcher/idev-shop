@@ -1,3 +1,7 @@
+import { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+
+import { getCategories } from '../../actions/categories'
 
 import styled from 'styled-components'
 
@@ -18,17 +22,25 @@ const Container = styled.div`
     justify-content: space-between;
 
     @media (max-width: 768px) {
-        width: 90%;
+        width: 98%;
+        justify-content: space-around;
     }
 `
 
-const Categories = () => {
+const Categories = ({ setCurrentId, visible }) => {
+
+    const {categories} = useSelector((state) =>  state.categories)
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(getCategories())
+    },[dispatch])
 
     const type = 'bars'
     const color = 'black'
 
     return (
-        !categoriesData?.length 
+        !categories?.length 
         ? (
             <div>
             <Loading type={type} color={color} />
@@ -36,8 +48,8 @@ const Categories = () => {
         )
         : (
         <Container>
-            {categoriesData.map((item) => (
-                <Category item={item} key={item.id} />
+            {categories.map((category) => (
+                <Category item={category} key={category._id} setCurrentId={setCurrentId} visible={visible} />
             ))}
         </Container>)
     )
