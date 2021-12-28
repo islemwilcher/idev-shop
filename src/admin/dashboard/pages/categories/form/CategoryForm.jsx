@@ -6,7 +6,6 @@ import styled from 'styled-components'
 
 import { addCategory, updatedCategory } from '../../../../../actions/categories'
 
-import { useNavigate } from 'react-router-dom'
 
 const Wrapper = styled.div``
 
@@ -54,10 +53,9 @@ const Button = styled.button`
 const CategoryForm = ({ currentId, setCurrentId }) => {
     const [catData, setCatData] = useState({
         name: '',
-        selectedFile: ''
+        img: ''
     })
 
-    const navegate = useNavigate()
 
     const category = useSelector((state) => (currentId ? state.categories.categories.find((category) => category._id === currentId) : null))
     const dispatch = useDispatch()
@@ -73,7 +71,7 @@ const CategoryForm = ({ currentId, setCurrentId }) => {
 
         setCatData({
             name: '',
-            selectedFile: ''
+            img: ''
         })
     }
 
@@ -93,9 +91,9 @@ const CategoryForm = ({ currentId, setCurrentId }) => {
         <Wrapper>
             <Form autocomplete='off' onSubmit={handleSubmit}>
                 <Title>Create Category</Title>
-                <Input name='name' label='name' placeholder='Enter Category name...' value={catData.name} onChange={(e) => setCatData({ ...catData, name: e.target.value })} />
+                <Input name='name' placeholder='Enter Category name...' value={catData.name} onChange={(e) => setCatData({ ...catData, name: e.target.value })} />
                 <File>
-                    <FileBase type="file" multiple={false} onDone={({ base64 }) => setCatData({ ...catData, selectedFile: base64 })} />
+                    <FileBase type="file" multiple={false} onDone={({ base64 }) => setCatData({ ...catData, img: base64 })} />
                 </File>
                 <Actions>
                 <Button type='submit' bg="green">Submit</Button>

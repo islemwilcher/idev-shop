@@ -32,7 +32,7 @@ export const deleteProduct = (id) => API.delete(`/products/${id}`)
 export const fetchCategories = () => API.get('/categories')
 export const fetchCategory = (id) => API.get(`/categories/find/${id}`)
 
-export const createCategory = (newCategory) => API.post('/categories', newCategory)
+export const createCategory = (category) => API.post('/categories', category)
 export const updateCategory = (id, updatedCategory) => API.patch(`/categories/${id}`, updatedCategory)
 export const deleteCategory = (id) => API.delete(`/categories/${id}`)
 

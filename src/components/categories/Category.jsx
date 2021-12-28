@@ -123,10 +123,10 @@ const Category = ({ item, visible, setCurrentId }) => {
             ? <>{visible ?
                 <Actions>
                     <Button size="small" onClick={() => setCurrentId(item._id)}>
-                        <MoreHorizIcon fontSize="default" />
+                        <MoreHorizIcon />
                     </Button>
                     <Button size="small" color="secondary" onClick={() => dispatch(deletedCategory(item._id))}>
-                        <DeleteIcon fontSize="small" />
+                        <DeleteIcon  />
                     </Button>
                 </Actions>
                 : null
@@ -136,7 +136,7 @@ const Category = ({ item, visible, setCurrentId }) => {
             }
             <Card>
                 
-                <Img src={item.image} alt={item.title}  />
+                <Img src={item.img} alt={item.title}  />
                 <Darken />
                 <Overlay>
                     <TypographyCatego>{item.name}</TypographyCatego>

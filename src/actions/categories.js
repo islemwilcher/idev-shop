@@ -30,9 +30,11 @@ export const getCategory = (id) => async (dispatch) => {
 //create 
 export const addCategory = (category) => async (dispatch) => {
     try {
-        const { data } = await api.createCategory(category)
+        dispatch({ type: START_LOADING })
+        const { data } = await api.createCategory(category);
 
-        dispatch({ type: CREATE, payload: data })
+        dispatch({ type: CREATE, payload: data });
+        dispatch({ type: END_LOADING })
     } catch (error) {
         console.log(error)
     }
