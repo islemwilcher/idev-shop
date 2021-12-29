@@ -4,6 +4,9 @@ import { useDispatch } from 'react-redux'
 
 import { deleteProduct } from '../../actions/products'
 
+import DeleteIcon from '@material-ui/icons/Delete';
+import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
+
 import styled from 'styled-components'
 
 const Content = styled.div`
@@ -78,25 +81,22 @@ const Img = styled.img`
 `
 const Actions = styled.div`
     display: flex;
-    flex-direction: column;
 `
 const Button = styled.button`
-    width: 100%;
+    width: 20%;
     border: none;
     border-radius: 5px;
     margin: 2px auto;
     font-size: 18px;
-    padding: 10px;
-    color: white;
+    padding: 0px;
     cursor: pointer;
-    background-color: ${(props) => props.bg};
+    color: ${(props) => props.bg};
     &:hover{
-        background-color: ${(props) => props.bgh};
         box-shadow: 2px 2px 12px black;
     }
 `
 
-const Product = ({ item, visible }) => {
+const Product = ({ item, visible, setCurrentId }) => {
     const dispatch = useDispatch()
 
     const navigate = useNavigate()
@@ -115,18 +115,21 @@ const Product = ({ item, visible }) => {
 
     return (
             <Content>
-                {user ? 
-                <> 
-                {visible ? 
-                        (<Actions>
-                            <Button bg='green' bgh='#22b31d'>EDIT</Button>
-                            <Button bg='red' bgh='#eb281a' onClick={() => dispatch(deleteProduct(item._id))}>DELETE</Button>
-                        </Actions>)
-                    : null
-                }
-                </>
+                {user 
+            ? <>{visible ?
+                <Actions>
+                    <Button bg='black' size="small" onClick={() => setCurrentId(item._id)}>
+                        <MoreHorizIcon />
+                    </Button>
+                    <Button size="small" bg="red" onClick={() => dispatch(deleteProduct(item._id))}>
+                        <DeleteIcon  />
+                    </Button>
+                </Actions>
                 : null
-                }
+            }
+            </>
+            : null
+            }
                 <div onClick={openProduct}>
                     <Card>
                         <Img src={item.img} alt={item.name} />

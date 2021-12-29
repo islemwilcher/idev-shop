@@ -1,12 +1,10 @@
+
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
 import { getCategories } from '../../actions/categories'
 
 import styled from 'styled-components'
-
-//data 
-import { categoriesData } from '../categoriesData'
 
 //components
 import Category from './Category'
@@ -19,7 +17,7 @@ const Container = styled.div`
     flex-wrap: wrap;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
 
     @media (max-width: 768px) {
         width: 98%;
@@ -37,7 +35,7 @@ const Categories = ({ setCurrentId, visible }) => {
     },[dispatch])
 
     const type = 'bars'
-    const color = 'black'
+    const color = 'whitesmoke'
 
     return (
         !categories?.length 

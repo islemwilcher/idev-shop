@@ -28,21 +28,21 @@ export const getProduct = (id) => async (dispatch) => {
 }
 
 //create product
-export const addProduct = (product, history) => async (dispatch) => {
+export const addProduct = (product) => async (dispatch) => {
     try {
         dispatch({ type: START_LOADING })
+        const { data } = await api.createProduct(product);
 
-        const { data } = await api.createProduct(product)
-
-        dispatch({ type: CREATE, payload: data })
-        history.push('/')
+        dispatch({ type: CREATE, payload: data });
+        dispatch({ type: END_LOADING })
     } catch (error) {
         console.log(error)
     }
 }
 
 //update product
-export const updateProduct = (id, product) => async (dispatch) => {
+export const updatedProduct = (id, product) => async (dispatch) => {
+    console.log(id, product)
     try {
         const { data } = await api.updateProduct(id, product)
 

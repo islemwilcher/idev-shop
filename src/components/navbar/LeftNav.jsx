@@ -1,4 +1,5 @@
 
+import { useEffect } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
@@ -43,6 +44,8 @@ const Ul = styled.ul`
     
 const LeftNav = ({ open, setOpen }) => {
 
+    const user = JSON.parse(localStorage.getItem('idevProfile'))
+
     const navStyle = {
         color: 'black',
         textDecoration: 'none'
@@ -55,11 +58,21 @@ const LeftNav = ({ open, setOpen }) => {
     }
 
     let wWidth = window.innerWidth
+
+    useEffect(() => {
+        
+    }, [user])
     
     return (
         <Ul open = {open}>
             { wWidth <= '768' ? <Search /> : null }
             <Link style={adminStyle} to="/signin" onClick = {() => setOpen(!open)}><li>Signin</li></Link>
+            
+            {user ?
+                <Link style={navStyle} to="/dashboard" onClick = {() => setOpen(!open)}><li>Dashboard</li></Link>
+                : null
+            }
+
             <Link style={navStyle} to="/" onClick = {() => setOpen(!open)}><li>Home</li></Link>
             <Link style={navStyle} to="/accessories" onClick = {() => setOpen(!open)}><li>Accessories</li></Link>
             <Link style={navStyle} to="/glasses" onClick = {() => setOpen(!open)}><li>Glasses</li></Link>

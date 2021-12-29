@@ -105,7 +105,11 @@ const Img = styled.img`
 `
 const Button = styled.button`
     border: none;
-    color: black;
+    color: ${(props) => props.bg};
+    cursor: pointer;
+    &:hover{
+        box-shadow: 2px 2px 12px black;
+    }
 `
 
 const Category = ({ item, visible, setCurrentId }) => {
@@ -122,10 +126,10 @@ const Category = ({ item, visible, setCurrentId }) => {
             {user 
             ? <>{visible ?
                 <Actions>
-                    <Button size="small" onClick={() => setCurrentId(item._id)}>
+                    <Button bg='black' size="small" onClick={() => setCurrentId(item._id)}>
                         <MoreHorizIcon />
                     </Button>
-                    <Button size="small" color="secondary" onClick={() => dispatch(deletedCategory(item._id))}>
+                    <Button size="small" bg="red" onClick={() => dispatch(deletedCategory(item._id))}>
                         <DeleteIcon  />
                     </Button>
                 </Actions>

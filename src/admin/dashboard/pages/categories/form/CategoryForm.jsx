@@ -48,6 +48,7 @@ const Button = styled.button`
     padding: 5px;
     margin-bottom: 10px;
     background-color: ${(props) => props.bg};
+    cursor: pointer;
 `
 
 const CategoryForm = ({ currentId, setCurrentId }) => {
@@ -59,8 +60,6 @@ const CategoryForm = ({ currentId, setCurrentId }) => {
 
     const category = useSelector((state) => (currentId ? state.categories.categories.find((category) => category._id === currentId) : null))
     const dispatch = useDispatch()
-
-    const user = JSON.parse(localStorage.getItem('idevProfile'))
 
     useEffect(() => {
         if(category) setCatData(category)
@@ -96,8 +95,8 @@ const CategoryForm = ({ currentId, setCurrentId }) => {
                     <FileBase type="file" multiple={false} onDone={({ base64 }) => setCatData({ ...catData, img: base64 })} />
                 </File>
                 <Actions>
-                <Button type='submit' bg="green">Submit</Button>
-                <Button bg='red' onClick={clear}>Clear</Button>
+                    <Button type='submit' bg="green">Submit</Button>
+                    <Button bg='red' onClick={clear}>Clear</Button>
                 </Actions>
             </Form>
         </Wrapper>
