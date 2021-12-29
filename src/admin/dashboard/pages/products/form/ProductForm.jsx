@@ -27,7 +27,7 @@ const File = styled.h2`
 
 const Input = styled.input`
     padding: 5px;
-    border-radius: 10px;
+    border-radius: 5px;
     border: 1px solid gray;
     width: 90%;
     margin-top: 5px;

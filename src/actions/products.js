@@ -42,7 +42,7 @@ export const addProduct = (product) => async (dispatch) => {
 
 //update product
 export const updatedProduct = (id, product) => async (dispatch) => {
-    console.log(id, product)
+
     try {
         const { data } = await api.updateProduct(id, product)
 
