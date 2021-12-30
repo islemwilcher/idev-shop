@@ -34,6 +34,16 @@ const Wrapper = styled.div`
     }
 `
 
+const Title = styled.h1`
+    color: black;
+    font-size: 55px;
+    font-weight: 500;
+    margin-top: 90px;
+    @media (max-width: 768px) {
+        font-size: 30px;
+    }
+`
+
 const AllNew = () => {
     const dispatch = useDispatch()
 
@@ -49,11 +59,10 @@ const AllNew = () => {
 
     return (
         <Container>
-            !allBestProducts?.length 
+            <Title>Bestselling</Title>
+        {!allBestProducts?.length 
         ? (
-            <div>
             <Loading type={type} color={color} />
-            </div>
         )
         : (
             <Wrapper>
@@ -61,7 +70,7 @@ const AllNew = () => {
                 <Product item={item} key={item._id} />
             ))}
             </Wrapper>
-        )
+        )}
         </Container>
     )
 }

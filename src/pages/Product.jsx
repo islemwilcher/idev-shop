@@ -22,6 +22,7 @@ const Wrapper = styled.h1`
     justify-content: space-between;
 
     @media (max-width: 768px) {
+        width: 100%;
         flex-direction: column;
     }
 `
@@ -32,6 +33,12 @@ const ImgContainer = styled.div`
     justify-content: center;
     height: 80%;
     width: 80% ;
+    @media (max-width: 768px) {
+        width: 80%;
+    }
+    @media (max-width: 400px) {
+        width: 90%;
+    }
 `
 const Img = styled.img`
     background-size: contain;
@@ -48,8 +55,8 @@ const Img = styled.img`
 
 const Title = styled.h1`
     color: black;
-    font-size: 28px;
-    font-weight: 500;
+    font-size: 30px;
+    font-weight: 600;
 
     @media (max-width: 768px) {
         font-size: 26px;
@@ -67,7 +74,25 @@ const Price = styled.h2`
 const Desc = styled.p`
     color: black;
     font-size: 22px;
-    font-weight: 200;
+    font-weight: 300;
+
+    @media (max-width: 768px) {
+        font-size: 18px;
+    }
+`
+const Color = styled.p`
+    color: black;
+    font-size: 22px;
+    font-weight: 400;
+
+    @media (max-width: 768px) {
+        font-size: 18px;
+    }
+`
+const Size = styled.p`
+    color: black;
+    font-size: 22px;
+    font-weight: 400;
 
     @media (max-width: 768px) {
         font-size: 18px;
@@ -102,6 +127,9 @@ const ContentWrapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    @media (max-width: 768px) {
+        width: 100%;
+    }
 `
 const Content = styled.div`
     width: 90%;
@@ -146,6 +174,8 @@ const Product = () => {
                         <Title>{product.name}</Title>
                         <Price>${product.price}</Price>
                         <Desc>{product.description}</Desc>
+                        <Color>color: {product.color}</Color>
+                        <Size>size: {product.size}</Size>
                         <Button><p>Add to Cart </p><IoMdCart size='25px' style={cartstyle} /></Button>
                     </Content>
                     </ContentWrapper>
