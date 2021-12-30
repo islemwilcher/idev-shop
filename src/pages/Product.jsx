@@ -5,10 +5,11 @@ import { useLocation } from 'react-router-dom'
 import { useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 
-
 import { getProduct } from "../actions/products"
 
 import styled from 'styled-components'
+
+import Loading from '../components/Loading'
 
 const Container = styled.div``
 
@@ -109,21 +110,29 @@ const Content = styled.div`
 
 const Product = () => {
 
+    const {product, products, isLoading} = useSelector((state) => state.products)
+    const dispatch = useDispatch()
     const location = useLocation()
 
     const id = location.pathname.split("/")[3]
-    console.log(id)
+    
+    const cartstyle = {
+        marginLeft: '10px'
+    }
 
-    const dispatch = useDispatch()
+    const type = 'bars'
+    const color = 'red'
 
     useEffect(() => {
         dispatch(getProduct(id))
     },[id, dispatch])
 
-    const {product} = useSelector((state) => state.products)
+    if(!product) return null
 
-    const cartstyle = {
-        marginLeft: '10px'
+    if(isLoading) {
+        return(
+            <Loading type={type} color={color} />
+        )
     }
 
     return (
