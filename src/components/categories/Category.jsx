@@ -140,13 +140,13 @@ const Category = ({ item, visible, setCurrentId }) => {
             }
             <Card>
                 
-                <Img src={item.img} alt={item.title}  />
+                <Img src={item.img} alt={item.name}  />
                 <Darken />
                 <Overlay>
                     <TypographyCatego>{item.name}</TypographyCatego>
                 </Overlay>
                 <OverlayTwo>
-                    <Link style={navStyle} to={`/categories/${item.title}`} >
+                    <Link style={navStyle} to={`/categories/${item.name}`} >
                     <Typography>View all <BsArrowRight /></Typography>
                     <Hr />
                     </Link>

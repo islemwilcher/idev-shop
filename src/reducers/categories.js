@@ -1,4 +1,4 @@
-import { FETCH_ALL, FETCH_CATEGORY, CREATE, UPDATE, DELETE, START_LOADING, END_LOADING } from '../constants/actiontype';
+import { FETCH_ALL_CAREGORIES, FETCH_CATEGORY, CREATE, UPDATE, DELETE, START_LOADING, END_LOADING } from '../constants/actiontype';
 
 const categoriesReducer = (state = { isLoading: true, categories: [],} , action) => {
   switch (action.type) {
@@ -6,7 +6,7 @@ const categoriesReducer = (state = { isLoading: true, categories: [],} , action)
       return { ...state, isLoading: true };
     case END_LOADING:
       return { ...state, isLoading: false };
-    case FETCH_ALL:
+    case FETCH_ALL_CAREGORIES:
       return {...state, categories: action.payload };
     case FETCH_CATEGORY:
       return { ...state, category: action.payload.category };

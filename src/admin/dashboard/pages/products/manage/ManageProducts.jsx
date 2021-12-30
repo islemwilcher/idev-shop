@@ -30,7 +30,7 @@ const Left = styled.div`
 const ManageProducts = () => {
 
     const [currentId, setCurrentId] = useState(0)
-    const [visible, setVisibale] = useState(true)
+    const visible = true
 
     return (
         <Container>

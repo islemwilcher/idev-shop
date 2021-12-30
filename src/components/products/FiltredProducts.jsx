@@ -1,5 +1,5 @@
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useSelector,useDispatch } from 'react-redux'
 
 import styled from 'styled-components'
@@ -33,15 +33,37 @@ const Wrapper = styled.div`
     }
 `
 
-const Products = ({ setCurrentId, visible }) => {
+const FiltredProducts = ({ cat, filters, setCurrentId, visible }) => {
+    const dispatch = useDispatch()
 
     const {products} = useSelector((state) =>  state.products)
 
-    const dispatch = useDispatch()
+    const [categoryProducts, setCategoryProducts] = useState([])
+    const [filtredProducts, setFiltredProducts] = useState([])
 
     useEffect(() => {
         dispatch(getProducts())
     },[dispatch])
+
+    useEffect(() => {
+        setCategoryProducts(
+            products.filter(item => item.categories.includes(cat)))
+    },[cat, products])
+
+    console.log('category: ',categoryProducts)
+
+    useEffect(() => {
+        cat && setFiltredProducts(
+            categoryProducts.filter(item =>
+                Object.entries(filters).every(([key, value]) =>
+                item[key].includes(value)
+                )
+            )
+        )
+        
+    }, [filters, cat, categoryProducts])
+
+    console.log('filtred: ',filtredProducts)
 
     const type = 'bars'
     const color = 'lightblue'
@@ -56,7 +78,7 @@ const Products = ({ setCurrentId, visible }) => {
         : (
         <Container>
             <Wrapper>
-            {products.map((item) => (
+            {filtredProducts.map((item) => (
                 <Product item={item} key={item._id} visible={visible} setCurrentId={setCurrentId} />
             ))}
             </Wrapper>
@@ -64,4 +86,4 @@ const Products = ({ setCurrentId, visible }) => {
     )
 }
 
-export default Products
+export default FiltredProducts

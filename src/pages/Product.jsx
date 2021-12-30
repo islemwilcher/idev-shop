@@ -118,9 +118,9 @@ const Product = () => {
 
     useEffect(() => {
         dispatch(getProduct(id))
-    },[id])
+    },[id, dispatch])
 
-    const {product, products} = useSelector((state) => state.products)
+    const {product} = useSelector((state) => state.products)
 
     const cartstyle = {
         marginLeft: '10px'

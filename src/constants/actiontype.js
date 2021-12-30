@@ -7,6 +7,7 @@ export const FETCH_ALL = 'FETCH_ALL';
 export const FETCH_PRODUCT = 'FETCH_PRODUCT';
 
 //CATEGORY
+export const FETCH_ALL_CAREGORIES = 'FETCH_ALL_CAREGORIES';
 export const FETCH_CATEGORY = 'FETCH_CATEGORY';
 
 export const FETCH_NEW = 'FETCH_NEW';

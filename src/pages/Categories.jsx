@@ -8,7 +8,7 @@ import { getProducts } from '../actions/products'
 import styled from 'styled-components'
 
 //components
-import Products from '../components/products/Products'
+import FiltredProducts from '../components/products/FiltredProducts'
 import News from '../components/newsletter/News'
 
 const Container = styled.div`
@@ -75,22 +75,18 @@ const FilterColor = styled.select`
 const FilteColorOption = styled.option``;
 
 const Categorie = () => {
-
+    const dispatch = useDispatch()
     const location = useLocation()
 
-    const cat = location.pathname.split("/")[2]
-    console.log(cat)
-
     const [filters, setFilters] = useState({})
+
+    const cat = location.pathname.split("/")[2]
 
     const handleFilters = (e) => {
         const value = e.target.value
 
-        setFilters({ ...filters, [e.target.name]: value })
-        
+        setFilters({ ...filters, [e.target.name]: value })      
     }
-
-    const dispatch = useDispatch()
 
     useEffect(() => {
         dispatch(getProducts())
@@ -116,7 +112,7 @@ const Categorie = () => {
                     </FilterContainer>
                 </Layout>
             </Wrapper>
-            <Products cat={cat} filters={filters} />
+            <FiltredProducts cat={cat} filters={filters} />
             <News />
         </Container>
     )

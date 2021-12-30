@@ -8,6 +8,7 @@ import { allNEWProducts } from "../../actions/products"
 
 //components
 import Product from './Product'
+import Loading from '../Loading'
 
 const Container = styled.div`
     width: 90%;
@@ -43,13 +44,24 @@ const AllNew = () => {
     //all new products
     const {allNewProducts} = useSelector((state) =>  state.products)
 
+    const type = 'bars'
+    const color = 'lightblue'
+
     return (
         <Container>
+            !allNewProducts?.length 
+        ? (
+            <div>
+            <Loading type={type} color={color} />
+            </div>
+        )
+        : (
             <Wrapper>
             {allNewProducts.map(item => (
                 <Product item={item} key={item._id} />
             ))}
             </Wrapper>
+        )
         </Container>
     )
 }

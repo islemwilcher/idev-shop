@@ -35,7 +35,7 @@ const Categories = ({ setCurrentId, visible }) => {
     },[dispatch])
 
     const type = 'bars'
-    const color = 'whitesmoke'
+    const color = 'lightblue'
 
     return (
         !categories?.length 
