@@ -55,11 +55,11 @@ const Products = ({ setCurrentId, visible }) => {
         )
         : (
         <Container>
-            <Wrapper>
-            {products.map((item) => (
-                <Product item={item} key={item._id} visible={visible} setCurrentId={setCurrentId} />
-            ))}
-            </Wrapper>
+                <Wrapper>
+                {products.map((item) => (
+                    <Product item={item} key={item._id} visible={visible} setCurrentId={setCurrentId} />
+                ))}
+                </Wrapper>
         </Container>)
     )
 }

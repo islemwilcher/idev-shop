@@ -11,6 +11,9 @@ import styled from 'styled-components'
 import FiltredProducts from '../components/products/FiltredProducts'
 import News from '../components/newsletter/News'
 
+//animation
+import Fade from 'react-reveal/Fade'
+
 const Container = styled.div`
     width: 100%;
     margin: auto;
@@ -112,8 +115,12 @@ const Categorie = () => {
                     </FilterContainer>
                 </Layout>
             </Wrapper>
-            <FiltredProducts cat={cat} filters={filters} />
-            <News />
+            <Fade Bottom>
+                <FiltredProducts cat={cat} filters={filters} />
+            </Fade>
+            <Fade Bottom>
+                <News />
+            </Fade>
         </Container>
     )
 }

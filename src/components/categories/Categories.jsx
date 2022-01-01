@@ -45,11 +45,12 @@ const Categories = ({ setCurrentId, visible }) => {
             </div>
         )
         : (
-        <Container>
-            {categories.map((category) => (
-                <Category item={category} key={category._id} setCurrentId={setCurrentId} visible={visible} />
-            ))}
-        </Container>)
+            <Container>
+                {categories.map((category) => (
+                    <Category item={category} key={category._id} setCurrentId={setCurrentId} visible={visible} />
+                ))}
+            </Container>
+        )
     )
 }
 

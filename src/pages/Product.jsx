@@ -135,10 +135,9 @@ const Content = styled.div`
     width: 90%;
 `
 
-
 const Product = () => {
 
-    const {product, products, isLoading} = useSelector((state) => state.products)
+    const {product, isLoading} = useSelector((state) => state.products)
     const dispatch = useDispatch()
     const location = useLocation()
 

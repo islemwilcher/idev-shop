@@ -21,29 +21,30 @@ import ManageCategories from "./admin/dashboard/pages/categories/manage/ManageCa
 import ManageProducts from "./admin/dashboard/pages/products/manage/ManageProducts"
 
 function App() {
+
   return (
     <>
       <Router>
-        <Navbar />
+          <Navbar />
         <Routes>
-          {/* private route */}
-          <Route exact path='/dashboard' element={<Protectedroute />} >
-            <Route exact path='/dashboard' element={<Dashboard />} />
-          </Route>
-          <Route exact path='/manageproducts' element={<Protectedroute />} >
-            <Route exact path='/manageproducts' element={<ManageProducts />} />
-          </Route>
-          <Route exact path='/managecategories' element={<Protectedroute />} >
-            <Route exact path='/managecategories' element={<ManageCategories />} />
-          </Route>
-          {/* app route */}
-          <Route path='/' element={<Home/>} />
-          <Route exact path='/categories/:category' element={<Categories/>} />
-          <Route exact path='/products/new/all' element={<AllNewProducts/>} />
-          <Route exact path='/products/best/all' element={<AllBestProducts  />} />
-          <Route exact path='/products/find/:id' element={<Product />} />
-          <Route exact path='/signin' element={<Signin />} />
-          </Routes>
+            {/* private route */}
+            <Route exact path='/dashboard' element={<Protectedroute />} >
+              <Route exact path='/dashboard' element={<Dashboard />} />
+            </Route>
+            <Route exact path='/manageproducts' element={<Protectedroute />} >
+              <Route exact path='/manageproducts' element={<ManageProducts />} />
+            </Route>
+            <Route exact path='/managecategories' element={<Protectedroute />} >
+              <Route exact path='/managecategories' element={<ManageCategories />} />
+            </Route>
+            {/* app route */}
+            <Route path='/' element={<Home/>} />
+            <Route exact path='/categories/:category' element={<Categories/>} />
+            <Route exact path='/products/new/all' element={<AllNewProducts/>} />
+            <Route exact path='/products/best/all' element={<AllBestProducts  />} />
+            <Route exact path='/products/find/:id' element={<Product />} />
+            <Route exact path='/signin' element={<Signin />} />
+        </Routes>
       </Router>
     </>
   );
