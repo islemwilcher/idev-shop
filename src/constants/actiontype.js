@@ -10,6 +10,10 @@ export const FETCH_PRODUCT = 'FETCH_PRODUCT';
 export const FETCH_ALL_CAREGORIES = 'FETCH_ALL_CAREGORIES';
 export const FETCH_CATEGORY = 'FETCH_CATEGORY';
 
+//CARTS
+export const FETCHH_ALL_CARTS = 'FETCHH_ALL_CARTS';
+export const FETCH_CART = 'FETCH_CART';
+
 export const FETCH_NEW = 'FETCH_NEW';
 export const FETCH_ALL_NEW = 'FETCH_ALL_NEW';
 
