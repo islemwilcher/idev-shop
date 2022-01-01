@@ -65,7 +65,7 @@ const FiltredProducts = ({ cat, filters, setCurrentId, visible }) => {
 
     console.log('filtred: ',filtredProducts)
 
-    const type = 'bars'
+    const type = 'bubbles'
     const color = 'lightblue'
 
     return (

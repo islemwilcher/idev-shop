@@ -5,6 +5,9 @@ import styled from 'styled-components'
 //components
 import Bestselling from '../bestselling/Bestselling'
 
+//animation
+import Fade from 'react-reveal/Fade'
+
 const Wrapper = styled.div`
     width: 90%;
     margin: auto;
@@ -54,14 +57,18 @@ const Best = () => {
     return (
         <>
             <Wrapper>
-                <Layout>
-                    <Title2>Bestselling</Title2>
-                    <Link style={navStyle} to='/products/best/all' >
-                        <Button>View all</Button>
-                    </Link>
-                </Layout>
+                <Fade Bottom>
+                    <Layout>
+                        <Title2>Bestselling</Title2>
+                        <Link style={navStyle} to='/products/best/all' >
+                            <Button>View all</Button>
+                        </Link>
+                    </Layout>
+                </Fade>
             </Wrapper>
-            <Bestselling />
+            <Fade Bottom>
+                <Bestselling />
+            </Fade>
         </>
             
     )

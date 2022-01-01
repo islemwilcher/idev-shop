@@ -1,15 +1,22 @@
 
-import { IoMdCart } from 'react-icons/io'
-import { useLocation } from 'react-router-dom'
-
 import { useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 
+//icons
+import { IoMdCart } from 'react-icons/io'
+import { useLocation } from 'react-router-dom'
+
+//actions
 import { getProduct } from "../actions/products"
 
+//styles
 import styled from 'styled-components'
 
+//components
 import Loading from '../components/Loading'
+
+//animation
+import Fade from 'react-reveal/Fade'
 
 const Container = styled.div``
 
@@ -147,8 +154,8 @@ const Product = () => {
         marginLeft: '10px'
     }
 
-    const type = 'bars'
-    const color = 'red'
+    const type = 'bubbles'
+    const color = 'lightblue'
 
     useEffect(() => {
         dispatch(getProduct(id))
@@ -166,16 +173,31 @@ const Product = () => {
         <Container>
                 <Wrapper>
                     <ImgContainer>
-                    <Img src={product.img} alt={product.name} />
+                        <Fade Bottom>
+                            <Img src={product.img} alt={product.name} />
+                        </Fade>
                     </ImgContainer>
+                    
                     <ContentWrapper>
                     <Content>
-                        <Title>{product.name}</Title>
-                        <Price>${product.price}</Price>
-                        <Desc>{product.description}</Desc>
-                        <Color>color: {product.color}</Color>
-                        <Size>size: {product.size}</Size>
-                        <Button><p>Add to Cart </p><IoMdCart size='25px' style={cartstyle} /></Button>
+                        <Fade Bottom>
+                            <Title>{product.name}</Title>
+                        </Fade>
+                        <Fade Bottom>
+                            <Price>${product.price}</Price>
+                        </Fade>
+                        <Fade Bottom>
+                            <Desc>{product.description}</Desc>
+                        </Fade>
+                        <Fade Bottom>
+                            <Color>color: {product.color}</Color>
+                        </Fade>
+                        <Fade Bottom>
+                            <Size>size: {product.size}</Size>
+                        </Fade>
+                        <Fade Bottom>
+                            <Button><p>Add to Cart </p><IoMdCart size='25px' style={cartstyle} /></Button>
+                        </Fade>
                     </Content>
                     </ContentWrapper>
                 </Wrapper>

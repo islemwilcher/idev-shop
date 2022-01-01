@@ -54,7 +54,7 @@ const AllNew = () => {
     //all new products
     const {allBestProducts} = useSelector((state) =>  state.products)
 
-    const type='bars'
+    const type='bubbles'
     const color='lightblue'
 
     return (

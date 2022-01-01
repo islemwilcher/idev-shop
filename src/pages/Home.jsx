@@ -30,8 +30,8 @@ const Home = () => {
         dispatch(getCategories())
     }, [dispatch])
     
-    const type='bars'
-    const color = 'yellow'
+    const type='bubbles'
+    const color = 'lightblue'
 
     return (
         <>

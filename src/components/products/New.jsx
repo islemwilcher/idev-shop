@@ -2,7 +2,11 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
+//components
 import NewProducts from '../newproducts/NewProducts'
+
+//animation
+import Fade from 'react-reveal/Fade'
 
 const Wrapper = styled.div`
     width: 90%;
@@ -53,14 +57,18 @@ const New = () => {
     return (
         <>
             <Wrapper>
-                <Layout>
-                    <Title2>New Products</Title2>
-                    <Link style={navStyle} to='/products/new/all' >
-                        <Button>View all</Button>
-                    </Link>
-                </Layout>
+                <Fade Bottom>
+                    <Layout>
+                        <Title2>New Products</Title2>
+                        <Link style={navStyle} to='/products/new/all' >
+                            <Button>View all</Button>
+                        </Link>
+                    </Layout>
+                </Fade>
             </Wrapper>
-            <NewProducts />
+            <Fade Bottom>
+                <NewProducts />
+            </Fade>
         </>
     )
 }

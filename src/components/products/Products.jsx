@@ -43,7 +43,7 @@ const Products = ({ setCurrentId, visible }) => {
         dispatch(getProducts())
     },[dispatch])
 
-    const type = 'bars'
+    const type = 'bubbles'
     const color = 'lightblue'
 
     return (

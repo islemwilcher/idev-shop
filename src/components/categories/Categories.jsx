@@ -34,7 +34,7 @@ const Categories = ({ setCurrentId, visible }) => {
         dispatch(getCategories())
     },[dispatch])
 
-    const type = 'bars'
+    const type = 'bubbles'
     const color = 'lightblue'
 
     return (
