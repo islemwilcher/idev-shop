@@ -1,13 +1,14 @@
 
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
 
 //icons
-import { IoMdCart } from 'react-icons/io'
+import { IoMdCart, IoMdAdd, IoIosRemove } from 'react-icons/io'
 import { useLocation } from 'react-router-dom'
 
 //actions
 import { getProduct } from "../actions/products"
+import { createCart } from '../actions/carts'
 
 //styles
 import styled from 'styled-components'
@@ -142,11 +143,41 @@ const Content = styled.div`
     width: 90%;
 `
 
+const AmountContainer = styled.div`
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+`
+
+const Amount = styled.span`
+    width: 60px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid lightblue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0px 5px;
+`
+
 const Product = () => {
 
     const {product, isLoading} = useSelector((state) => state.products)
     const dispatch = useDispatch()
     const location = useLocation()
+
+    //carts
+    const [cartProduct, setCartProduct] = useState({})
+    const [quantity, setQuantity] = useState(1)
+    const [cartColor, setCartColor] = useState('')
+
+    const handleQuantity = (type) => {
+        if (type === 'dec') {
+            quantity > 1 && setQuantity(quantity - 1)
+        } else {
+            setQuantity(quantity + 1)
+        }
+    }
 
     const id = location.pathname.split("/")[3]
     
@@ -169,35 +200,29 @@ const Product = () => {
         )
     }
 
+    const handleClick = () => {
+        dispatch(createCart({ ...cartProduct, quantity, cartColor }))
+    }
+
     return (
         <Container>
                 <Wrapper>
                     <ImgContainer>
-                        <Fade Bottom>
                             <Img src={product.img} alt={product.name} />
-                        </Fade>
                     </ImgContainer>
-                    
                     <ContentWrapper>
                     <Content>
-                        <Fade Bottom>
                             <Title>{product.name}</Title>
-                        </Fade>
-                        <Fade Bottom>
                             <Price>${product.price}</Price>
-                        </Fade>
-                        <Fade Bottom>
                             <Desc>{product.description}</Desc>
-                        </Fade>
-                        <Fade Bottom>
                             <Color>color: {product.color}</Color>
-                        </Fade>
-                        <Fade Bottom>
                             <Size>size: {product.size}</Size>
-                        </Fade>
-                        <Fade Bottom>
-                            <Button><p>Add to Cart </p><IoMdCart size='25px' style={cartstyle} /></Button>
-                        </Fade>
+                            <AmountContainer>
+                                <IoIosRemove onClick={() => handleQuantity('dec')} />
+                                <Amount>{quantity}</Amount>
+                                <IoMdAdd onClick={() => handleQuantity('inc')} />
+                            </AmountContainer>
+                            <Button onClick={handleClick} ><p>Add to Cart </p><IoMdCart size='25px' style={cartstyle} /></Button>
                     </Content>
                     </ContentWrapper>
                 </Wrapper>
