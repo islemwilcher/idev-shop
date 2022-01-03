@@ -1,5 +1,8 @@
 
+import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
+
 import Search from './Search'
 import { IoMdCart } from 'react-icons/io'
 
@@ -33,15 +36,24 @@ const Button = styled.button`
 `
 
 const Rightnav = ({ open, setOpen }) => {
+
+    const cart = useSelector((state) => state.cart)
+    console.log(cart.quantity)
+
     var wWidth = window.innerWidth
+
+    const Style = { textDecoration: 'none' }
+
     return (
             <Right open = {open} >
                 { wWidth > '768' ? <Search /> : null }
-                <Button bg='transparent'>
-                    <Badge badgeContent={1} color='primary'>
-                        <IoMdCart size='25px' />
-                    </Badge>
-                </Button>
+                <Link style={Style} to='/cart'>
+                    <Button bg='transparent'>
+                        <Badge badgeContent={cart.quantity} color='primary'>
+                            <IoMdCart size='25px' />
+                        </Badge>
+                    </Button>
+                </Link>
             </Right>
     )
 }

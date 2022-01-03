@@ -50,6 +50,7 @@ const LeftNav = ({ open, setOpen }) => {
         color: 'black',
         textDecoration: 'none'
     }
+    
     const adminStyle = {
         color: 'gray',
         backgroundColor: 'whitesmoke',

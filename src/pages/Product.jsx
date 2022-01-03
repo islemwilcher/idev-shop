@@ -169,7 +169,7 @@ const Product = () => {
     //carts
     const [cartProduct, setCartProduct] = useState({})
     const [quantity, setQuantity] = useState(1)
-    const [cartColor, setCartColor] = useState('')
+    const [total, setTotal] = useState(0)
 
     const handleQuantity = (type) => {
         if (type === 'dec') {
@@ -189,7 +189,8 @@ const Product = () => {
     const color = 'lightblue'
 
     useEffect(() => {
-        dispatch(getProduct(id))
+        dispatch(getProduct(id));
+        setCartProduct({ ...cartProduct, product });
     },[id, dispatch])
 
     if(!product) return null
@@ -200,9 +201,12 @@ const Product = () => {
         )
     }
 
-    const handleClick = () => {
-        dispatch(createCart({ ...cartProduct, quantity, cartColor }))
+    const handleClick = (e) => {
+        e.preventDefault()
+        dispatch(createCart({ cartProduct, quantity, total }))
+        console.log(cartProduct)
     }
+
 
     return (
         <Container>
