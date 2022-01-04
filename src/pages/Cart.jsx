@@ -1,6 +1,6 @@
 
 import { useEffect, useState } from "react"
-import { useSelector } from "react-redux"
+import { useSelector, useDispatch } from "react-redux"
 import styled from "styled-components"
 
 
@@ -174,19 +174,30 @@ const Button = styled.button`
 
 
 const Cart = () => {
+    const dispatch = useDispatch()
 
-    const cart = useSelector((state) => state.cart)
+    const { cartItems } = useSelector((state) => state.cart)
     console.log(cart)
     const [quantity, setQuantity] = useState(1)
 
-    const handleQuantity = (type) => {
-        if (type === 'dec') {
-            quantity > 1 && setQuantity(quantity - 1) 
-            cart.quantity = quantity
-        } else {
-            setQuantity(quantity + 1)
-            cart.quantity = quantity
+    const increaseQuantity = (id, quantity, stock) => {
+        const newQty = quantity + 1;
+        if (stock <= quantity) {
+        return;
         }
+        dispatch(addItemsToCart(id, newQty));
+    }
+
+    const decreaseQuantity = (id, quantity) => {
+        const newQty = quantity - 1;
+        if (1 >= quantity) {
+        return;
+        }
+        dispatch(addItemsToCart(id, newQty));
+    }
+
+    const deleteCartItems = (id) => {
+        dispatch(removeItemsFromCart(id));
     }
 
     return (
@@ -203,43 +214,47 @@ const Cart = () => {
                 </Top>
                 <Bottom>
                     <Info>
-                        {cart.products.map((product) => (
-                        <Product>
-                            <ProductDetail>
-                                <Image src={product.img} />
-                                <DeTails>
-                                    <ProductName>
-                                        <b>Product:</b> {product.name}
-                                    </ProductName>
-                                    <ProductId>
-                                        <b>ID:</b> {product._id}
-                                    </ProductId>
-                                    <ColorContainer>
-                                        <b>Color: </b> 
-                                        <ProductColor color={product.color} />
-                                    </ColorContainer>
-                                    <ProductSize>
-                                        <b>Size:</b> {product.size}
-                                    </ProductSize>
-                                </DeTails>
-                            </ProductDetail>
-                            <PriceDetail>
-                                <ProductAmountContainer>
-                                    <Remove onClick={() => handleQuantity('dec')} />
-                                    <ProductAmount>{product.quantity}</ProductAmount>
-                                    <Add onClick={() => handleQuantity('inc')} />
-                                </ProductAmountContainer>
-                                <ProductPrice>$ {product.price * product.quantity}</ProductPrice>
-                            </PriceDetail>
-                        </Product>
-                        ))}
+                        {cartItems.length === 0 
+                            ? ( <h1>go to products</h1> ) 
+                            : (cartItems && cartItems.map((item) => (
+                                <Product>
+                                    <ProductDetail>
+                                        <Image src={item.img} />
+                                        <DeTails>
+                                            <ProductName>
+                                                <b>Product:</b> {item.name}
+                                            </ProductName>
+                                            <ProductId>
+                                                <b>ID:</b> {item.productId}
+                                            </ProductId>
+                                            <ColorContainer>
+                                                <b>Color: </b> 
+                                                <ProductColor color={item.color} />
+                                            </ColorContainer>
+                                            <ProductSize>
+                                                <b>Size:</b> {item.size}
+                                            </ProductSize>
+                                            <p onClick={() => deleteCartItems(item.product)}>Remove</p>
+                                        </DeTails>
+                                    </ProductDetail>
+                                    <PriceDetail>
+                                        <ProductAmountContainer>
+                                            <Remove onClick={() => decreaseQuantity(item.product, item.quantity)} />
+                                            <ProductAmount>{item.quantity}</ProductAmount>
+                                            <Add onClick={() => increaseQuantity(item.product, item.quantity, item.stock)} />
+                                        </ProductAmountContainer>
+                                        <ProductPrice>$ {item.price * item.quantity}</ProductPrice>
+                                    </PriceDetail>
+                                </Product>
+                            )))
+                        }
                         <Hr />
                     </Info>
                     <Summary>
                         <SummaryTitle>ORDER SUMMARY</SummaryTitle>
                         <SummaryItem>
                             <SummaryItemText>Subtotal: </SummaryItemText>
-                            <SummaryItemPrice>$ {cart.total}</SummaryItemPrice>
+                            <SummaryItemPrice>{`$ ${cartItems.reduce((acc, item) => acc + item.quantity * item.price, 0)}`}</SummaryItemPrice>
                         </SummaryItem>
                         <SummaryItem>
                             <SummaryItemText>Estimation Shipping: </SummaryItemText>
@@ -251,7 +266,7 @@ const Cart = () => {
                         </SummaryItem>
                         <SummaryItem type='total'>
                             <SummaryItemText>Total: </SummaryItemText>
-                            <SummaryItemPrice>$ {cart.total}</SummaryItemPrice>
+                            <SummaryItemPrice>{`$ ${cartItems.reduce((acc, item) => acc + item.quantity * item.price, 0)}`}</SummaryItemPrice>
                         </SummaryItem>
                         <Button>CHECKOUT NOW</Button>
                     </Summary>
