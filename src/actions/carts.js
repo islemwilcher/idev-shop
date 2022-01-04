@@ -1,60 +1,45 @@
-import { FETCH_ALL_CARTS, FETCH_CART, CREATE,  UPDATE, DELETE, START_LOADING, END_LOADING } from '../constants/actiontype'
+import {
+    ADD_TO_CART,
+    REMOVE_CART_ITEM,
+    SAVE_SHIPPING_INFO,
+} from "../constants/cartConstants";
+import axios from "axios";
 
-import * as api from '../api/index.js'
+  // Add to Cart
+export const addItemsToCart = (id, quantity) => async (dispatch, getState) => {
+    const { data } = await axios.get(`/api/v1/product/${id}`);
 
-//all carts
-export const getCarts = () => async (dispatch) => {
-    try {
-        const { data } = await api.fetchCarts()
-        dispatch({ type: FETCH_ALL_CARTS, payload: data})
-    } catch (error) {
-        console.log(error)
-    }
-}
+    dispatch({
+    type: ADD_TO_CART,
+    payload: {
+        product: data.product._id,
+        name: data.product.name,
+        price: data.product.price,
+        image: data.product.images[0].url,
+        stock: data.product.Stock,
+        quantity,
+    },
+    });
 
-//singl cart
-export const getCart = (id) => async (dispatch) => {
-    try {
-        dispatch({ type: START_LOADING })
+    localStorage.setItem("cartItems", JSON.stringify(getState().cart.cartItems));
+};
 
-        const { data } = await api.fetchCart(id)
-        dispatch({ type: FETCH_CART, payload: { cart: data }})
-        dispatch({ type: END_LOADING })
-    } catch (error) {
-        console.log(error)
-    }
-}
+  // REMOVE FROM CART
+export const removeItemsFromCart = (id) => async (dispatch, getState) => {
+    dispatch({
+    type: REMOVE_CART_ITEM,
+    payload: id,
+    });
 
-//create
-export const createCart = (cart) => async (dispatch) => {
-    try {
-        dispatch({ type: START_LOADING })
-        const { data } = await api.createdCart(cart)
-        dispatch({ type: CREATE, payload: data });
-        dispatch({ type: END_LOADING })
-    } catch (error) {
-        console.log(error)
-    }
-}
+    localStorage.setItem("cartItems", JSON.stringify(getState().cart.cartItems));
+};
 
-//update 
-export const updateCart= (id, cart) => async (dispatch) => {
-    try {
-        const { data } = await api.updatedCart(id, cart)
+  // SAVE SHIPPING INFO
+export const saveShippingInfo = (data) => async (dispatch) => {
+    dispatch({
+    type: SAVE_SHIPPING_INFO,
+    payload: data,
+    });
 
-        dispatch({ type: UPDATE, payload: data })
-    } catch (error) {
-        console.log(error)
-    }
-}
-
-//delete 
-export const deleteCart = (id) => async (dispatch) => {
-    try {
-        await api.deletedCart(id);
-    
-        dispatch({ type: DELETE, payload: id });
-    } catch (error) {
-        console.log(error);
-    }
-}
+    localStorage.setItem("shippingInfo", JSON.stringify(data));
+};

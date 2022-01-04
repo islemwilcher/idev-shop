@@ -7,7 +7,11 @@ import { deleteProduct } from '../../actions/products'
 import DeleteIcon from '@material-ui/icons/Delete';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 
+//style
 import styled from 'styled-components'
+
+//animation
+import Zoom from 'react-reveal/Zoom'
 
 const Content = styled.div`
     text-align: center;
@@ -131,12 +135,14 @@ const Product = ({ item, visible, setCurrentId }) => {
             : null
             }
                 <div onClick={openProduct}>
+                    <Zoom>
                     <Card>
                         <Img src={item.img} alt={item.name} />
                         <Darken />
                     </Card>
                     <CardTitle>{item.name}</CardTitle>
                     <Price>{item.price}</Price>
+                    </Zoom>
                 </div>
             </Content>
     )

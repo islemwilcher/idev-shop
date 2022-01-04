@@ -17,7 +17,7 @@ import styled from 'styled-components'
 import Loading from '../components/Loading'
 
 //animation
-import Fade from 'react-reveal/Fade'
+import Zoom from 'react-reveal/Zoom'
 
 const Container = styled.div``
 
@@ -48,6 +48,7 @@ const ImgContainer = styled.div`
         width: 90%;
     }
 `
+
 const Img = styled.img`
     background-size: contain;
     height: 100%;
@@ -203,16 +204,22 @@ const Product = () => {
 
     const handleClick = (e) => {
         e.preventDefault()
-        dispatch(createCart({ cartProduct, quantity, total }))
-        console.log(cartProduct)
+        const cart = {
+            cartProduct,
+            quantity,
+            total
+        }
+        dispatch(createCart(cart))
+        console.log(cart)
     }
 
 
     return (
         <Container>
+            <Zoom>
                 <Wrapper>
                     <ImgContainer>
-                            <Img src={product.img} alt={product.name} />
+                        <Img src={product.img} alt={product.name} />
                     </ImgContainer>
                     <ContentWrapper>
                     <Content>
@@ -230,6 +237,7 @@ const Product = () => {
                     </Content>
                     </ContentWrapper>
                 </Wrapper>
+                </Zoom>
         </Container>
     )
 }

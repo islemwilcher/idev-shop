@@ -9,7 +9,11 @@ import { BsArrowRight } from 'react-icons/bs'
 import DeleteIcon from '@material-ui/icons/Delete';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 
+//style
 import styled from 'styled-components'
+
+//animation
+import Zoom from 'react-reveal/Zoom'
 
 const Container = styled.div`
     display: flex;
@@ -138,20 +142,23 @@ const Category = ({ item, visible, setCurrentId }) => {
             </>
             : null
             }
-            <Card>
-                
-                <Img src={item.img} alt={item.name}  />
-                <Darken />
-                <Overlay>
-                    <TypographyCatego>{item.name}</TypographyCatego>
-                </Overlay>
-                <OverlayTwo>
-                    <Link style={navStyle} to={`/categories/${item.name}`} >
-                    <Typography>View all <BsArrowRight /></Typography>
-                    <Hr />
-                    </Link>
-                </OverlayTwo>
-            </Card>
+            <>
+            <Zoom>
+                <Card>
+                    <Img src={item.img} alt={item.name}  />
+                    <Darken />
+                    <Overlay>
+                        <TypographyCatego>{item.name}</TypographyCatego>
+                    </Overlay>
+                    <OverlayTwo>
+                        <Link style={navStyle} to={`/categories/${item.name}`} >
+                        <Typography>View all <BsArrowRight /></Typography>
+                        <Hr />
+                        </Link>
+                    </OverlayTwo>
+                </Card>
+            </Zoom>
+            </>
             </Container>
     )
 }

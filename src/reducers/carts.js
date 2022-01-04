@@ -1,20 +1,45 @@
-import { createSlice } from '@reduxjs/toolkit'
+import {
+    ADD_TO_CART,
+    REMOVE_CART_ITEM,
+    SAVE_SHIPPING_INFO,
+} from '../constants/actiontype.js'
 
-const cartSlice = createSlice ({
-    name: 'cart',
-    initialState: {
-        products: [],
-        quantity: 0,
-        total: 0,
-    },
-    reducers: {
-        addProduct: (state, action) => {
-            state.quantity += 1;
-            state.products.push(action.payload);
-            state.total += action.payload.price * action.payload.quantity;
-        },
-    },
-});
+export const cartReducer = (state = { cartItems: [], shippingInfo: {} },action) => {
+    switch (action.type) {
+    case ADD_TO_CART:
+        const item = action.payload;
 
-export const { addProduct } = cartSlice.actions;
-export default cartSlice.reducer
+        const isItemExist = state.cartItems.find(
+        (i) => i.product === item.product
+        );
+
+        if (isItemExist) {
+        return {
+            ...state,
+            cartItems: state.cartItems.map((i) =>
+            i.product === isItemExist.product ? item : i
+            ),
+        };
+        } else {
+        return {
+            ...state,
+            cartItems: [...state.cartItems, item],
+        };
+        }
+
+    case REMOVE_CART_ITEM:
+        return {
+        ...state,
+        cartItems: state.cartItems.filter((i) => i.product !== action.payload),
+        };
+
+    case SAVE_SHIPPING_INFO:
+        return {
+        ...state,
+        shippingInfo: action.payload,
+        };
+
+    default:
+        return state;
+    }
+};
