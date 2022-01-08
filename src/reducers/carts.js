@@ -1,25 +1,22 @@
 import {
     ADD_TO_CART,
-    REMOVE_CART_ITEM,
-    SAVE_SHIPPING_INFO,
+    REMOVE_FROM_CART,
+    CART_RESET,
 } from '../constants/actiontype.js'
 
-export const cartReducer = (state = { cartItems: [], shippingInfo: {} },action) => {
+export const cartReducer = (state = { cartItems: [] }, action) => {
     switch (action.type) {
     case ADD_TO_CART:
         const item = action.payload;
 
-        const isItemExist = state.cartItems.find(
-        (i) => i.product === item.product
-        );
-
-        if (isItemExist) {
-        return {
+        const existItem = state.cartItems.find((x) => x.product === item.product);
+        if(existItem) {
+            return {
             ...state,
             cartItems: state.cartItems.map((i) =>
-            i.product === isItemExist.product ? item : i
+            i.product === existItem.product ? item : i
             ),
-        };
+            }
         } else {
         return {
             ...state,
@@ -27,16 +24,10 @@ export const cartReducer = (state = { cartItems: [], shippingInfo: {} },action) 
         };
         }
 
-    case REMOVE_CART_ITEM:
+    case REMOVE_FROM_CART:
         return {
         ...state,
         cartItems: state.cartItems.filter((i) => i.product !== action.payload),
-        };
-
-    case SAVE_SHIPPING_INFO:
-        return {
-        ...state,
-        shippingInfo: action.payload,
         };
 
     default:
