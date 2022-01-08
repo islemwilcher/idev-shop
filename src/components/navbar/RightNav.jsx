@@ -38,7 +38,8 @@ const Button = styled.button`
 const Rightnav = ({ open, setOpen }) => {
 
     const cart = useSelector((state) => state.cart)
-    console.log(cart.quantity)
+
+    console.log(cart.cartItems)
 
     var wWidth = window.innerWidth
 
@@ -49,7 +50,7 @@ const Rightnav = ({ open, setOpen }) => {
                 { wWidth > '768' ? <Search /> : null }
                 <Link style={Style} to='/cart'>
                     <Button bg='transparent'>
-                        <Badge badgeContent={cart.quantity} color='primary'>
+                        <Badge badgeContent={0} color='primary'>
                             <IoMdCart size='25px' />
                         </Badge>
                     </Button>

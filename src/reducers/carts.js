@@ -1,7 +1,6 @@
 import {
     ADD_TO_CART,
-    REMOVE_FROM_CART,
-    CART_RESET,
+    REMOVE_FROM_CART
 } from '../constants/actiontype.js'
 
 export const cartReducer = (state = { cartItems: [] }, action) => {
@@ -9,13 +8,14 @@ export const cartReducer = (state = { cartItems: [] }, action) => {
     case ADD_TO_CART:
         const item = action.payload;
 
-        const existItem = state.cartItems.find((x) => x.product === item.product);
+        const existItem = state.cartItems.find((x) => x.productId === item.productId);
         if(existItem) {
             return {
             ...state,
             cartItems: state.cartItems.map((i) =>
-            i.product === existItem.product ? item : i
+            i.productId === existItem.productId ? item : i
             ),
+            
             }
         } else {
         return {
@@ -27,7 +27,7 @@ export const cartReducer = (state = { cartItems: [] }, action) => {
     case REMOVE_FROM_CART:
         return {
         ...state,
-        cartItems: state.cartItems.filter((i) => i.product !== action.payload),
+        cartItems: state.cartItems.filter((i) => i.productId !== action.payload),
         };
 
     default:

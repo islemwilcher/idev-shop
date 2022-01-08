@@ -6,7 +6,7 @@ import styled from "styled-components"
 import { Add, Remove } from "@material-ui/icons"
 
 //actions
-import { addItemsToCart, removeItemsFromCart } from '../actions/carts'
+import { addToCart } from '../actions/carts'
 
 const Container = styled.div``
 
@@ -71,24 +71,26 @@ const Product = styled.div`
 `
 
 const Hr = styled.hr`
-    margin: 2px ;
+    margin: 10px ;
     background-color: #eee;
     border: none;
-    height: 1px;
+    height: 2px;
 `
 
 const ProductDetail = styled.div`
     flex: 2;
     display: flex;
+    flex-direction: column;
 `
 
 const Image = styled.img`
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
+    border-radius: 10px;
 `
 
 const DeTails = styled.div`
-    padding: 20px;
+    padding: 20px 0px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -177,7 +179,8 @@ const Button = styled.button`
 const Cart = () => {
     const dispatch = useDispatch()
 
-    const { cartItems } = useSelector((state) => state.cart)
+    const  cart  = useSelector((state) => state.cart)
+    const { cartItems } = cart
     console.log(cartItems)
 
     const increaseQuantity = (id, quantity, stock) => {
@@ -185,7 +188,7 @@ const Cart = () => {
         if (stock <= quantity) {
         return;
         }
-        dispatch(addItemsToCart(id, newQty));
+        dispatch(addToCart(id, newQty));
     }
 
     const decreaseQuantity = (id, quantity) => {
@@ -193,12 +196,12 @@ const Cart = () => {
         if (1 >= quantity) {
         return;
         }
-        dispatch(addItemsToCart(id, newQty));
+        dispatch(addToCart(id, newQty));
     }
 
-    const deleteCartItems = (id) => {
-        dispatch(removeItemsFromCart(id));
-    }
+    // const deleteCartItems = (id) => {
+    //     dispatch(removeItemsFromCart(id));
+    // }
 
     return (
         <Container>
@@ -217,9 +220,10 @@ const Cart = () => {
                         {cartItems.length === 0 
                             ? ( <h1>go to products</h1> ) 
                             : (cartItems && cartItems.map((item) => (
+                                <>
                                 <Product>
                                     <ProductDetail>
-                                        <Image src={item.img} />
+                                        <Image src={item.image} />
                                         <DeTails>
                                             <ProductName>
                                                 <b>Product:</b> {item.name}
@@ -234,7 +238,7 @@ const Cart = () => {
                                             <ProductSize>
                                                 <b>Size:</b> {item.size}
                                             </ProductSize>
-                                            <p onClick={() => deleteCartItems(item.product)}>Remove</p>
+                                            {/* <p onClick={() => deleteCartItems(item.product)}>Remove</p> */}
                                         </DeTails>
                                     </ProductDetail>
                                     <PriceDetail>
@@ -246,9 +250,10 @@ const Cart = () => {
                                         <ProductPrice>$ {item.price * item.quantity}</ProductPrice>
                                     </PriceDetail>
                                 </Product>
+                                <Hr />
+                                </>
                             )))
                         }
-                        <Hr />
                     </Info>
                     <Summary>
                         <SummaryTitle>ORDER SUMMARY</SummaryTitle>

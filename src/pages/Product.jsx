@@ -8,7 +8,7 @@ import { useLocation } from 'react-router-dom'
 
 //actions
 import { getProduct } from "../actions/products"
-import { addItemsToCart } from '../actions/carts'
+import { addToCart } from '../actions/carts'
 
 //styles
 import styled from 'styled-components'
@@ -203,7 +203,8 @@ const Product = () => {
     }
 
     const addToCartHandler = () => {
-        dispatch(addItemsToCart(product._id, quantity));
+        dispatch(addToCart(product._id, quantity));
+        console.log('okayy')
 
     }
 
