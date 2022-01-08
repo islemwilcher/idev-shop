@@ -3,9 +3,10 @@ import { useEffect, useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import styled from "styled-components"
 
-
-import IMG from '../assets/shirts.jpg'
 import { Add, Remove } from "@material-ui/icons"
+
+//actions
+import { addItemsToCart, removeItemsFromCart } from '../actions/carts'
 
 const Container = styled.div``
 
@@ -177,8 +178,7 @@ const Cart = () => {
     const dispatch = useDispatch()
 
     const { cartItems } = useSelector((state) => state.cart)
-    console.log(cart)
-    const [quantity, setQuantity] = useState(1)
+    console.log(cartItems)
 
     const increaseQuantity = (id, quantity, stock) => {
         const newQty = quantity + 1;

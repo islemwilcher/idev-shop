@@ -8,7 +8,7 @@ import { useLocation } from 'react-router-dom'
 
 //actions
 import { getProduct } from "../actions/products"
-import { createCart } from '../actions/carts'
+import { addItemsToCart } from '../actions/carts'
 
 //styles
 import styled from 'styled-components'
@@ -202,15 +202,9 @@ const Product = () => {
         )
     }
 
-    const handleClick = (e) => {
-        e.preventDefault()
-        const cart = {
-            cartProduct,
-            quantity,
-            total
-        }
-        dispatch(createCart(cart))
-        console.log(cart)
+    const addToCartHandler = () => {
+        dispatch(addItemsToCart(product._id, quantity));
+
     }
 
 
@@ -233,7 +227,7 @@ const Product = () => {
                                 <Amount>{quantity}</Amount>
                                 <IoMdAdd onClick={() => handleQuantity('inc')} />
                             </AmountContainer>
-                            <Button onClick={handleClick} ><p>Add to Cart </p><IoMdCart size='25px' style={cartstyle} /></Button>
+                            <Button onClick={addToCartHandler} ><p>Add to Cart </p><IoMdCart size='25px' style={cartstyle} /></Button>
                     </Content>
                     </ContentWrapper>
                 </Wrapper>
