@@ -35,6 +35,3 @@ export const fetchCategory = (id) => API.get(`/categories/find/${id}`)
 export const createCategory = (category) => API.post('/categories', category)
 export const updateCategory = (id, updatedCategory) => API.patch(`/categories/${id}`, updatedCategory)
 export const deleteCategory = (id) => API.delete(`/categories/${id}`)
-
-//carts
-export const addToCart = (id) => API.get(`/carts/find/${id}`)
