@@ -11,7 +11,15 @@ import { reducers } from './reducers';
 import App from './App';
 import './index.css';
 
-const store = createStore(reducers, {}, composeWithDevTools(applyMiddleware(thunk)), +  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const cartFromLocalStorage = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : []
+
+const INITIAL_STATE = {
+  cart: {
+    cartItems: cartFromLocalStorage
+  }
+}
+
+const store = createStore(reducers, INITIAL_STATE, composeWithDevTools(applyMiddleware(thunk)));
 
 ReactDOM.render(
   <Provider store={store}>

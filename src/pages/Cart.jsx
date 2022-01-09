@@ -4,9 +4,10 @@ import { useSelector, useDispatch } from "react-redux"
 import styled from "styled-components"
 
 import { Add, Remove } from "@material-ui/icons"
+import { MdDelete } from 'react-icons/md'
 
 //actions
-import { addToCart } from '../actions/carts'
+import { addToCart, removeFromCart } from '../actions/carts'
 
 const Container = styled.div``
 
@@ -80,17 +81,16 @@ const Hr = styled.hr`
 const ProductDetail = styled.div`
     flex: 2;
     display: flex;
-    flex-direction: column;
 `
 
 const Image = styled.img`
-    width: 150px;
-    height: 150px;
+    width: 120px;
+    height: 120px;
     border-radius: 10px;
 `
 
 const DeTails = styled.div`
-    padding: 20px 0px;
+    padding: 10px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -125,6 +125,13 @@ const ProductAmountContainer = styled.div`
     display: flex;
     align-items: center;
     margin-bottom: 20px;
+`
+
+const Delete = styled.div`
+    align-items: center;
+    margin-bottom: 20px;
+    display:flex;
+    cursor: pointer;
 `
 
 const ProductAmount = styled.div`
@@ -183,25 +190,21 @@ const Cart = () => {
     const { cartItems } = cart
     console.log(cartItems)
 
-    const increaseQuantity = (id, quantity, stock) => {
+    const increaseQuantity = (id, quantity) => {
         const newQty = quantity + 1;
-        if (stock <= quantity) {
-        return;
-        }
         dispatch(addToCart(id, newQty));
     }
 
     const decreaseQuantity = (id, quantity) => {
         const newQty = quantity - 1;
-        if (1 >= quantity) {
-        return;
-        }
+        if(quantity <= 1) return null;
         dispatch(addToCart(id, newQty));
     }
 
-    // const deleteCartItems = (id) => {
-    //     dispatch(removeItemsFromCart(id));
-    // }
+    const deleteCartItems = (id) => {
+        dispatch(removeFromCart(id));
+    }
+    
 
     return (
         <Container>
@@ -221,7 +224,7 @@ const Cart = () => {
                             ? ( <h1>go to products</h1> ) 
                             : (cartItems && cartItems.map((item) => (
                                 <>
-                                <Product>
+                                <Product key={item.productId}>
                                     <ProductDetail>
                                         <Image src={item.image} />
                                         <DeTails>
@@ -242,10 +245,14 @@ const Cart = () => {
                                         </DeTails>
                                     </ProductDetail>
                                     <PriceDetail>
+                                        <Delete>
+                                            <p>Delete</p>
+                                            <MdDelete onClick={() => deleteCartItems(item.productId)} color='red' size='24' />
+                                        </Delete>
                                         <ProductAmountContainer>
-                                            <Remove onClick={() => decreaseQuantity(item.product, item.quantity)} />
+                                            <Remove onClick={() => decreaseQuantity(item.productId, item.quantity)} />
                                             <ProductAmount>{item.quantity}</ProductAmount>
-                                            <Add onClick={() => increaseQuantity(item.product, item.quantity, item.stock)} />
+                                            <Add onClick={() => increaseQuantity(item.productId, item.quantity)} />
                                         </ProductAmountContainer>
                                         <ProductPrice>$ {item.price * item.quantity}</ProductPrice>
                                     </PriceDetail>

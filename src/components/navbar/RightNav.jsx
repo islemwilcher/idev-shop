@@ -50,7 +50,7 @@ const Rightnav = ({ open, setOpen }) => {
                 { wWidth > '768' ? <Search /> : null }
                 <Link style={Style} to='/cart'>
                     <Button bg='transparent'>
-                        <Badge badgeContent={0} color='primary'>
+                        <Badge badgeContent={cart.cartItems.reduce((acc, item) => acc + item.quantity, 0)} color='primary'>
                             <IoMdCart size='25px' />
                         </Badge>
                     </Button>
