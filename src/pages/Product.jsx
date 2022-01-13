@@ -170,7 +170,6 @@ const Product = () => {
     //carts
     const [cartProduct, setCartProduct] = useState({})
     const [quantity, setQuantity] = useState(1)
-    const [total, setTotal] = useState(0)
 
     const handleQuantity = (type) => {
         if (type === 'dec') {
@@ -194,20 +193,13 @@ const Product = () => {
         setCartProduct({ ...cartProduct, product });
     },[id, dispatch])
 
-    if(!product) return null
-
-    if(isLoading) {
-        return(
+    if(!product) return (
             <Loading type={type} color={color} />
-        )
-    }
+    )
 
     const addToCartHandler = () => {
         dispatch(addToCart(product._id, quantity));
-        console.log('okayy')
-
     }
-
 
     return (
         <Container>

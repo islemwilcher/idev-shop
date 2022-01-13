@@ -39,8 +39,6 @@ const Rightnav = ({ open, setOpen }) => {
 
     const cart = useSelector((state) => state.cart)
 
-    console.log(cart.cartItems)
-
     var wWidth = window.innerWidth
 
     const Style = { textDecoration: 'none' }

@@ -36,6 +36,7 @@ const Wrapper = styled.div`
 const Products = ({ setCurrentId, visible }) => {
 
     const {products} = useSelector((state) =>  state.products)
+    console.log('products', products)
 
     const dispatch = useDispatch()
 

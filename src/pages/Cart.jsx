@@ -1,5 +1,4 @@
 
-import { useEffect, useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import styled from "styled-components"
 
@@ -8,6 +7,7 @@ import { MdDelete } from 'react-icons/md'
 
 //actions
 import { addToCart, removeFromCart } from '../actions/carts'
+import { Link } from "react-router-dom"
 
 const Container = styled.div``
 
@@ -221,7 +221,7 @@ const Cart = () => {
                 <Bottom>
                     <Info>
                         {cartItems.length === 0 
-                            ? ( <h1>go to products</h1> ) 
+                            ? ( <Link to='/products/new/all'>go to products</Link> ) 
                             : (cartItems && cartItems.map((item) => (
                                 <>
                                 <Product key={item.productId}>
