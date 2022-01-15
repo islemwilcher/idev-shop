@@ -1,8 +1,9 @@
 
+//hooks
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import styled from 'styled-components'
 
+//actions
 import { getCategories } from '../actions/categories'
 
 //components
@@ -14,6 +15,7 @@ import News from '../components/newsletter/News'
 import Loading from '../components/Loading'
 
 //styles
+import styled from 'styled-components'
 import './Home.css'
 
 //animation

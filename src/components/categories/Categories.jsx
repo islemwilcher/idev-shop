@@ -26,9 +26,9 @@ const Container = styled.div`
 `
 
 const Categories = ({ setCurrentId, visible }) => {
-
-    const {categories} = useSelector((state) =>  state.categories)
     const dispatch = useDispatch()
+
+    const { categories } = useSelector((state) =>  state.categories)
 
     useEffect(() => {
         dispatch(getCategories())
@@ -38,11 +38,10 @@ const Categories = ({ setCurrentId, visible }) => {
     const color = 'lightblue'
 
     return (
-        !categories?.length 
+        <>
+        {!categories?.length 
         ? (
-            <div>
             <Loading type={type} color={color} />
-            </div>
         )
         : (
             <Container>
@@ -50,7 +49,8 @@ const Categories = ({ setCurrentId, visible }) => {
                     <Category item={category} key={category._id} setCurrentId={setCurrentId} visible={visible} />
                 ))}
             </Container>
-        )
+        )}
+        </>
     )
 }
 

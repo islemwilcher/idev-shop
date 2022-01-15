@@ -50,9 +50,7 @@ const Products = ({ setCurrentId, visible }) => {
     return (
         !products?.length 
         ? (
-            <div>
             <Loading type={type} color={color} />
-            </div>
         )
         : (
         <Container>

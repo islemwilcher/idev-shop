@@ -1,4 +1,5 @@
 
+import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from "react-redux"
 import styled from "styled-components"
 
@@ -7,7 +8,6 @@ import { MdDelete } from 'react-icons/md'
 
 //actions
 import { addToCart, removeFromCart } from '../actions/carts'
-import { Link } from "react-router-dom"
 
 const Container = styled.div``
 
@@ -32,10 +32,11 @@ const Top = styled.div`
 
 const TopButton = styled.button`
     padding: 10px;
+    border-radius: 5px;
     font-weight: 600;
     cursor: pointer;
     border: ${(props) => props.type === 'filled' && 'none' };
-    background-color: ${(props) => props.type === 'filled' ? 'black' : 'transparent'};
+    background-color: ${(props) => props.type === 'filled' ? '#2240e6' : 'transparent'};
     color: ${(props) => props.type === 'filled' && 'white' }
 `
 
@@ -211,11 +212,9 @@ const Cart = () => {
             <Wrraper>
                 <Title>YOUR BAG</Title>
                 <Top>
-                    <TopButton>CONTINUE SHOPPING</TopButton>
-                    <TopTexts>
-                        <TopText>Shipping Bag(2)</TopText>
-                        <TopText>Your Wishlist(0)</TopText>
-                    </TopTexts>
+                    <Link to='/products'>
+                        <TopButton>back to products</TopButton>
+                    </Link>
                     <TopButton type='filled' >CHECKOUT NOW</TopButton>
                 </Top>
                 <Bottom>

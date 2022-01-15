@@ -5,9 +5,12 @@ import * as api from '../api/index.js'
 //all categories
 export const getCategories = () => async (dispatch) => {
     try {
-        const { data } = await api.fetchCategories()
+        dispatch({ type: START_LOADING})
 
+        const { data } = await api.fetchCategories()
         dispatch({ type: FETCH_ALL_CAREGORIES, payload: data })
+        
+        dispatch({ type: END_LOADING})
     } catch (error) {
         console.log(error)
     }

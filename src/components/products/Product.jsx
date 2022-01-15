@@ -24,11 +24,11 @@ const Card = styled.div`
     flexDirection: column;
     justify-content: center;
     align-items: center;
-    border-radius: 15px;
+    border-radius: 10px;
     height: 280px;
     width: 280px;
     position: relative;
-    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.6);
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
     cursor: pointer;
     overflow: hidden !important;
 
@@ -51,7 +51,7 @@ const Darken = styled.div`
     background-color: rgba(0, 0, 0, 0.2);
     background-blend-mode: darken;
     z-index: 5;
-    border-radius: 15px;
+    border-radius: 10px;
     &:hover{
         background-color: rgba(0, 0, 0, 0.1);
     }
@@ -79,7 +79,7 @@ const Img = styled.img`
     z-index:0;
     height: 200px;
     width: 200px;
-    border-radius: 15px;
+    border-radius: 10px;
     transform: scale(1);
     transition: 0.3s ease-in-out;
 `

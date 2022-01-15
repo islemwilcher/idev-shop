@@ -12,6 +12,7 @@ import Protectedroute from './components/protectedroute/Protectedroute'
 //pages
 import AllNewProducts from "./pages/AllNewProducts"
 import AllBestProducts from "./pages/AllBestProducts"
+import Products from "./pages/Products"
 import Product from "./pages/Product"
 import Cart from './pages/Cart'
 
@@ -43,6 +44,7 @@ function App() {
             <Route exact path='/categories/:category' element={<Categories/>} />
             <Route exact path='/products/new/all' element={<AllNewProducts/>} />
             <Route exact path='/products/best/all' element={<AllBestProducts  />} />
+            <Route exact path='/products' element={<Products />} />
             <Route exact path='/products/find/:id' element={<Product />} />
             <Route exact path='/cart' element={<Cart />} />
             <Route exact path='/signin' element={<Signin />} />
