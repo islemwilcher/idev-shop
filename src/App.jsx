@@ -15,6 +15,7 @@ import AllBestProducts from "./pages/AllBestProducts"
 import Products from "./pages/Products"
 import Product from "./pages/Product"
 import Cart from './pages/Cart'
+import OrderInformation from './pages/order/OrderInformations'
 
 //protected pages
 import Signin from "./admin/signin/Signin"
@@ -27,7 +28,7 @@ function App() {
   return (
     <>
       <Router>
-          <Navbar />
+        <Navbar />
         <Routes>
             {/* private route */}
             <Route exact path='/dashboard' element={<Protectedroute />} >
@@ -40,14 +41,16 @@ function App() {
               <Route exact path='/managecategories' element={<ManageCategories />} />
             </Route>
             {/* app route */}
-            <Route path='/' element={<Home/>} />
-            <Route exact path='/categories/:category' element={<Categories/>} />
-            <Route exact path='/products/new/all' element={<AllNewProducts/>} />
-            <Route exact path='/products/best/all' element={<AllBestProducts  />} />
-            <Route exact path='/products' element={<Products />} />
-            <Route exact path='/products/find/:id' element={<Product />} />
-            <Route exact path='/cart' element={<Cart />} />
-            <Route exact path='/signin' element={<Signin />} />
+
+              <Route path='/' element={<Home/>} />
+              <Route exact path='/categories/:category' element={<Categories/>} />
+              <Route exact path='/products/new/all' element={<AllNewProducts/>} />
+              <Route exact path='/products/best/all' element={<AllBestProducts  />} />
+              <Route exact path='/products' element={<Products />} />
+              <Route exact path='/products/find/:id' element={<Product />} />
+              <Route exact path='/cart' element={<Cart />} />
+            <Route exact path='/order-informations' element={<OrderInformation />} />
+              <Route exact path='/signin' element={<Signin />} />
         </Routes>
       </Router>
     </>

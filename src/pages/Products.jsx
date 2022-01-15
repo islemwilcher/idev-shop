@@ -50,16 +50,16 @@ const Title = styled.h1`
 const Products = () => {
 
     const dispatch = useDispatch()
+    
     //get products from redux
     const { products } = useSelector((state) => state.products)
-    console.log(products)
-
-    const type = 'bubbles'
-    const color = 'lightblue'
 
     useEffect(() => {
         dispatch(getProducts())
     }, [dispatch])
+    
+    const type = 'bubbles'
+    const color = 'lightblue'
 
     return (
         <Container>

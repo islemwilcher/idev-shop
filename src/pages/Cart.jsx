@@ -215,7 +215,9 @@ const Cart = () => {
                     <Link to='/products'>
                         <TopButton>back to products</TopButton>
                     </Link>
-                    <TopButton type='filled' >CHECKOUT NOW</TopButton>
+                    <Link to='/order-informations'>
+                        <TopButton type='filled' >CHECKOUT NOW</TopButton>
+                    </Link>
                 </Top>
                 <Bottom>
                     <Info>
