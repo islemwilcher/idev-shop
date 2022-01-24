@@ -38,6 +38,7 @@ const TopButton = styled.button`
     border-radius: 5px;
     font-weight: 600;
     cursor: pointer;
+    width: ${(props) => props.width === '100%' && 'auto'}
     border: ${(props) => props.type === 'filled' && 'none' };
     background-color: ${(props) => props.type === 'filled' ? '#2240e6' : 'transparent'};
     color: ${(props) => props.type === 'filled' && 'white' }
@@ -267,7 +268,7 @@ const Cart = () => {
                             )))
                         }
                     </Info>
-                    <Summary>
+                    {/* <Summary>
                         <SummaryTitle>ORDER SUMMARY</SummaryTitle>
                         <SummaryItem>
                             <SummaryItemText>Subtotal: </SummaryItemText>
@@ -285,8 +286,8 @@ const Cart = () => {
                             <SummaryItemText>Total: </SummaryItemText>
                             <SummaryItemPrice>{`$ ${cartItems.reduce((acc, item) => acc + item.quantity * item.price, 0)}`}</SummaryItemPrice>
                         </SummaryItem>
-                        <Button>CHECKOUT NOW</Button>
-                    </Summary>
+                        <TopButton type='filled' width='100%'>CHECKOUT NOW</TopButton>
+                    </Summary> */}
                 </Bottom>
             </Wrraper>
         </Container>
