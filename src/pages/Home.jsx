@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { getCategories } from '../actions/categories'
 
 //components
+import Navbar from '../components/navbar/Navbar'
 import Header from '../components/Header'
 import TopCategories from '../components/categories/TopCategories'
 import Best from '../components/products/Best'
@@ -40,6 +41,7 @@ const Home = () => {
         {categories?.length 
         ? (
             <Container>
+                <Navbar />
                 <Header />
                 <Fade bottom>
                     <TopCategories />

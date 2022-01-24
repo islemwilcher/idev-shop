@@ -28,7 +28,6 @@ function App() {
   return (
     <>
       <Router>
-        <Navbar />
         <Routes>
             {/* private route */}
             <Route exact path='/dashboard' element={<Protectedroute />} >

@@ -8,6 +8,7 @@ import { getProducts } from '../actions/products'
 import styled from 'styled-components'
 
 //components
+import Navbar from '../components/navbar/Navbar'
 import FiltredProducts from '../components/products/FiltredProducts'
 import News from '../components/newsletter/News'
 
@@ -97,6 +98,7 @@ const Categorie = () => {
 
     return (
         <Container>
+            <Navbar />
             <Wrapper>
                 <Layout>
                     <Title>{cat}</Title>

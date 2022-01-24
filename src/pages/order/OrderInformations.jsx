@@ -6,8 +6,8 @@ import styled from 'styled-components'
 
 const OrderInformations = () => {
     return (
-        <Header>
-        </Header>
+        <div>
+        </div>
     )
 }
 

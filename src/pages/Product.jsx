@@ -14,6 +14,7 @@ import { addToCart } from '../actions/carts'
 import styled from 'styled-components'
 
 //components
+import Navbar from '../components/navbar/Navbar'
 import Loading from '../components/Loading'
 
 //animation
@@ -203,6 +204,7 @@ const Product = () => {
 
     return (
         <Container>
+            <Navbar />
             <Zoom>
                 <Wrapper>
                     <ImgContainer>

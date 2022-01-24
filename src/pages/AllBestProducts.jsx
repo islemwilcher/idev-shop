@@ -1,10 +1,14 @@
 
 //components
+import Navbar from '../components/navbar/Navbar'
 import AllBest from "../components/products/AllBest"
 
 const AllBestProducts = () => {
     return (
-        <AllBest />
+        <>
+            <Navbar />
+            <AllBest />
+        </>
     )
 }
 

@@ -9,6 +9,9 @@ import { MdDelete } from 'react-icons/md'
 //actions
 import { addToCart, removeFromCart } from '../actions/carts'
 
+//components
+import Navbar from '../components/navbar/Navbar'
+
 const Container = styled.div``
 
 const Wrraper = styled.div`
@@ -209,6 +212,7 @@ const Cart = () => {
 
     return (
         <Container>
+            <Navbar />
             <Wrraper>
                 <Title>YOUR BAG</Title>
                 <Top>

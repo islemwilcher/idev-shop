@@ -10,6 +10,7 @@ import styled from 'styled-components'
 import { getProducts } from '../actions/products'
 
 //components
+import Navbar from '../components/navbar/Navbar'
 import Loading from '../components/Loading'
 import Product from '../components/products/Product'
 
@@ -68,6 +69,7 @@ const Products = () => {
                 <Loading type={type} color={color} />
             ) : (
                 <>
+                    <Navbar />
                     <Title>Products</Title>
                     <Wrapper>
                         {products.map(item => (

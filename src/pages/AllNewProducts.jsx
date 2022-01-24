@@ -1,10 +1,15 @@
 
 //components
+import Navbar from '../components/navbar/Navbar'
 import AllNew from "../components/products/AllNew"
 
 const AllNewProducts = () => {
     return (
-        <AllNew />
+        <>
+            <Navbar />
+            <AllNew />
+        </>
+        
     )
 }
 
