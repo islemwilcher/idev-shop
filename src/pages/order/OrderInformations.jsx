@@ -25,19 +25,27 @@ const Left = styled.div`
 `
 
 const Logo = styled.div`
-    width: 60px;
-    margin: 10px auto 10px 60px;
+    width: 80%;
+    margin: 10px auto;
+
+    @media (max-width: 768px) {
+        margin: 10px auto;
+    }
 `
 
 const Path = styled.div`
+    width: 80%;
+    margin: 10px auto;
     display: flex;
-    width: 300px;
     height: 60px;
     align-items: center;
-    margin-left: 60px;
 
     p {
         font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+        margin: 10px auto ;
     }
 `
 const ExpressCheckout = styled.div`
@@ -50,6 +58,8 @@ const ExpressCheckout = styled.div`
     height: 100px;
     padding: 0 0 30px 0;
     background-color: whitesmoke;
+    border-radius: 10px;
+    box-shadow: 1px 1px 6px gray;
 
 `
 
