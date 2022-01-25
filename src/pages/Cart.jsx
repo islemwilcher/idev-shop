@@ -212,8 +212,10 @@ const Cart = () => {
     
 
     return (
+        <>
+        <Navbar />
         <Container>
-            <Navbar />
+            
             <Wrraper>
                 <Title>YOUR BAG</Title>
                 <Top>
@@ -291,6 +293,7 @@ const Cart = () => {
                 </Bottom>
             </Wrraper>
         </Container>
+        </>
     )
 }
 

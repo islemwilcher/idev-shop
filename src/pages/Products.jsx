@@ -63,13 +63,15 @@ const Products = () => {
     const color = 'lightblue'
 
     return (
+        <>
+        <Navbar />
         <Container>
             {!products?.length
             ?(
                 <Loading type={type} color={color} />
             ) : (
                 <>
-                    <Navbar />
+                    
                     <Title>Products</Title>
                     <Wrapper>
                         {products.map(item => (
@@ -80,6 +82,8 @@ const Products = () => {
             )
             }
         </Container>
+        </>
+        
     )
 }
 

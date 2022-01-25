@@ -203,8 +203,9 @@ const Product = () => {
     }
 
     return (
+        <>
+        <Navbar />
         <Container>
-            <Navbar />
             <Zoom>
                 <Wrapper>
                     <ImgContainer>
@@ -228,6 +229,7 @@ const Product = () => {
                 </Wrapper>
                 </Zoom>
         </Container>
+        </>
     )
 }
 

@@ -97,8 +97,9 @@ const Categorie = () => {
     },[dispatch])
 
     return (
+        <>
+        <Navbar />
         <Container>
-            <Navbar />
             <Wrapper>
                 <Layout>
                     <Title>{cat}</Title>
@@ -124,6 +125,7 @@ const Categorie = () => {
                 <News />
             </Fade>
         </Container>
+        </>
     )
 }
 
