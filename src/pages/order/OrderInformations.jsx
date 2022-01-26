@@ -61,6 +61,10 @@ const ExpressCheckout = styled.div`
     border-radius: 10px;
     box-shadow: 1px 1px 6px gray;
 
+    h3 {
+        font-weight: 500;
+    }
+
 `
 
 const PypalButton = styled.button`
@@ -78,7 +82,41 @@ const PypalButton = styled.button`
         background-color: #edc71c;
         box-shadow: 1px 1px 6px gray;
     }
+`
+const Hr = styled.hr`
+    width: 80%;
+    margin: 20px auto;
+`
 
+const ContavtInformation = styled.div`
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-between;
+    width: 80%;
+    height: 100px;
+
+    h4 {
+        margin: 0px !important;
+        font-weight: 500;
+    }
+`
+const InformationEmail = styled.div`
+    display: flex;
+`
+
+const Input = styled.input`
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    width: 98%;
+    padding: 10px;
+`
+
+const Label = styled.label`
+    font-weight: 300;
+    margin-left: 10px;
 `
 
 const Right = styled.div`
@@ -118,11 +156,20 @@ const OrderInformations = () => {
                     <p>Payment</p> 
                 </Path>
                 <ExpressCheckout>
-                    <h6>Express checkout</h6>
+                    <h3>Express checkout</h3>
                     <PypalButton>
                     <img src={PAYPAL} alt="logo" width="60px" height="20px" />
                     </PypalButton>
                 </ExpressCheckout>
+                <Hr />
+                <ContavtInformation>
+                    <h4>Contact information</h4>
+                    <Input name='email' placeholder='Email' />
+                    <InformationEmail>
+                        <input name='emailMe' type='checkbox' />
+                        <Label for='emailMe'>Email me with news and offers</Label>
+                    </InformationEmail>
+                </ContavtInformation>
 
             </Left>
             <Right></Right>
