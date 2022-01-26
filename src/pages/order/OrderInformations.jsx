@@ -4,14 +4,14 @@ import { Link } from 'react-router-dom'
 //components
 import LOGO from '../../assets/logo.png'
 import PAYPAL from '../../assets/paypal.png'
-import  { MdKeyboardArrowRight }  from 'react-icons/md'
+import  { MdKeyboardArrowRight, MdKeyboardArrowLeft }  from 'react-icons/md'
 
 //for styles
 import styled from 'styled-components'
 
 const Container = styled.div`
     display: flex;
-
+    background-color: whitesmoke;
     @media (max-width: 768px) {
         flex-direction: column;
     }
@@ -84,11 +84,12 @@ const PypalButton = styled.button`
     }
 `
 const Hr = styled.hr`
+    border-color: whitesmoke;
     width: 80%;
-    margin: 20px auto;
+    margin: 30px auto 20px auto;
 `
 
-const ContavtInformation = styled.div`
+const ContactInformation = styled.div`
     margin: auto;
     display: flex;
     flex-direction: column;
@@ -110,13 +111,66 @@ const Input = styled.input`
     padding: 5px;
     border-radius: 5px;
     border: 1px solid gray;
-    width: 98%;
+    width: 94%;
+    margin-top: 10px;
     padding: 10px;
 `
 
 const Label = styled.label`
     font-weight: 300;
     margin-left: 10px;
+`
+
+const ShippinInformation = styled.div`
+    margin: 30px auto;
+    width: 80%;
+    padding: 10px;
+    border-radius: 10px;
+
+    form {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+    }
+    h4 {
+        margin: 0px !important;
+        color: gray;
+        margin-top: 10px !important;
+        font-weight: 500;
+    }
+`
+const Btn = styled.div`
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+`
+
+const ShippingButton = styled.button`
+    padding: 15px;
+    border-radius: 5px;
+    font-weight: 500;
+    cursor: pointer;
+    width: 100%;
+    margin: 0;
+    background-color: ${(props) => props.type === 'filled' ? '#2240e6' : 'transparent'};
+    color: ${(props) => props.type === 'filled' && 'white' }
+`
+const ReturnButton = styled.button`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: whitesmoke;
+    padding: 5px;
+    border: none;
+    font-weight: 500;
+    cursor: pointer;
+    width: 100%;
+    margin: auto;
+    background-color: ${(props) => props.type === 'filled' ? '#2240e6' : 'transparent'};
+    color: rgb(136, 165, 219);
 `
 
 const Right = styled.div`
@@ -131,7 +185,6 @@ const Right = styled.div`
 const OrderInformations = () => {
 
     const Styles = {
-        color: 'rgb(136, 165, 219)',
         textDecoration: 'none'
     }
 
@@ -162,14 +215,36 @@ const OrderInformations = () => {
                     </PypalButton>
                 </ExpressCheckout>
                 <Hr />
-                <ContavtInformation>
+                <ContactInformation>
                     <h4>Contact information</h4>
                     <Input name='email' placeholder='Email' />
                     <InformationEmail>
                         <input name='emailMe' type='checkbox' />
                         <Label for='emailMe'>Email me with news and offers</Label>
                     </InformationEmail>
-                </ContavtInformation>
+                </ContactInformation>
+
+                <ShippinInformation>
+                    <h4>Shipping Address - ENGLISH (Latin characters) required for shipping!</h4>
+                    <form>
+                        <Input name='firstName' placeholder='First name' />
+                        <Input name='lastName' placeholder='Last name' />
+                        <Input name='address' placeholder='Address' />
+                        <Input name='city' placeholder='City' />
+                        <Input name='country' placeholder='Country' />
+                        <Input name='state' placeholder='state' />
+                        <Input name='zipCode' placeholder='ZIP code' />
+                        <Input name='phone' placeholder='Phone' />
+                        <Btn>
+                            <ShippingButton type='filled' >CHECKOUT NOW</ShippingButton>
+                        </Btn>
+                    </form>
+                    <Link style={Styles} to='/cart'>
+                        <ReturnButton >
+                            <MdKeyboardArrowLeft size='18' /> <p>Return to cart</p>
+                        </ReturnButton>
+                    </Link>
+                </ShippinInformation>
 
             </Left>
             <Right></Right>
