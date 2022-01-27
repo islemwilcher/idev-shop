@@ -10,9 +10,13 @@ API.interceptors.request.use((req) => {
     return req;
 });
 
+//----------------------------------------------------------------------
+
 //auth
 export const signIn = (formData) => API.post('/auth/signin', formData)
 export const signUp = (formData) => API.post('/auth/signup', formData)
+
+//----------------------------------------------------------------------
 
 //products
 export const fetchProducts = () => API.get('/products')
@@ -28,6 +32,8 @@ export const createProduct = (product) => API.post('/products', product)
 export const updateProduct = (id, updatedProduct) => API.patch(`/products/${id}`, updatedProduct)
 export const deleteProduct = (id) => API.delete(`/products/${id}`)
 
+//----------------------------------------------------------------------
+
 //categories
 export const fetchCategories = () => API.get('/categories')
 export const fetchCategory = (id) => API.get(`/categories/find/${id}`)
@@ -35,3 +41,13 @@ export const fetchCategory = (id) => API.get(`/categories/find/${id}`)
 export const createCategory = (category) => API.post('/categories', category)
 export const updateCategory = (id, updatedCategory) => API.patch(`/categories/${id}`, updatedCategory)
 export const deleteCategory = (id) => API.delete(`/categories/${id}`)
+
+//----------------------------------------------------------------------
+
+//orders
+export const fetchOrders = () => API.get('/orders')
+export const fetchOrder = (id) => API.get(`/orders/find/${id}`)
+
+export const createOrder = (order) => API.post('/orders', order)
+export const updateOrder = (id, updatedOrder) => API.patch(`/orders/${id}`, updatedOrder)
+export const deleteOrder = (id) => API.delete(`/orders/${id}`)

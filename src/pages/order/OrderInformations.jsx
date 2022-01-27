@@ -18,7 +18,7 @@ const Container = styled.div`
 `
 const Left = styled.div`
     width: 50%;
-
+    background-color: white;
     @media (max-width: 768px) {
         width: 100%;
     }

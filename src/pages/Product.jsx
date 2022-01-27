@@ -164,7 +164,7 @@ const Amount = styled.span`
 
 const Product = () => {
 
-    const {product, isLoading} = useSelector((state) => state.products)
+    const {product} = useSelector((state) => state.products)
     const dispatch = useDispatch()
     const location = useLocation()
 

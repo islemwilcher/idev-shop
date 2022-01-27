@@ -44,17 +44,17 @@ const TopButton = styled.button`
     color: ${(props) => props.type === 'filled' && 'white' }
 `
 
-const TopTexts = styled.div`
-    @media (max-width: 768px) {
-        display: none;
-    }
-`
+// const TopTexts = styled.div`
+//     @media (max-width: 768px) {
+//         display: none;
+//     }
+// `
 
-const TopText = styled.span`
-    text-decoration: underline;
-    cursor: pointer;
-    margin: 0px 10px;
-`
+// const TopText = styled.span`
+//     text-decoration: underline;
+//     cursor: pointer;
+//     margin: 0px 10px;
+// `
 
 const Bottom = styled.div`
     display: flex;
@@ -155,37 +155,37 @@ const ProductPrice = styled.div`
     }
 `
 
-const Summary = styled.div`
-    flex: 1;
-    border: 0.5px solid lightgray;
-    border-radius: 10px;
-    padding: 20px;
-    min-height: 50vh;
-`
+// const Summary = styled.div`
+//     flex: 1;
+//     border: 0.5px solid lightgray;
+//     border-radius: 10px;
+//     padding: 20px;
+//     min-height: 50vh;
+// `
 
-const SummaryTitle = styled.h1`
-    font-weight: 200;
-`
+// const SummaryTitle = styled.h1`
+//     font-weight: 200;
+// `
 
-const SummaryItem = styled.div`
-    margin: 30px 0px;
-    display: flex;
-    justify-constent: space-between;
-    font-weight: ${(props) => props.type === 'total' && '500' };
-    font-size: ${(props) => props.type === 'total' && '24px' };
-`
+// const SummaryItem = styled.div`
+//     margin: 30px 0px;
+//     display: flex;
+//     justify-constent: space-between;
+//     font-weight: ${(props) => props.type === 'total' && '500' };
+//     font-size: ${(props) => props.type === 'total' && '24px' };
+// `
 
-const SummaryItemText = styled.span``
+// const SummaryItemText = styled.span``
 
-const SummaryItemPrice = styled.span``
+// const SummaryItemPrice = styled.span``
 
-const Button = styled.button`
-    width: 100%;
-    padding: 10px;
-    background-color: black;
-    color: white;
-    font-weight: 600;
-`
+// const Button = styled.button`
+//     width: 100%;
+//     padding: 10px;
+//     background-color: black;
+//     color: white;
+//     font-weight: 600;
+// `
 
 
 const Cart = () => {
@@ -193,7 +193,6 @@ const Cart = () => {
 
     const  cart  = useSelector((state) => state.cart)
     const { cartItems } = cart
-    console.log(cartItems)
 
     const increaseQuantity = (id, quantity) => {
         const newQty = quantity + 1;
@@ -231,8 +230,8 @@ const Cart = () => {
                         {cartItems.length === 0 
                             ? ( <Link to='/products/new/all'>go to products</Link> ) 
                             : (cartItems && cartItems.map((item) => (
-                                <>
-                                <Product key={item.productId}>
+                                <div key={item.productId}>
+                                <Product>
                                     <ProductDetail>
                                         <Image src={item.image} />
                                         <DeTails>
@@ -265,8 +264,8 @@ const Cart = () => {
                                         <ProductPrice>$ {item.price * item.quantity}</ProductPrice>
                                     </PriceDetail>
                                 </Product>
-                                <Hr />
-                                </>
+                                <Hr/>
+                                </div>
                             )))
                         }
                     </Info>

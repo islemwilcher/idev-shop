@@ -6,7 +6,6 @@ import Home from './pages/Home'
 import Categories from './pages/Categories'
 
 //components
-import Navbar from './components/navbar/Navbar'
 import Protectedroute from './components/protectedroute/Protectedroute'
 
 //pages
