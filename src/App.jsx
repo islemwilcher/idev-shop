@@ -21,6 +21,7 @@ import Signin from "./admin/signin/Signin"
 import Dashboard from "./admin/dashboard/pages/Dashboard"
 import ManageCategories from "./admin/dashboard/pages/categories/manage/ManageCategories"
 import ManageProducts from "./admin/dashboard/pages/products/manage/ManageProducts"
+import ManageOrders from "./admin/dashboard/pages/orders/manage/ManageOrders"
 
 function App() {
 
@@ -37,6 +38,9 @@ function App() {
             </Route>
             <Route exact path='/managecategories' element={<Protectedroute />} >
               <Route exact path='/managecategories' element={<ManageCategories />} />
+            </Route>
+            <Route exact path='/manageorders' element={<Protectedroute />} >
+              <Route exact path='/manageorders' element={<ManageOrders />} />
             </Route>
             {/* app route */}
 

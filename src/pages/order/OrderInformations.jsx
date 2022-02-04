@@ -1,4 +1,5 @@
 
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 //components
@@ -184,6 +185,23 @@ const Right = styled.div`
 
 const OrderInformations = () => {
 
+    const [orderInformations, setOrderInformations] = useState({
+        firstName: '',
+        lastName: '',
+        address: '',
+        country: '',
+        city: '',
+        zipCode: '',
+        phone: ''
+    })
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+
+        console.log(orderInformations);
+    }
+
+
     const Styles = {
         textDecoration: 'none'
     }
@@ -226,15 +244,14 @@ const OrderInformations = () => {
 
                 <ShippinInformation>
                     <h4>Shipping Address - ENGLISH (Latin characters) required for shipping!</h4>
-                    <form>
-                        <Input name='firstName' placeholder='First name' />
-                        <Input name='lastName' placeholder='Last name' />
-                        <Input name='address' placeholder='Address' />
-                        <Input name='city' placeholder='City' />
-                        <Input name='country' placeholder='Country' />
-                        <Input name='state' placeholder='state' />
-                        <Input name='zipCode' placeholder='ZIP code' />
-                        <Input name='phone' placeholder='Phone' />
+                    <form autoComplete='off' onSubmit={handleSubmit}>
+                        <Input name='firstName' placeholder='First name' value={orderInformations.firstName} onChange={(e) => setOrderInformations({ ...orderInformations, firstName: e.target.value})} />
+                        <Input name='lastName' placeholder='Last name' value={orderInformations.lastName} onChange={(e) => setOrderInformations({ ...orderInformations, lastName: e.target.value})} />
+                        <Input name='address' placeholder='Address' value={orderInformations.address} onChange={(e) => setOrderInformations({ ...orderInformations, address: e.target.value})} />
+                        <Input name='country' placeholder='Country' value={orderInformations.country} onChange={(e) => setOrderInformations({ ...orderInformations, country: e.target.value})} />
+                        <Input name='city' placeholder='City' value={orderInformations.city} onChange={(e) => setOrderInformations({ ...orderInformations, city: e.target.value})} />
+                        <Input name='zipCode' placeholder='ZIP code' value={orderInformations.zipCode} onChange={(e) => setOrderInformations({ ...orderInformations, zipCode: e.target.value})} />
+                        <Input name='phone' placeholder='Phone' value={orderInformations.phone} onChange={(e) => setOrderInformations({ ...orderInformations, phone: e.target.value})} />
                         <Btn>
                             <ShippingButton type='filled' >CHECKOUT NOW</ShippingButton>
                         </Btn>
