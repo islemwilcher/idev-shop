@@ -1,10 +1,7 @@
 
-import { useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 import styled from 'styled-components'
-
-import { besTProducts } from '../../actions/products'
 
 //components
 import Product from '../products/Product'
@@ -34,23 +31,20 @@ const Wrapper = styled.div`
 
 const BestProducts = () => {
 
-    //new products limit 4
-    const {bestProducts} = useSelector((state) => state.products)
-
-    const dispatch = useDispatch()
-
-    useEffect(() => {
-        dispatch(besTProducts())
-    },[dispatch])
-
-    
+    const {products} = useSelector((state) =>  state.products)
 
     return (
         <Container>
             <Wrapper>
-            {bestProducts.map(item => (
+            {
+            products
+            .sort((A, B) => A.sellCounter > B.sellCounter ? -1 : 1)
+            .slice(0,4)
+            .map(item => (
                 <Product item={item} key={item._id} />
-            ))}
+            )
+            )
+            }
             </Wrapper>
         </Container>
     )
