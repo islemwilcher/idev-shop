@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux'
 
 //actions
 import { getCategories } from '../actions/categories'
+import { getProducts } from '../actions/products'
 
 //components
 import Navbar from '../components/navbar/Navbar'
@@ -28,9 +29,10 @@ const Home = () => {
 
     const {categories} = useSelector((state) =>  state.categories)
     const dispatch = useDispatch()
-
+    
     useEffect(() => {
         dispatch(getCategories())
+        dispatch(getProducts())
     }, [dispatch])
     
     const type='bubbles'
