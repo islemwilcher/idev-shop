@@ -46,7 +46,6 @@ const Title = styled.h1`
 const Products = () => {
 
     const { products } = useSelector((state) => state.products)
-    console.log('products page:', products)
     
     return (
         <>
