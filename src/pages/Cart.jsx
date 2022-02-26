@@ -228,7 +228,7 @@ const Cart = () => {
                 <Bottom>
                     <Info>
                         {cartItems.length === 0 
-                            ? ( <Link to='/products/new/all'>go to products</Link> ) 
+                            ? ( <Link to='/products'>go to products</Link> ) 
                             : (cartItems && cartItems.map((item) => (
                                 <div key={item.productId}>
                                 <Product>
