@@ -1,14 +1,10 @@
 
-import { useEffect } from "react"
-import { useSelector, useDispatch } from "react-redux"
+import { useSelector } from "react-redux"
 
 import styled from 'styled-components'
 
-import { allBESTProducts } from "../../actions/products"
-
 //components
 import Product from './Product'
-import Loading from '../Loading'
 
 const Container = styled.div`
     width: 90%;
@@ -45,32 +41,20 @@ const Title = styled.h1`
 `
 
 const AllNew = () => {
-    const dispatch = useDispatch()
 
-    useEffect(() => {
-        dispatch(allBESTProducts())
-    },[dispatch])
-
-    //all new products
-    const {allBestProducts} = useSelector((state) =>  state.products)
-
-    const type='bubbles'
-    const color='lightblue'
+    const { products } = useSelector((state) =>  state.products)
 
     return (
         <Container>
             <Title>Bestselling</Title>
-        {!allBestProducts?.length 
-        ? (
-            <Loading type={type} color={color} />
-        )
-        : (
             <Wrapper>
-            {allBestProducts.map(item => (
-                <Product item={item} key={item._id} />
-            ))}
+                {
+                products
+                .sort((A, B) => A.sellCounter > B.sellCounter ? -1 : 1)
+                .map(item => (
+                    <Product item={item} key={item._id} />
+                ))}
             </Wrapper>
-        )}
         </Container>
     )
 }
