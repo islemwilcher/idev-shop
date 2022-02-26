@@ -1,5 +1,5 @@
 
-import { START_LOADING, END_LOADING, FETCH_ALL_CAREGORIES, FETCH_CATEGORY, CREATE, UPDATE, DELETE } from '../constants/actiontype'
+import { START_LOADING, END_LOADING, FETCH_ALL, FETCH_CATEGORY, CREATE, UPDATE, DELETE } from '../constants/actiontype.js'
 import * as api from '../api/index.js'
 
 //all categories
@@ -8,7 +8,7 @@ export const getCategories = () => async (dispatch) => {
         dispatch({ type: START_LOADING})
 
         const { data } = await api.fetchCategories()
-        dispatch({ type: FETCH_ALL_CAREGORIES, payload: data })
+        dispatch({ type: FETCH_ALL, payload: data })
         
         dispatch({ type: END_LOADING})
     } catch (error) {
