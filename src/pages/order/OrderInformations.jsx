@@ -46,7 +46,7 @@ const Path = styled.div`
     }
 
     @media (max-width: 768px) {
-        margin: 10px auto ;
+        margin: 10px auto;
     }
 `
 const ExpressCheckout = styled.div`
