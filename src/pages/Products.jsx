@@ -1,17 +1,12 @@
 
 //hooks
-import { useEffect } from 'react'
-import { useDispatch, useSelector } from "react-redux"
+import { useSelector } from "react-redux"
 
 //for styles
 import styled from 'styled-components'
 
-//actions
-import { getProducts } from '../actions/products'
-
 //components
 import Navbar from '../components/navbar/Navbar'
-import Loading from '../components/Loading'
 import Product from '../components/products/Product'
 
 const Container = styled.div`
@@ -50,40 +45,24 @@ const Title = styled.h1`
 
 const Products = () => {
 
-    const dispatch = useDispatch()
-    
-    //get products from redux
     const { products } = useSelector((state) => state.products)
-
-    useEffect(() => {
-        dispatch(getProducts())
-    }, [dispatch])
+    console.log('products page:', products)
     
-    const type = 'bubbles'
-    const color = 'lightblue'
-
     return (
         <>
         <Navbar />
         <Container>
-            {!products?.length
-            ?(
-                <Loading type={type} color={color} />
-            ) : (
-                <>
-                    
-                    <Title>Products</Title>
-                    <Wrapper>
-                        {products.map(item => (
-                            <Product item={item} key={item._id} />
-                        ))}
-                    </Wrapper>
-                </>
-            )
-            }
+            <Title>Products</Title>
+            <Wrapper>
+                {products
+                .map(item => (
+                    <Product item={item} key={item._id} />
+                )
+                )
+                }
+            </Wrapper>
         </Container>
         </>
-        
     )
 }
 
