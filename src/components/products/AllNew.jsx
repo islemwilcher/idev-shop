@@ -1,10 +1,8 @@
 
-import { useEffect } from "react"
-import { useSelector, useDispatch } from "react-redux"
+import moment from 'moment'
+import { useSelector } from "react-redux"
 
 import styled from 'styled-components'
-
-import { allNEWProducts } from "../../actions/products"
 
 //components
 import Product from './Product'
@@ -45,35 +43,23 @@ const Title = styled.h1`
 `
 
 const AllNew = () => {
-    const dispatch = useDispatch()
 
-    useEffect(() => {
-        dispatch(allNEWProducts())
-    },[dispatch])
-
-    //all new products
-    const {allNewProducts} = useSelector((state) =>  state.products)
+    const {products} = useSelector((state) =>  state.products)
 
     const type = 'bubbles'
     const color = 'lightblue'
 
     return (
         <Container>
-            
-        {!allNewProducts?.length 
-        ? (
-            <Loading type={type} color={color} />
-        )
-        : (
-            <>
             <Title>New Products</Title>
             <Wrapper>
-                {allNewProducts.map(item => (
+                {
+                products
+                .sort((a, b) => moment(a.createdAt).valueOf() - moment(b.createdAt).valueOf())
+                .map(item => (
                     <Product item={item} key={item._id} />
                 ))}
             </Wrapper>
-            </>
-        )}
         </Container>
     )
 }
