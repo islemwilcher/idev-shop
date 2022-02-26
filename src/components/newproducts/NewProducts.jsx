@@ -1,10 +1,9 @@
 
-import { useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import moment from 'moment'
+
+import { useSelector } from 'react-redux'
 
 import styled from 'styled-components'
-
-import { neWProducts } from '../../actions/products'
 
 //components
 import Product from '../products/Product'
@@ -34,23 +33,20 @@ const Wrapper = styled.div`
 
 const NewProducts = () => {
 
-    //new products limit 4
-    const {newProducts} = useSelector((state) => state.products)
-
-    const dispatch = useDispatch()
-
-    useEffect(() => {
-        dispatch(neWProducts())
-    },[dispatch])
-
-    
+    const { products } = useSelector((state) =>  state.products)
 
     return (
         <Container>
             <Wrapper>
-            {newProducts.map(item => (
+            {
+            products
+            .sort((a, b) => moment(a.createdAt).valueOf() - moment(b.createdAt).valueOf())
+            .slice(0, 4)
+            .map(item => (
                 <Product item={item} key={item._id} />
-            ))}
+            )
+            )
+            }
             </Wrapper>
         </Container>
     )
